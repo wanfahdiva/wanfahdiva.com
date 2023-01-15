@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --tw-color-primary-50: 240 249 255;
+  --tw-color-primary-100: 224 242 254;
+  --tw-color-primary-200: 186 230 253;
+  --tw-color-primary-300: 125 211 252;
+  --tw-color-primary-400: 56 189 248;
+  --tw-color-primary-500: 14 165 233;
+  --tw-color-primary-600: 2 132 199;
+  --tw-color-primary-700: 3 105 161;
+  --tw-color-primary-800: 7 89 133;
+  --tw-color-primary-900: 12 74 110;
+  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #f0f9ff */
+  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #e0f2fe */
+  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #bae6fd */
+  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #7dd3fc */
+  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #38bdf8 */
+  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #0ea5e9 */
+  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #0284c7 */
+  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #0369a1 */
+  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
+  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
+  /* #endregion  /**======== Primary Color =========== */
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraLight.ttf');
+    font-weight: 100;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Light.ttf');
+    font-weight: 200;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Light.ttf');
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Regular.ttf');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Medium.ttf');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-SemiBold.ttf');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Bold.ttf');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraBold.ttf');
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraBold.ttf');
+    font-weight: 900;
+    font-display: swap;
+  }
+
+  .cursor-newtab {
+    cursor: pointer;
+  }
+
+  /* #region  /**=========== Typography =========== */
+  .h0 {
+    @apply font-primary text-3xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-5xl;
+  }
+
+  h1,
+  .h1 {
+    @apply font-primary text-2xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-4xl;
+  }
+
+  h2,
+  .h2 {
+    @apply font-primary text-xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply font-primary text-lg font-bold transition-all delay-100 duration-200 ease-in-out md:text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply font-primary text-base font-bold transition-all delay-100 duration-200 ease-in-out md:text-lg;
+  }
+
+  body,
+  .p {
+    @apply font-primary text-sm transition-all delay-100 duration-200 ease-in-out md:text-base;
+  }
+  /* #endregion  /**======== Typography =========== */
+
+  @media screen and (max-width: 768px) {
+    *,
+    button > * {
+      cursor: auto !important;
+    }
+  }
+  .light ::selection {
+    background-color: rgba(112, 72, 232, 10%);
+    color: #7048e8;
+  }
+  .dark ::selection {
+    background-color: rgba(251, 211, 141, 10%);
+    color: #fbd38d;
+  }
+
+  .layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  .dark a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
+
+  .containerCursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .dark .containerCursor .cursor {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    border: 4px solid #fbd38d;
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .dark .containerCursor .grab,
+  .dark .containerCursor .pointer {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  .light .containerCursor .cursor {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    border: 4px solid #7048e8;
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .light .containerCursor .grab,
+  .light .containerCursor .pointer {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(
+        to right,
+        var(--color-primary-400),
+        var(--color-primary-500)
+      );
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 2px, 100% 2px;
+  }
+}
+/* Make clicks pass-through */
+/* @apply fixed top-0 w-full h-screen bg-white; */
+#nprogress {
+  @apply top-0 bg-white bg-opacity-10;
+}
+
+#nprogress .bar {
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #805ad5;
+  visibility: visible;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #805ad5, 0 0 5px #805ad5;
+  opacity: 1;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  @apply absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black text-center opacity-30;
+  /* @apply fixed flex-col items-center justify-center text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2; */
+}
+
+#nprogress .spinner-icon {
+  visibility: hidden;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #805ad5;
+  border-left-color: #805ad5;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
