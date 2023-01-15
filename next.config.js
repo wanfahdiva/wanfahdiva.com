@@ -10,10 +10,10 @@ module.exports = {
   images: {
     domains: ['images.unsplash.com'],
   },
-   env: {
+  env: {
     SITE_NAME: 'Sawala Boilerplate',
-    BASE_URL: process.env.BASE_URL || "http://localhost:3000",
-    API_URL: process.env.API_URL|| "http://localhost:1337/api",
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+    API_URL: process.env.API_URL || 'http://localhost:1337/api',
   },
 
   // SVGR
