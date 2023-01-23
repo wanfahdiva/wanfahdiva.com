@@ -1,13 +1,16 @@
 import { NextLayoutComponentType } from 'next'
 
+import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
 import Seo from '@/components/Seo'
 
 const AboutPage: NextLayoutComponentType = () => {
   return (
-    <main tw='py-10 text-center'>
-      <h1>About</h1>
-    </main>
+    <SectionRender delay={0.1}>
+      <main tw='py-10 text-center'>
+        <h1>About</h1>
+      </main>
+    </SectionRender>
   )
 }
 

@@ -13,7 +13,7 @@ export const Cursor = () => {
       gsap.to(cursor.current as any, {
         x: clientX,
         y: clientY,
-        duration: hasMoved ? 0.6 : 0,
+        duration: hasMoved ? 2 : 0,
         ease: 'Expo.easeOut',
       })
       setHasMoved(true)

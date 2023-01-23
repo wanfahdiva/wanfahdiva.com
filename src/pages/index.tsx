@@ -2,6 +2,7 @@ import { NextLayoutComponentType } from 'next'
 import { ReactChild } from 'react'
 import { styled } from 'twin.macro'
 
+import { SectionRender } from '@/components/Animations'
 import { Animate } from '@/components/Animations/Aos'
 import { Layout } from '@/components/Layout/Layout'
 import Seo from '@/components/Seo'
@@ -36,7 +37,7 @@ const HighlightText = styled.p`
 
 const HomePage: NextLayoutComponentType = () => {
   return (
-    <>
+    <SectionRender delay={0.1}>
       <main tw='py-5 md:py-10'>
         <div tw='rounded-lg mb-6 p-1.5 text-center backdrop-blur-sm bg-[#ffffff5c] dark:bg-[#ffffff14] flex justify-center items-center'>
           <div tw='relative flex flex-col space-y-8 overflow-x-hidden'>
@@ -80,7 +81,7 @@ const HomePage: NextLayoutComponentType = () => {
         </div>
         <Timeline />
       </main>
-    </>
+    </SectionRender>
   )
 }
 
