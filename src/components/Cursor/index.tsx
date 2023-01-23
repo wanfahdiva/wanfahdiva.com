@@ -82,7 +82,7 @@ export const Cursor = () => {
   return (
     <div
       style={{ opacity: hasMoved ? 1 : 0 }}
-      className='hidden containerCursor md:block'
+      className='containerCursor hidden md:block'
     >
       <div ref={cursor}>
         <div
