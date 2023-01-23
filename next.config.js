@@ -11,7 +11,6 @@ module.exports = {
     domains: ['images.unsplash.com'],
   },
   env: {
-    SITE_NAME: 'Sawala Boilerplate',
     BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
     API_URL: process.env.API_URL || 'http://localhost:1337/api',
   },
