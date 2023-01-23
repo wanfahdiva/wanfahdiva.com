@@ -13,7 +13,7 @@ export const Cursor = () => {
       gsap.to(cursor.current as any, {
         x: clientX,
         y: clientY,
-        duration: hasMoved ? 0.6 : 0,
+        duration: hasMoved ? 2 : 0,
         ease: 'Expo.easeOut',
       })
       setHasMoved(true)
@@ -82,7 +82,7 @@ export const Cursor = () => {
   return (
     <div
       style={{ opacity: hasMoved ? 1 : 0 }}
-      className='containerCursor hidden md:block'
+      className='hidden containerCursor md:block'
     >
       <div ref={cursor}>
         <div
