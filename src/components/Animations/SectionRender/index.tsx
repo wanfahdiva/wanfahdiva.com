@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion'
 import { Fragment } from 'react'
-export const SectionRender = ({ children }: { children: React.ReactNode }) => {
+
+interface SectionRenderProps {
+  children: React.ReactNode
+  delay?: number
+}
+
+export const SectionRender = ({ children, delay = 0 }: SectionRenderProps) => {
   const variants = {
     hidden: { opacity: 0, x: 0, y: 20 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -13,7 +19,7 @@ export const SectionRender = ({ children }: { children: React.ReactNode }) => {
         animate='enter'
         exit='exit'
         variants={variants}
-        transition={{ duration: 0.5, type: 'easeInOut' }}
+        transition={{ duration: 0.5, type: 'easeInOut', delay }}
         tw='relative'
       >
         {children}
