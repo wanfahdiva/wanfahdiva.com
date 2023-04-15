@@ -1,7 +1,5 @@
 import clsx from 'clsx'
-
-import { SectionRender } from '@/components/Animations'
-import { Cursor } from '@/components/Cursor'
+import { useEffect, useState } from 'react'
 
 import Footer from './Footer'
 import Header from './Header'
@@ -12,21 +10,25 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children, class: className }: LayoutProps) => {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [])
   return (
     <>
-      <Header />
-      <div
-        className={clsx(
-          'mx-auto flex max-w-xs justify-center md:max-w-md',
-          className
-        )}
-      >
-        <Cursor />
-        <SectionRender>{children}</SectionRender>
-      </div>
-      <SectionRender>
-        <Footer />
-      </SectionRender>
+      {loading ? (
+        <>Loading... </>
+      ) : (
+        <>
+          <Header />
+          <div className={clsx('mx-auto max-w-sm md:max-w-3xl', className)}>
+            {children}
+          </div>
+          <Footer />
+        </>
+      )}
     </>
   )
 }

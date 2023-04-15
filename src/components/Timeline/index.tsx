@@ -2,11 +2,10 @@ import { Fragment } from 'react'
 import tw, { styled } from 'twin.macro'
 
 import * as Icons from '@/components/Icon'
+import UnderlineLink from '@/components/Links/UnderlineLink'
 import { SvgIcon } from '@/components/Svg'
 
 import datajson from '@/json/timeline.json'
-
-import UnderlineLink from '../Links/UnderlineLink'
 
 const YearStamp = styled.time`
   ${tw`flex items-center justify-center text-sm text-gray-900 md:-ml-3 dark:text-white`}
@@ -30,7 +29,7 @@ export const Timeline = () => {
                 <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-snow transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-blackdop'>
                   <Icons.Coffee />
                 </span>
-                <div tw='flex flex-col space-y-1'>
+                <div className='flex flex-col space-y-1'>
                   <time className='block text-sm font-normal text-gray-700 dark:text-gray-400'>
                     Work in progress...
                   </time>
@@ -46,7 +45,7 @@ export const Timeline = () => {
                 <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-snow transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-blackdop'>
                   <SvgIcon iconz={e.icon} />
                 </span>
-                <div tw='flex flex-col space-y-1'>
+                <div className='flex flex-col space-y-1'>
                   <time className='block text-sm font-normal text-gray-700 dark:text-gray-400'>
                     {e.title}
                     {e.link && (

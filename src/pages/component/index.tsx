@@ -258,7 +258,7 @@ export default function ComponentsPage() {
                 <ButtonLink href='/404'>Visit the 404 page</ButtonLink>
               </div>
             </li>
-            <div tw='flex space-y-3 flex-col md:flex-row justify-center md:space-x-5'>
+            <div className='flex flex-col justify-center space-y-3 md:flex-row md:space-x-5'>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Next Image</h2>
                 <p className={clsx('!mt-1 text-sm', textColor)}>

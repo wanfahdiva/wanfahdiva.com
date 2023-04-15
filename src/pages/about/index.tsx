@@ -7,8 +7,8 @@ import Seo from '@/components/Seo'
 const AboutPage: NextLayoutComponentType = () => {
   return (
     <SectionRender delay={0.1}>
-      <main tw='py-10 text-center'>
-        <h1>About</h1>
+      <main className='py-10 text-center'>
+        <h1>Post</h1>
       </main>
     </SectionRender>
   )

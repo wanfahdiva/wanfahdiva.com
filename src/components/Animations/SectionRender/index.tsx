@@ -20,7 +20,7 @@ export const SectionRender = ({ children, delay = 0 }: SectionRenderProps) => {
         exit='exit'
         variants={variants}
         transition={{ duration: 0.5, type: 'easeInOut', delay }}
-        tw='relative'
+        className='relative'
       >
         {children}
       </motion.article>

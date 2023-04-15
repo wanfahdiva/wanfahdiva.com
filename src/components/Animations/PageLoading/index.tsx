@@ -7,6 +7,7 @@ let activeRequests = 0
 const timeout = 15000 // 15 detik
 let timedout: ReturnType<typeof setTimeout>
 const delay = 500
+
 function disable() {
   // To get the scroll position of current webpage
   const TopScroll = window.pageYOffset || document.documentElement.scrollTop

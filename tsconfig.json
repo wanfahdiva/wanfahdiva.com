@@ -26,7 +26,8 @@
       "@services/*": ["./src/services/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"],
-      "@*": ["*"]
+      "@*": ["*"],
+      "@api/*": ["./src/pasge/api/*"]
     },
     "incremental": true
   },

@@ -9,7 +9,7 @@ function easeOutCirc(x: number) {
 }
 
 const VoxelSpinner = () => (
-  <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
+  <div className='absolute top-1/2 left-1/2 -mt-5 -translate-x-1/2 -translate-y-1/2 transform'>
     <svg
       className='text-primary mr-3 -ml-1 h-7 w-7 animate-spin'
       xmlns='http://www.w3.org/2000/svg'

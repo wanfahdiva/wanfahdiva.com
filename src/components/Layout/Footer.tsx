@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import tw, { styled } from 'twin.macro'
+
 const ImageWrapper = styled.div`
-  ${tw`flex justify-center items-center`}
+  ${tw`flex items-center justify-center`}
   &::before {
     content: '';
     flex-grow: 1;
@@ -18,8 +19,9 @@ const ImageWrapper = styled.div`
 `
 const Footer = () => {
   const { theme } = useTheme()
+
   return (
-    <div tw='py-10 max-w-xs md:max-w-md mx-auto'>
+    <div className='mx-auto max-w-xs py-10 md:max-w-2xl'>
       <ImageWrapper>
         <Image
           src={`/images/${theme == 'light' ? 'black' : 'white'}-logo.png`}
@@ -28,7 +30,7 @@ const Footer = () => {
           alt='logo'
         />
       </ImageWrapper>
-      <p tw='pt-6 text-sm text-center'>
+      <p className='pt-6 text-center text-sm'>
         &copy;{new Date().getFullYear()} Wanfah Diva. All Rights Reserved.
       </p>
     </div>
