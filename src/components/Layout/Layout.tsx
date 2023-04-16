@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import { SplashScreen } from '../Animations'
-// import { Cursor } from '../Cursor'
+import { Cursor } from '../Cursor'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -38,7 +38,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
               className
             )}
           >
-            {/* <Cursor /> */}
+            <Cursor />
             {children}
           </div>
           <Footer />

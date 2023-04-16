@@ -1,14 +1,11 @@
-import { useTheme } from 'next-themes'
-
 import clsxm from '@/lib/clsxm'
 
-import { BlackIconScreen, WhiteIconScreen } from '@/components/Icon'
+import { LogoIcon } from '@/components/Icon'
 interface SplashScreenProps {
   endedLoading: boolean
 }
 
 export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
-  const themes = useTheme()
   return (
     <div
       className={clsxm(
@@ -25,7 +22,7 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
           marginRight: 'auto',
         }}
       >
-        {themes.theme == 'dark' ? <WhiteIconScreen /> : <BlackIconScreen />}
+        <LogoIcon />
       </div>
     </div>
   )

@@ -29,7 +29,7 @@ const Header = () => {
         'fixed z-50 w-full transition-all duration-300 ease-in-out',
         scroll
           ? 'top-0 bg-[#ffffff40] py-3 backdrop-blur dark:bg-[#20202380]'
-          : 'py-7'
+          : 'py-11'
       )}
     >
       <nav className='flex w-full items-center justify-between px-10'>
@@ -39,8 +39,8 @@ const Header = () => {
               src={`/images/${
                 themes.resolvedTheme == 'dark' ? 'white' : 'black'
               }-logo.png`}
-              width={40}
-              height={40}
+              width={42.5}
+              height={42.5}
               alt='logo'
             />
           </a>

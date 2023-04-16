@@ -10,11 +10,11 @@ const Footer = () => {
   return (
     <footer
       className={clsxm(
-        'flex w-full justify-between p-10',
+        'flex w-full justify-between px-10 py-12',
         router.asPath == '/' ? 'absolute bottom-0 z-50' : ''
       )}
     >
-      <p className='w-auto text-sm'>&copy;Wanfah Diva.</p>
+      <p className='text-xs uppercase'>&copy;Wanfah Diva</p>
       <RollTextLink href='/about'>Profile</RollTextLink>
     </footer>
   )

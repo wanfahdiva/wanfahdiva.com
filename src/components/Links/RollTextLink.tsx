@@ -27,7 +27,7 @@ export const RollTextLink = React.forwardRef<
   }, [])
   return (
     <Link href={href} passHref>
-      <a className={clsxm('rollButton', className)} ref={ref}>
+      <a className={clsxm('rollButton text-xs uppercase', className)} ref={ref}>
         {children}
       </a>
     </Link>
