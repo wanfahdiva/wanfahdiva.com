@@ -38,7 +38,7 @@ export default class _DOCUMENT extends Document<{
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
         </Head>
-        <body className='bg-snow text-blacktext duration-300 ease-in dark:bg-blackdop dark:text-white'>
+        <body className='bg-[#F2F2F2] text-blacktext duration-300 ease-in dark:bg-[#111111] dark:text-white'>
           <Main />
           <NextScript />
         </body>

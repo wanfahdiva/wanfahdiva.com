@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* #region  /**=========== Primary Color =========== */
@@ -30,174 +31,6 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 
-@layer base {
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraLight.ttf');
-    font-weight: 100;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Light.ttf');
-    font-weight: 200;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Light.ttf');
-    font-weight: 300;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Regular.ttf');
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Medium.ttf');
-    font-weight: 500;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-SemiBold.ttf');
-    font-weight: 600;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-Bold.ttf');
-    font-weight: 700;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraBold.ttf');
-    font-weight: 800;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Plus Jakarta Sans';
-    src: url('/fonts/PlusJakartaSans-2.6/static/PlusJakartaSans-ExtraBold.ttf');
-    font-weight: 900;
-    font-display: swap;
-  }
-
-  .cursor-newtab {
-    cursor: pointer;
-  }
-
-  /* #region  /**=========== Typography =========== */
-  .h0 {
-    @apply font-primary text-3xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-5xl;
-  }
-
-  h1,
-  .h1 {
-    @apply font-primary text-2xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-4xl;
-  }
-
-  h2,
-  .h2 {
-    @apply font-primary text-xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-3xl;
-  }
-
-  h3,
-  .h3 {
-    @apply font-primary text-lg font-bold transition-all delay-100 duration-200 ease-in-out md:text-2xl;
-  }
-
-  h4,
-  .h4 {
-    @apply font-primary text-base font-bold transition-all delay-100 duration-200 ease-in-out md:text-lg;
-  }
-
-  body,
-  .p {
-    @apply font-primary text-sm transition-all delay-100 duration-200 ease-in-out md:text-base;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  /* #endregion  /**======== Typography =========== */
-
-  @media screen and (max-width: 768px) {
-    *,
-    button > * {
-      cursor: auto !important;
-    }
-  }
-  .light ::selection {
-    background-color: rgba(112, 72, 232, 10%);
-    color: #7048e8;
-  }
-  .dark ::selection {
-    background-color: rgba(251, 211, 141, 10%);
-    color: #fbd38d;
-  }
-
-  .layout {
-    /* 1100px */
-    max-width: 68.75rem;
-    @apply mx-auto w-11/12;
-  }
-
-  .dark a.custom-link {
-    @apply border-gray-200 hover:border-gray-200/0;
-  }
-
-  /* Class to adjust with sticky footer */
-  .min-h-main {
-    @apply min-h-[calc(100vh-56px)];
-  }
-
-  .containerCursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    z-index: 10000;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .dark .containerCursor .cursor {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    border-radius: 100%;
-    border: 4px solid #fbd38d;
-    width: 40px;
-    height: 40px;
-    opacity: 0.4;
-    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .dark .containerCursor .grab,
-  .dark .containerCursor .pointer {
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-
-  .light .containerCursor .cursor {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    border-radius: 100%;
-    border: 4px solid #7048e8;
-    width: 40px;
-    height: 40px;
-    opacity: 0.4;
-    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .light .containerCursor .grab,
-  .light .containerCursor .pointer {
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-}
-
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
@@ -222,8 +55,12 @@
     background-size: 0 2px, 100% 2px;
   }
 }
-/* Make clicks pass-through */
-/* @apply fixed top-0 w-full h-screen bg-white; */
+
+*,
+body {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
 #nprogress {
   @apply top-0 bg-white bg-opacity-10;
 }
@@ -256,7 +93,6 @@
 /* Remove these to get rid of the spinner */
 #nprogress .spinner {
   @apply absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black text-center opacity-30;
-  /* @apply fixed flex-col items-center justify-center text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2; */
 }
 
 #nprogress .spinner-icon {
@@ -362,3 +198,135 @@ blockquote > {
 #mdx code {
   font-family: 'Fira Code', monospace !important;
 }
+
+/* SPLASHSCREEN LOADING */
+.example {
+  height: min-content;
+  padding: 4%;
+  @apply stroke-[#111111] dark:stroke-white;
+}
+/* END SPLASHSCREEN LOADING */
+
+/* ROLL TEXT ANIMATION */
+.rollButton {
+  --background: transparent;
+  --font-size: 16px;
+  --duration: 0.44s;
+  --move-hover: -4px;
+  --shadow-hover: 0 4px 20px -2px rgba(39, 94, 254, 0.5);
+  --font-shadow: var(--font-size);
+  font-weight: 500;
+  line-height: var(--font-size);
+  border-radius: 24px;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  font-size: var(--font-size);
+  letter-spacing: 0.5px;
+  background: var(--background);
+  box-shadow: var(--shadow);
+  transform: translateY(var(--y)) translateZ(0);
+  transition: transform var(--duration) ease, box-shadow var(--duration) ease;
+  @apply text-dark dark:text-white;
+}
+
+.rollButton div {
+  display: flex;
+  overflow: hidden;
+  text-shadow: 0 16px 0;
+}
+
+.rollButton div span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-style: normal;
+  transition: transform var(--duration) ease;
+  transform: translateY(var(--m)) translateZ(0);
+}
+
+.rollButton div span:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.rollButton div span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.rollButton div span:nth-child(3) {
+  transition-delay: 0.15s;
+}
+
+.rollButton div span:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.rollButton div span:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+.rollButton div span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.rollButton div span:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.rollButton div span:nth-child(8) {
+  transition-delay: 0.4s;
+}
+
+.rollButton div span:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+.rollButton div span:nth-child(10) {
+  transition-delay: 0.5s;
+}
+
+.rollButton div span:nth-child(11) {
+  transition-delay: 0.55s;
+}
+
+.rollButton:hover {
+  --y: var(--move-hover);
+}
+
+.rollButton:hover span {
+  --m: calc(var(--font-size) * -1);
+}
+/* END ROLL TEXT ANIMATION  */
+
+/* CUSTOM CURSOR */
+.secondary-cursor {
+  z-index: 1000;
+  border-radius: 50%;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+  margin-left: -1rem;
+  background: white;
+  mix-blend-mode: difference;
+  transition: width 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+.secondary-cursor.regular {
+  width: 40px;
+  height: 40px;
+}
+.secondary-cursor.small {
+  width: 60px;
+  height: 60px;
+}
+.secondary-cursor {
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+}
+.secondary-cursor {
+  width: 30px;
+  height: 30px;
+}
+/* END CUSTOM CURSOR */

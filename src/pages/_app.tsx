@@ -25,7 +25,7 @@ const _APP = ({ Component, pageProps }: any) => {
         fetcher,
       }}
     >
-      <ThemeProvider attribute='class' defaultTheme='light' enableSystem={true}>
+      <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={true}>
         <GlobalStyles />
         <LoadingPage />
         {getLayout(<Component {...pageProps} />)}

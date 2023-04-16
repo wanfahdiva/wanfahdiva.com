@@ -1,39 +1,22 @@
-import Image from 'next/image'
-import { useTheme } from 'next-themes'
-import tw, { styled } from 'twin.macro'
+import { useRouter } from 'next/router'
 
-const ImageWrapper = styled.div`
-  ${tw`flex items-center justify-center`}
-  &::before {
-    content: '';
-    flex-grow: 1;
-    margin-right: 8px;
-    ${tw`border-b-[1px] border-gray-400 dark:border-gray-700`}
-  }
-  &::after {
-    content: '';
-    flex-grow: 1;
-    margin-left: 8px;
-    ${tw`border-b-[1px] border-gray-400 dark:border-gray-700`}
-  }
-`
+import clsxm from '@/lib/clsxm'
+
+import { RollTextLink } from '../Links/RollTextLink'
+
 const Footer = () => {
-  const { theme } = useTheme()
+  const router = useRouter()
 
   return (
-    <div className='mx-auto max-w-xs py-10 md:max-w-2xl'>
-      <ImageWrapper>
-        <Image
-          src={`/images/${theme == 'light' ? 'black' : 'white'}-logo.png`}
-          width={28}
-          height={28}
-          alt='logo'
-        />
-      </ImageWrapper>
-      <p className='pt-6 text-center text-sm'>
-        &copy;{new Date().getFullYear()} Wanfah Diva. All Rights Reserved.
-      </p>
-    </div>
+    <footer
+      className={clsxm(
+        'flex w-full justify-between p-10',
+        router.asPath == '/' ? 'absolute bottom-0 z-50' : ''
+      )}
+    >
+      <p className='w-auto text-sm'>&copy;Wanfah Diva.</p>
+      <RollTextLink href='/about'>Profile</RollTextLink>
+    </footer>
   )
 }
 export default Footer

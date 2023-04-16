@@ -6,12 +6,17 @@ import { Layout } from '@/components/Layout/Layout'
 import Seo from '@/components/Seo'
 
 import { getAllPosts, PostMeta } from '@/pages/api/api'
+interface WorkPageProps {
+  work: PostMeta[]
+}
 
-const WorkPage: NextLayoutComponentType = ({ work }) => {
+const WorkPage: NextLayoutComponentType<WorkPageProps> = ({ work }) => {
+  const concatData = work.concat(work).concat(work)
   return (
     <SectionRender delay={0.1}>
-      <div className='masonry-2-col gap-y-4 py-10 md:py-16'>
-        {(work as PostMeta[])?.map((item: PostMeta, index: number) => (
+      <div className='grid grid-cols-4 gap-5'>
+        {/* masonry-2-col gap-y-4 py-10 md:py-16 */}
+        {concatData?.map((item: PostMeta, index: number) => (
           <WorkCard key={index} data={item} />
         ))}
       </div>
