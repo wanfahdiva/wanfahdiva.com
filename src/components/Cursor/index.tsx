@@ -1,72 +1,62 @@
-import { useEffect, useRef } from 'react'
+import cn from 'clsx'
+import { gsap } from 'gsap'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-// TODO: Hide if cursor not moved
 export const Cursor = () => {
-  const secondaryCursor = useRef<any>(null)
-  const positionRef = useRef({
-    mouseX: 0,
-    mouseY: 0,
-    destinationX: 0,
-    destinationY: 0,
-    distanceX: 0,
-    distanceY: 0,
-    key: -1,
-  })
+  const cursor = useRef<any>()
+  const [isPointer, setIsPointer] = useState(false)
+  const [hasMoved, setHasMoved] = useState(false)
+
+  const onMouseMove = useCallback(
+    ({ clientX, clientY }) => {
+      gsap.to(cursor.current as any, {
+        x: clientX,
+        y: clientY,
+        duration: hasMoved ? 1 : 0,
+        ease: 'Expo.easeOut',
+        scale: isPointer ? 1.5 : 1,
+      })
+      setHasMoved(true)
+    },
+    [hasMoved, isPointer]
+  )
 
   useEffect(() => {
-    document.addEventListener('mousemove', (event) => {
-      const { clientX, clientY } = event
+    window.addEventListener('mousemove', onMouseMove, false)
 
-      const mouseX = clientX
-      const mouseY = clientY
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove, false)
+    }
+  }, [hasMoved, onMouseMove])
 
-      positionRef.current.mouseX =
-        mouseX - secondaryCursor.current.clientWidth / 2
-      positionRef.current.mouseY =
-        mouseY - secondaryCursor.current.clientHeight / 2
+  useEffect(() => {
+    const links = document.querySelectorAll('a')
+    const handleMouseEnter = () => {
+      setIsPointer(true)
+    }
+    const handleMouseLeave = () => {
+      setIsPointer(false)
+    }
+
+    links.forEach((link) => {
+      link.addEventListener('mouseenter', handleMouseEnter, false)
+      link.addEventListener('mouseleave', handleMouseLeave, false)
     })
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    return () => {}
-  }, [])
-
-  useEffect(() => {
-    const followMouse = () => {
-      positionRef.current.key = requestAnimationFrame(followMouse)
-      const {
-        mouseX,
-        mouseY,
-        destinationX,
-        destinationY,
-        distanceX,
-        distanceY,
-      } = positionRef.current
-      if (!destinationX || !destinationY) {
-        positionRef.current.destinationX = mouseX
-        positionRef.current.destinationY = mouseY
-      } else {
-        positionRef.current.distanceX = (mouseX - destinationX) * 0.1
-        positionRef.current.distanceY = (mouseY - destinationY) * 0.1
-        if (
-          Math.abs(positionRef.current.distanceX) +
-            Math.abs(positionRef.current.distanceY) <
-          0.1
-        ) {
-          positionRef.current.destinationX = mouseX
-          positionRef.current.destinationY = mouseY
-        } else {
-          positionRef.current.destinationX += distanceX
-          positionRef.current.destinationY += distanceY
-        }
-      }
-      if (secondaryCursor && secondaryCursor.current)
-        secondaryCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener('mouseenter', handleMouseEnter, false)
+        link.removeEventListener('mouseleave', handleMouseLeave, false)
+      })
     }
-    followMouse()
   }, [])
   return (
-    <div className='cursor-wrapper default'>
-      <div className='secondary-cursor' ref={secondaryCursor}></div>
+    <div>
+      <div
+        style={{ opacity: hasMoved ? 1 : 0 }}
+        ref={cursor}
+        className={cn('cursor-class', isPointer && 'pointer')}
+      ></div>
     </div>
   )
 }

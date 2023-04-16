@@ -1,36 +1,27 @@
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-
-import clsxm from '@/lib/clsxm'
 
 import { RollTextLink } from '@/components/Links/RollTextLink'
 
 const Header = () => {
-  const [scroll, setScroll] = useState(false)
   const themes = useTheme()
 
-  useEffect(() => {
-    const scrollHandler = () => {
-      if (window.scrollY > 100) {
-        setScroll(true)
-      } else {
-        setScroll(false)
-      }
-    }
-    window.addEventListener('scroll', scrollHandler)
-    return () => window.removeEventListener('scroll', scrollHandler)
-  }, [])
+  const variants = {
+    hidden: { opacity: 0, x: 0, y: -20 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: 0 },
+  }
 
   return (
-    <header
-      className={clsxm(
-        'fixed z-50 w-full transition-all duration-300 ease-in-out',
-        scroll
-          ? 'top-0 bg-[#ffffff40] py-3 backdrop-blur dark:bg-[#20202380]'
-          : 'py-11'
-      )}
+    <motion.header
+      className='fixed z-50 w-full py-11'
+      initial='hidden'
+      animate='enter'
+      exit='exit'
+      variants={variants}
+      transition={{ duration: 0.5, type: 'easeInOut' }}
     >
       <nav className='flex w-full items-center justify-between px-10'>
         <Link href='/' passHref>
@@ -47,7 +38,7 @@ const Header = () => {
         </Link>
         <RollTextLink href='/work'>Work</RollTextLink>
       </nav>
-    </header>
+    </motion.header>
   )
 }
 export default Header
