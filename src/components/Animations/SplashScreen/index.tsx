@@ -1,11 +1,29 @@
+import { gsap } from 'gsap'
+import React, { useEffect, useRef } from 'react'
+
 import clsxm from '@/lib/clsxm'
 
-import { LogoIcon } from '@/components/Icon'
+import { LogoIcon } from '@/components/Icons'
 interface SplashScreenProps {
   endedLoading: boolean
 }
 
 export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
+  const counterRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const counterElement = counterRef.current
+    if (counterElement) {
+      gsap.to(counterElement, {
+        innerHTML: 100,
+        duration: 3,
+        ease: 'power1.out',
+        onUpdate: () => {
+          const currentValue = counterElement.innerHTML
+          counterElement.innerHTML = `${Math.floor(parseInt(currentValue))}%`
+        },
+      })
+    }
+  }, [])
   return (
     <div
       className={clsxm(
@@ -23,6 +41,9 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
         }}
       >
         <LogoIcon />
+        <div className='text-center' ref={counterRef}>
+          0%
+        </div>
       </div>
     </div>
   )

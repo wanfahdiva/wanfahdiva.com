@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
 import tw, { styled } from 'twin.macro'
 
-import * as Icons from '@/components/Icon'
+import * as Icons from '@/components/Icons'
 import UnderlineLink from '@/components/Links/UnderlineLink'
 import { SvgIcon } from '@/components/Svg'
 
-import datajson from '@/json/timeline.json'
+import datajson from '@/jsons/timeline.json'
 
 const YearStamp = styled.time`
   ${tw`flex items-center justify-center text-sm text-gray-900 md:-ml-3 dark:text-white`}

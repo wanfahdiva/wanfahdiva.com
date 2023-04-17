@@ -2,9 +2,9 @@ import { NextLayoutComponentType } from 'next'
 
 import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
-import Seo from '@/components/Seo'
+import Seo from '@/components/SEO'
 
-import { getAllPosts, PostMeta } from '@/pages/api/api'
+import { getAllPosts, PostMeta } from '@/api/api'
 interface WorkPageProps {
   work: PostMeta[]
 }

@@ -36,6 +36,7 @@ yarn-error.log*
 # next-sitemap
 robots.txt
 sitemap.xml
+sitemap-0.xml
 
 # cache
 git rm --cached package-lock.json

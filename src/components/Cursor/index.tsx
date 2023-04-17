@@ -14,7 +14,7 @@ export const Cursor = () => {
         y: clientY,
         duration: hasMoved ? 1 : 0,
         ease: 'Expo.easeOut',
-        scale: isPointer ? 1.5 : 1,
+        scale: isPointer ? 1.8 : 1,
       })
       setHasMoved(true)
     },

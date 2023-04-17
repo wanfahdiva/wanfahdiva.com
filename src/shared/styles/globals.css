@@ -6,8 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  /* OTHER CUSTOM VARIABLE */
+  --background: transparent;
+  --font-size: 16px;
+  --duration: 0.44s;
+  --move-hover: -4px;
+  --shadow-hover: 0 4px 20px -2px rgba(39, 94, 254, 0.5);
+  --font-shadow: var(--font-size);
+  /* END OTHER CUSTOM VARIABLE */
+
+  /* PRIMARY COLOR */
   --tw-color-primary-50: 240 249 255;
   --tw-color-primary-100: 224 242 254;
   --tw-color-primary-200: 186 230 253;
@@ -28,10 +36,75 @@
   --color-primary-700: rgb(var(--tw-color-primary-700)); /* #0369a1 */
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
-  /* #endregion  /**======== Primary Color =========== */
+  /* END PRIMARY COLOR */
 }
 
-@layer utilities {
+/* TYPOGRAPY */
+.h0 {
+  @apply font-primary text-3xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-5xl;
+}
+
+h1,
+.h1 {
+  @apply font-primary text-2xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-4xl;
+}
+
+h2,
+.h2 {
+  @apply font-primary text-xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-3xl;
+}
+
+h3,
+.h3 {
+  @apply font-primary text-lg font-bold transition-all delay-100 duration-200 ease-in-out md:text-2xl;
+}
+
+h4,
+.h4 {
+  @apply font-primary text-base font-bold transition-all delay-100 duration-200 ease-in-out md:text-lg;
+}
+
+*,
+body {
+  font-family: 'Space Grotesk' !important;
+}
+
+body,
+.p {
+  @apply font-primary text-sm transition-all delay-100 duration-200 ease-in-out md:text-base;
+}
+/* END TYPOGRAPY */
+
+/* OTHER GLOBAL STYLE */
+@media screen and (max-width: 768px) {
+  *,
+  button > * {
+    cursor: auto !important;
+  }
+}
+.light ::selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+.dark ::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.layout {
+  max-width: 68.75rem;
+  @apply mx-auto w-11/12;
+}
+
+.dark a.custom-link {
+  @apply border-gray-200 hover:border-gray-200/0;
+}
+
+.min-h-main {
+  @apply min-h-[calc(100vh-56px)];
+}
+
+@layer components {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
       linear-gradient(
@@ -55,12 +128,9 @@
     background-size: 0 2px, 100% 2px;
   }
 }
+/* END OTHER GLOBAL STYLE */
 
-*,
-body {
-  font-family: 'Space Grotesk', sans-serif !important;
-}
-
+/* PROGRESS BAR LOADING ANIMATION */
 #nprogress {
   @apply top-0 bg-white bg-opacity-10;
 }
@@ -76,7 +146,6 @@ body {
   visibility: visible;
 }
 
-/* Fancy blur effect */
 #nprogress .peg {
   display: block;
   position: absolute;
@@ -90,7 +159,6 @@ body {
   transform: rotate(3deg) translate(0px, -4px);
 }
 
-/* Remove these to get rid of the spinner */
 #nprogress .spinner {
   @apply absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black text-center opacity-30;
 }
@@ -136,20 +204,9 @@ body {
     transform: rotate(360deg);
   }
 }
+/* END PROGRESS BAR LOADING ANIMATION */
 
-@layer utilities {
-  @variants responsive {
-    .masonry-2-col {
-      column-count: 2;
-      column-gap: 0.5rem 0.5rem !important;
-    }
-
-    .break-inside {
-      break-inside: avoid;
-    }
-  }
-}
-
+/* CUSTOM STYLE FOR MDX CONTENT */
 #mdx a {
   color: #7048e8 !important;
 }
@@ -198,6 +255,7 @@ blockquote > {
 #mdx code {
   font-family: 'Fira Code', monospace !important;
 }
+/* END CUSTOM STYLE FOR MDX CONTENT */
 
 /* SPLASHSCREEN LOADING */
 .example {
@@ -209,12 +267,6 @@ blockquote > {
 
 /* ROLL TEXT ANIMATION */
 .rollButton {
-  --background: transparent;
-  --font-size: 16px;
-  --duration: 0.44s;
-  --move-hover: -4px;
-  --shadow-hover: 0 4px 20px -2px rgba(39, 94, 254, 0.5);
-  --font-shadow: var(--font-size);
   font-weight: 500;
   line-height: var(--font-size);
   border-radius: 24px;
@@ -305,14 +357,13 @@ blockquote > {
   left: 0;
   width: 38px;
   height: 38px;
-  border: 2px solid #000;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  border: 0.8px solid #fff;
   transform: translate(-50%, -50%);
   transform-origin: center;
   transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  @apply border border-black dark:border-white;
 }
 
 .cursor-class.pointer {

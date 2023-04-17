@@ -3,7 +3,7 @@ import { ReactChild } from 'react'
 
 import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
-import Seo from '@/components/Seo'
+import Seo from '@/components/SEO'
 
 const HomePage: NextLayoutComponentType = () => {
   return (

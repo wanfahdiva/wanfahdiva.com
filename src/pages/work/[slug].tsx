@@ -14,10 +14,10 @@ import rehypeSlug from 'rehype-slug'
 import 'highlight.js/styles/atom-one-dark.css'
 
 import { Layout } from '@/components/Layout/Layout'
-import Seo from '@/components/Seo'
-import YouTube from '@/components/YouTube'
+import { YouTube } from '@/components/MDX/'
+import Seo from '@/components/SEO'
 
-import { getPostFromSlug, getSlugs, PostMeta } from '@/pages/api/api'
+import { getPostFromSlug, getSlugs, PostMeta } from '@/api/api'
 
 interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>

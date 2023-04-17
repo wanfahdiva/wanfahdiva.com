@@ -1,0 +1,54 @@
+[
+  {
+    "tahun": 2022,
+    "data": [
+      {
+        "icon": "Rocket",
+        "title": "Website Published",
+        "date": "Mar 2",
+        "desc": "New year, new website. Hopefully it continue and keep the good work!"
+      }
+    ]
+  },
+  {
+    "tahun": 2021,
+    "data": [
+      {
+        "icon": "BusinessOutline",
+        "title": "Front-End Developer ",
+        "date": "Jun 8",
+        "linkname": "PT. Sawala Technology Indonesia",
+        "link": "https://sawala.tech/"
+      },
+      {
+        "icon": "SchoolOutline",
+        "title": "Completed the Senior High School at Informatika Sumedang",
+        "date": "Apr 21"
+      },
+      {
+        "icon": "BusinessOutline",
+        "title": "Back-End Developer (Intern) ",
+        "date": "Jan 9",
+        "linkname": "PT. Putrasoft",
+        "link": "https://www.putrasoft.co.id/"
+      }
+    ]
+  },
+  {
+    "tahun": 2020,
+    "data": [
+      {
+        "icon": "TeamLine",
+        "title": "Join at Z.10 Development Team",
+        "date": "Oct 4"
+      },
+      {
+        "icon": "ChalkboardTeacher",
+        "title": "Website division coordinator in ",
+        "link": "https://www.instagram.com/icsoifsu.official/",
+        "linkname": "ICSO",
+        "date": "Apr 10"
+      }
+    ]
+  }
+]

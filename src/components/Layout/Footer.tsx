@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import clsxm from '@/lib/clsxm'
 
-import { RollTextLink } from '../Links/RollTextLink'
+import { RollTextLink } from '@/components/Links/RollTextLink'
 
 const Footer = () => {
   const router = useRouter()

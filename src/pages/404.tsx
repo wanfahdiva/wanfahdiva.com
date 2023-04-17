@@ -3,7 +3,7 @@ import { RiQuestionMark } from 'react-icons/ri'
 
 import { Layout } from '@/components/Layout/Layout'
 import ArrowLink from '@/components/Links/ArrowLink'
-import Seo from '@/components/Seo'
+import Seo from '@/components/SEO'
 
 export default function NotFoundPage() {
   return (

@@ -1,12 +1,13 @@
-import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
+import clsxm from '@/lib/clsxm'
+
+import { Noise, SplashScreen } from '@/components/Animations'
+import { Cursor } from '@/components/Cursor'
+
 import Footer from './Footer'
 import Header from './Header'
-import { SplashScreen } from '../Animations'
-import { Noise } from '../Animations/Noise'
-import { Cursor } from '../Cursor'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -45,7 +46,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
           <Header />
           <Cursor />
           <div
-            className={clsx(
+            className={clsxm(
               'w-full px-10',
               router.asPath != '/' ? ' py-24' : '',
               className

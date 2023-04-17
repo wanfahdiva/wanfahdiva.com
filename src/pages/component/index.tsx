@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
+import { Skeleton } from '@/components/Animations/Skeleton'
 import Button from '@/components/Buttons/Button'
 import { Layout } from '@/components/Layout/Layout'
 import ArrowLink from '@/components/Links/ArrowLink'
@@ -11,8 +12,7 @@ import PrimaryLink from '@/components/Links/PrimaryLink'
 import UnderlineLink from '@/components/Links/UnderlineLink'
 import UnstyledLink from '@/components/Links/UnstyledLink'
 import NextImage from '@/components/NextImage'
-import Seo from '@/components/Seo'
-import Skeleton from '@/components/Skeleton'
+import Seo from '@/components/SEO'
 
 type Color = typeof colorList[number]
 

@@ -30,8 +30,8 @@ const Header = () => {
               src={`/images/${
                 themes.resolvedTheme == 'dark' ? 'white' : 'black'
               }-logo.png`}
-              width={42.5}
-              height={42.5}
+              width={40.5}
+              height={40.5}
               alt='logo'
             />
           </a>

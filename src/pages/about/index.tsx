@@ -2,7 +2,7 @@ import { NextLayoutComponentType } from 'next'
 
 import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
-import Seo from '@/components/Seo'
+import Seo from '@/components/SEO'
 
 const AboutPage: NextLayoutComponentType = () => {
   return (
