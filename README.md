@@ -1,3 +1,4 @@
-# wanfahdiva.com
-
-My personal website build with typescript and tailwindcss. Using boilerplate from [Theodorus Clarence](https://theodorusclarence.com/) and inspired from website [Takuya Matsuyama](https://www.youtube.com/watch?v=bSMZgXzC9AA&t=79s).
+<div align="left">
+  <h1>wanfahdiva.com</h1>
+  <p>💠 Personal website made with Next.js, TypeScript, Tailwind CSS, and GSAP.</p>
+</div>
