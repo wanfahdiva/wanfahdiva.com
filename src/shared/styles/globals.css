@@ -259,6 +259,8 @@ blockquote > {
 
 /* SPLASHSCREEN LOADING */
 .example {
+  border: none;
+  margin: 0 auto;
   height: min-content;
   padding: 4%;
   @apply stroke-[#111111] dark:stroke-white;

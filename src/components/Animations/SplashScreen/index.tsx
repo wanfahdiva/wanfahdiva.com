@@ -31,15 +31,7 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
         endedLoading && 'opacity-0'
       )}
     >
-      <div
-        className='example'
-        style={{
-          border: 'none',
-          padding: '0',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-      >
+      <div className='example'>
         <LogoIcon />
         <div className='text-center' ref={counterRef}>
           0%

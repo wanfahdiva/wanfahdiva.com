@@ -20,6 +20,22 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
   const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
   const [loadingSplash, setLoadingSplash] = useState(true)
   const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
+  const [isDekstop, setIsDekstop] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setIsDekstop(true)
+      } else {
+        setIsDekstop(false)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   // handle animation when route change
   useEffect(() => {
@@ -81,7 +97,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
       {!loadingSplash && (
         <>
           <Header />
-          {!loadingRoute && <Cursor />}
+          {!loadingRoute && isDekstop && <Cursor />}
           <div
             className={clsxm(
               'w-full px-10',

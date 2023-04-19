@@ -3,7 +3,7 @@ import { sync } from 'glob'
 import matter from 'gray-matter'
 import path from 'path'
 
-const POSTS_PATH = path.join(process.cwd(), 'posts')
+const POSTS_PATH = path.join(process.cwd(), '/content/posts')
 
 export const getSlugs = (): string[] => {
   const paths = sync(`${POSTS_PATH}/*.mdx`)

@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-import { transition } from '@/lib/constant'
+const transition = {
+  type: 'spring',
+  stiffness: 150,
+  damping: 10,
+}
 
 export const MoonIcon = () => {
   const variants = {
