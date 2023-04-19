@@ -7,7 +7,7 @@ import Seo from '@/components/SEO'
 const AboutPage: NextLayoutComponentType = () => {
   return (
     <main className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
-      <SectionRender delay={0.1}>ABOUT PAGE</SectionRender>
+      <SectionRender delay={0.1}>Profile PAGE</SectionRender>
     </main>
   )
 }
@@ -15,7 +15,7 @@ const AboutPage: NextLayoutComponentType = () => {
 AboutPage.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <Seo templateTitle='About' description='Anythig about me' />
+      <Seo templateTitle='Profile' description='Anything about me' />
       {page}
     </Layout>
   )

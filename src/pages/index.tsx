@@ -16,7 +16,7 @@ const HomePage: NextLayoutComponentType = () => {
 HomePage.getLayout = function getLayout(page: ReactChild) {
   return (
     <Layout class='md:px-4'>
-      <Seo />
+      <Seo templateTitle='Home' />
       {page}
     </Layout>
   )

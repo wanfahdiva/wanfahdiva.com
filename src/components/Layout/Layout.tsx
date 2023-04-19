@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import clsxm from '@/lib/clsxm'
 
-import { Noise, SplashScreen } from '@/components/Animations'
+import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
 
 import Footer from './Footer'
@@ -15,36 +15,73 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children, class: className }: LayoutProps) => {
-  const [loading, setLoading] = useState(true)
-  const [endedLoading, setEndedLoading] = useState(false)
   const router = useRouter()
+  const [loadingRoute, setLoadingRoute] = useState(false)
+  const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
+  const [loadingSplash, setLoadingSplash] = useState(true)
+  const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
 
+  // handle animation when route change
   useEffect(() => {
     const body = document.querySelector('body')
-    if (router.asPath == '/') {
+    const handleRouteChangeStart = (url: string) => {
+      if (url === router.asPath) {
+        return
+      }
+      setLoadingRoute(true)
       body?.classList.add('overflow-hidden')
-    } else {
-      const body = document.querySelector('body')
+    }
+    const handleRouteChangeComplete = () => {
+      setTimeout(() => {
+        setLoadingRoute(false)
+        body?.classList.remove('overflow-hidden')
+      }, 1000)
+      setTimeout(() => {
+        setEndedLoadingRoute(true)
+      }, 500)
+    }
+    const handleRouteChangeError = () => {
+      setLoadingRoute(false)
       body?.classList.remove('overflow-hidden')
     }
+    router.events.on('routeChangeStart', handleRouteChangeStart)
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+    router.events.on('routeChangeError', handleRouteChangeError)
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart)
+      router.events.off('routeChangeComplete', handleRouteChangeComplete)
+      router.events.off('routeChangeError', handleRouteChangeError)
+    }
+  }, [router.events, router.asPath])
 
+  // handle animation when page loaded
+  useEffect(() => {
+    const body = document.querySelector('body')
+    if (loadingSplash) {
+      if (router.asPath == '/') {
+        body?.classList.add('overflow-hidden')
+      } else {
+        const body = document.querySelector('body')
+        body?.classList.remove('overflow-hidden')
+      }
+    }
     setTimeout(() => {
-      setLoading(false)
+      setLoadingSplash(false)
     }, 4000)
-
     setTimeout(() => {
-      setEndedLoading(true)
+      setEndedLoadingSplash(true)
     }, 3000)
-  })
+  }, [loadingSplash, router.asPath])
+
   return (
     <>
       <Noise />
-      {loading ? (
-        <SplashScreen endedLoading={endedLoading} />
-      ) : (
+      {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
+      {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
+      {!loadingSplash && (
         <>
           <Header />
-          <Cursor />
+          {!loadingRoute && <Cursor />}
           <div
             className={clsxm(
               'w-full px-10',
