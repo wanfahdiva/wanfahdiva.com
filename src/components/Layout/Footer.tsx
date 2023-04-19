@@ -17,8 +17,8 @@ const Footer = () => {
   return (
     <motion.footer
       className={clsxm(
-        'flex w-full justify-between px-10 py-12',
-        router.asPath == '/' ? 'absolute bottom-0 z-30' : ''
+        'absolute bottom-0 z-30 flex w-full justify-between px-10 py-12',
+        router.asPath == '/' ? '' : ''
       )}
       initial='hiddenFooter'
       animate='enterFooter'

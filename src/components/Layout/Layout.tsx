@@ -85,7 +85,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
           <div
             className={clsxm(
               'w-full px-10',
-              router.asPath != '/' ? ' py-24' : '',
+              // router.asPath != '/' ? ' py-24' : '',
               className
             )}
           >
