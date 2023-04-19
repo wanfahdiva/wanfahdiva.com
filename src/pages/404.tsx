@@ -1,27 +1,25 @@
-import * as React from 'react'
-import { RiQuestionMark } from 'react-icons/ri'
+import { NextLayoutComponentType } from 'next'
+import { ReactChild } from 'react'
 
+import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
-import ArrowLink from '@/components/Links/ArrowLink'
 import Seo from '@/components/SEO'
 
-export default function NotFoundPage() {
+const NotFound: NextLayoutComponentType = () => {
   return (
-    <Layout>
-      <Seo templateTitle='Not Found' />
+    <main className='mx-auto flex h-screen max-w-6xl items-center justify-center !overflow-hidden py-5 md:py-10'>
+      <SectionRender delay={0.5}>NOT FOUND PAGE</SectionRender>
+    </main>
+  )
+}
 
-      <main>
-        <div className='flex h-72 flex-col items-center justify-center text-center text-black dark:text-white'>
-          <RiQuestionMark
-            size={60}
-            className='drop-shadow-glow animate-flicker text-red-500'
-          />
-          <h1 className='mt-8 text-2xl md:text-3xl'>Page Not Found</h1>
-          <ArrowLink className='mt-4 md:text-lg' href='/'>
-            Back to Home
-          </ArrowLink>
-        </div>
-      </main>
+NotFound.getLayout = function getLayout(page: ReactChild) {
+  return (
+    <Layout class='md:px-4'>
+      <Seo templateTitle='404' />
+      {page}
     </Layout>
   )
 }
+
+export default NotFound

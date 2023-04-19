@@ -9,17 +9,17 @@ const Header = () => {
   const themes = useTheme()
 
   const variants = {
-    hidden: { opacity: 0, x: 0, y: -20 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: 0 },
+    hiddenHeader: { opacity: 0, x: 0, y: -20 },
+    enterHeader: { opacity: 1, x: 0, y: 0 },
+    exitHeader: { opacity: 0, x: 0, y: 0 },
   }
 
   return (
     <motion.header
-      className='fixed z-50 w-full py-11'
-      initial='hidden'
-      animate='enter'
-      exit='exit'
+      className='fixed z-30 w-full py-11'
+      initial='hiddenHeader'
+      animate='enterHeader'
+      exit='exitHeader'
       variants={variants}
       transition={{ duration: 0.5, type: 'easeInOut' }}
     >
