@@ -1,6 +1,5 @@
 import { NextLayoutComponentType } from 'next'
 
-import { SectionRender } from '@/components/Animations'
 import { Layout } from '@/components/Layout/Layout'
 import Seo from '@/components/SEO'
 
@@ -10,14 +9,9 @@ interface WorkPageProps {
 }
 
 const WorkPage: NextLayoutComponentType<WorkPageProps> = () => {
-  // const concatData = work.concat(work).concat(work)
   return (
-    <div className='flex h-screen w-full items-center justify-center'>
-      {/* masonry-2-col gap-y-4 py-10 md:py-16 */}
-      {/* {concatData?.map((item: PostMeta, index: number) => (
-          <WorkCard key={index} data={item} />
-        ))} */}
-      <SectionRender delay={0.1}>WORK PAGE</SectionRender>
+    <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
+      <p>WORK PAGE</p>
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -22,6 +23,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
   const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
   const [isDekstop, setIsDekstop] = useState(false)
 
+  // handle for check device is dekstop or not
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
@@ -51,10 +53,10 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
       setTimeout(() => {
         setLoadingRoute(false)
         body?.classList.remove('overflow-hidden')
-      }, 1000)
+      }, 2000)
       setTimeout(() => {
         setEndedLoadingRoute(true)
-      }, 500)
+      }, 1500)
     }
     const handleRouteChangeError = () => {
       setLoadingRoute(false)
@@ -98,7 +100,10 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
         <>
           <Header />
           {!loadingRoute && isDekstop && <Cursor />}
-          <div
+          <motion.main
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 1, ease: 'easeInOut' }}
             className={clsxm(
               'w-full px-10',
               // router.asPath != '/' ? ' py-24' : '',
@@ -106,7 +111,7 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
             )}
           >
             {children}
-          </div>
+          </motion.main>
           <Footer />
         </>
       )}
