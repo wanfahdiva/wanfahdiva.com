@@ -259,6 +259,8 @@ blockquote > {
 
 /* SPLASHSCREEN LOADING */
 .example {
+  border: none;
+  margin: 0 auto;
   height: min-content;
   padding: 4%;
   @apply stroke-[#111111] dark:stroke-white;
@@ -363,7 +365,7 @@ blockquote > {
   transform: translate(-50%, -50%);
   transform-origin: center;
   transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
-  @apply border border-black dark:border-white;
+  @apply border border-black dark:border-white dark:mix-blend-difference;
 }
 
 .cursor-class.pointer {
