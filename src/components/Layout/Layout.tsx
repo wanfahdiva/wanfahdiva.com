@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import clsxm from '@/lib/clsxm'
+import { useIsDesktop } from '@/hooks/useWindowSize'
 
 import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
@@ -21,23 +22,12 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
   const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
   const [loadingSplash, setLoadingSplash] = useState(true)
   const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
-  const [isDekstop, setIsDekstop] = useState(false)
-
-  // handle for check device is dekstop or not
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 1024) {
-        setIsDekstop(true)
-      } else {
-        setIsDekstop(false)
-      }
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+  const isDesktop = useIsDesktop()
+  const variants = {
+    hiddenMain: { x: 0, y: 0, opacity: 0 },
+    enterMain: { x: 0, y: 0, opacity: 1 },
+    exitMain: { x: 0, y: 0, opacity: 1 },
+  }
 
   // handle animation when route change
   useEffect(() => {
@@ -79,7 +69,6 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
       if (router.asPath == '/') {
         body?.classList.add('overflow-hidden')
       } else {
-        const body = document.querySelector('body')
         body?.classList.remove('overflow-hidden')
       }
     }
@@ -99,13 +88,15 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
       {!loadingSplash && (
         <>
           <Header />
-          {!loadingRoute && isDekstop && <Cursor />}
+          {!loadingRoute && isDesktop && <Cursor />}
           <motion.main
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 1, ease: 'easeInOut' }}
+            initial='hiddenMain'
+            animate='enterMain'
+            exit='exitMain'
+            variants={variants}
+            transition={{ duration: 1, delay: 0.75, type: 'easeInOut' }}
             className={clsxm(
-              'w-full px-10',
+              'h-full w-full',
               // router.asPath != '/' ? ' py-24' : '',
               className
             )}

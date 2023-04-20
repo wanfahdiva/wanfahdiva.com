@@ -16,14 +16,14 @@ const Header = () => {
 
   return (
     <motion.header
-      className='fixed top-0 z-30 w-full py-11'
+      className='fixed top-0 z-30 w-full py-8 md:py-11'
       initial='hiddenHeader'
       animate='enterHeader'
       exit='exitHeader'
       variants={variants}
       transition={{ duration: 1, delay: 0.75, type: 'easeInOut' }}
     >
-      <nav className='flex w-full items-center justify-between px-10'>
+      <nav className='flex w-full items-center justify-between px-6 md:px-10'>
         <Link href='/' passHref>
           <a>
             <NextImage
