@@ -13,13 +13,16 @@ enum ButtonVariant {
   'darkmode',
 }
 
-type ButtonProps = {
+type DefaultButtonProps = {
   isLoading?: boolean
   isDarkBg?: boolean
   variant?: keyof typeof ButtonVariant
 } & React.ComponentPropsWithRef<'button'>
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const DefaultButton = React.forwardRef<
+  HTMLButtonElement,
+  DefaultButtonProps
+>(
   (
     {
       children,
@@ -117,5 +120,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     )
   }
 )
-
-export default Button

@@ -1,32 +1,30 @@
 import { NextLayoutComponentType } from 'next'
+import { Fragment } from 'react'
 
-import { Layout } from '@/components/Layout/Layout'
 import Seo from '@/components/SEO'
 
-import { getAllPosts, PostMeta } from '@/api/api'
+import { getAllContent, WorkMeta } from '@/api/work'
 interface WorkPageProps {
-  work: PostMeta[]
+  work: WorkMeta[]
 }
 
 const WorkPage: NextLayoutComponentType<WorkPageProps> = () => {
   return (
-    <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
-      <p>WORK PAGE</p>
-    </div>
+    <Fragment>
+      <Seo templateTitle='Work' />
+      <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
+        <p>WORK PAGE</p>
+      </div>
+    </Fragment>
   )
 }
 
 WorkPage.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Seo templateTitle='Work' />
-      {page}
-    </Layout>
-  )
+  return page
 }
 
 export async function getStaticProps() {
-  const work = getAllPosts().map((post) => post.meta)
+  const work = getAllContent().map((work) => work.meta)
   return { props: { work } }
 }
 

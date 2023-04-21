@@ -5,7 +5,7 @@ import tw, { styled } from 'twin.macro'
 import ArrowLink from '@/components/Links/ArrowLink'
 import UnstyledLink from '@/components/Links/UnstyledLink'
 
-import { PostMeta } from '@/api/api'
+import { PostMeta } from '@/api/work'
 
 const Content = styled.p`
   ${tw`h-[2.7rem] overflow-hidden overflow-ellipsis text-sm font-medium text-gray-600 dark:text-white`}

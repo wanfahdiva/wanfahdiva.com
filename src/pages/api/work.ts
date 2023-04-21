@@ -3,10 +3,10 @@ import { sync } from 'glob'
 import matter from 'gray-matter'
 import path from 'path'
 
-const POSTS_PATH = path.join(process.cwd(), '/content/posts')
+const CONTENT_PATH = path.join(process.cwd(), '/content/work')
 
 export const getSlugs = (): string[] => {
-  const paths = sync(`${POSTS_PATH}/*.mdx`)
+  const paths = sync(`${CONTENT_PATH}/*.mdx`)
   return paths.map((path: string) => {
     const parts = path.split('/')
     const fileName = parts[parts.length - 1]
@@ -15,24 +15,24 @@ export const getSlugs = (): string[] => {
   })
 }
 
-export const getAllPosts = () => {
-  const posts = getSlugs()
-    .map((slug) => getPostFromSlug(slug))
+export const getAllContent = () => {
+  const work = getSlugs()
+    .map((slug) => getWorkFromSlug(slug))
     .sort((a, b) => {
       if (a.meta.date > b.meta.date) return 1
       if (a.meta.date < b.meta.date) return -1
       return 0
     })
     .reverse()
-  return posts
+  return work
 }
 
-interface Post {
+interface Work {
   content: string
-  meta: PostMeta
+  meta: WorkMeta
 }
 
-export interface PostMeta {
+export interface WorkMeta {
   excerpt: string
   slug: string
   title: string
@@ -41,9 +41,9 @@ export interface PostMeta {
   coverImage?: string
 }
 
-export const getPostFromSlug = (slug: string): Post => {
-  const postPath = path.join(POSTS_PATH, `${slug}.mdx`)
-  const source = fs.readFileSync(postPath)
+export const getWorkFromSlug = (slug: string): Work => {
+  const workPath = path.join(CONTENT_PATH, `${slug}.mdx`)
+  const source = fs.readFileSync(workPath)
   const { content, data } = matter(source)
 
   return {

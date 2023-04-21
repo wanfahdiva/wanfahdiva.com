@@ -6,40 +6,46 @@ import type {
 import Image from 'next/image'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 
 import 'highlight.js/styles/atom-one-dark.css'
 
-import { Layout } from '@/components/Layout/Layout'
 import { YouTube } from '@/components/MDX/'
 import Seo from '@/components/SEO'
 
-import { getPostFromSlug, getSlugs, PostMeta } from '@/api/api'
+import { getSlugs, getWorkFromSlug, WorkMeta } from '@/api/work'
 
-interface MDXPost {
+interface MDXWork {
   source: MDXRemoteSerializeResult<Record<string, unknown>>
-  meta: PostMeta
+  meta: WorkMeta
 }
 
-const WorkDetail: NextLayoutComponentType = ({ post }) => {
-  const [data, setData] = useState<MDXPost | unknown>(post) as any
+const WorkDetail: NextLayoutComponentType = ({ work }) => {
+  const [data, setData] = useState<MDXWork | unknown>(work) as any
 
   useEffect(() => {
-    setData(post)
-  }, [post])
+    setData(work)
+  }, [work])
   return (
-    <div className='py-10 md:py-16' id='mdx'>
-      <MDXRemote {...data.source} components={{ YouTube, Image }} />
-    </div>
+    <Fragment>
+      <Seo templateTitle='Work Detail' />
+      <div className='py-10 md:py-16' id='mdx'>
+        <MDXRemote {...data.source} components={{ YouTube, Image }} />
+      </div>
+    </Fragment>
   )
+}
+
+WorkDetail.getLayout = function getLayout(page) {
+  return page
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string }
-  const { content, meta } = getPostFromSlug(slug)
+  const { content, meta } = getWorkFromSlug(slug)
   const mdxSource = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [
@@ -50,16 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   })
 
-  return { props: { post: { source: mdxSource, meta } } }
-}
-
-WorkDetail.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Seo templateTitle='Work Detail' />
-      {page}
-    </Layout>
-  )
+  return { props: { work: { source: mdxSource, meta } } }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
