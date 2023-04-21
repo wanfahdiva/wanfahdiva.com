@@ -41,27 +41,32 @@
 
 /* TYPOGRAPY */
 .h0 {
-  @apply font-primary text-3xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-5xl;
+  @apply font-primary text-3xl font-bold md:text-5xl;
 }
 
 h1,
 .h1 {
-  @apply font-primary text-2xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-4xl;
+  @apply font-primary text-2xl font-bold md:text-4xl;
 }
 
 h2,
 .h2 {
-  @apply font-primary text-xl font-bold transition-all delay-100 duration-200 ease-in-out md:text-3xl;
+  @apply font-primary text-xl font-bold md:text-3xl;
 }
 
 h3,
 .h3 {
-  @apply font-primary text-lg font-bold transition-all delay-100 duration-200 ease-in-out md:text-2xl;
+  @apply font-primary text-lg font-bold md:text-2xl;
 }
 
 h4,
 .h4 {
-  @apply font-primary text-base font-bold transition-all delay-100 duration-200 ease-in-out md:text-lg;
+  @apply font-primary text-base font-bold md:text-lg;
+}
+
+p,
+.p {
+  @apply font-primary text-sm md:text-base;
 }
 
 *,
@@ -69,10 +74,6 @@ body {
   font-family: 'Space Grotesk' !important;
 }
 
-body,
-.p {
-  @apply font-primary text-sm transition-all delay-100 duration-200 ease-in-out md:text-base;
-}
 /* END TYPOGRAPY */
 
 /* OTHER GLOBAL STYLE */

@@ -1,29 +1,24 @@
 import { motion } from 'framer-motion'
-import { Fragment } from 'react'
 
 interface SectionRenderProps {
   children: React.ReactNode
   delay?: number
+  class?: string
 }
 
-export const SectionRender = ({ children, delay = 0 }: SectionRenderProps) => {
-  const variants = {
-    hidden: { opacity: 0, x: 0, y: 20 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: -0, y: 20 },
-  }
+export const SectionRender = ({
+  children,
+  delay = 0,
+  class: className,
+}: SectionRenderProps) => {
   return (
-    <Fragment>
-      <motion.article
-        initial='hidden'
-        animate='enter'
-        exit='exit'
-        variants={variants}
-        transition={{ duration: 0.5, type: 'easeInOut', delay }}
-        className='relative'
-      >
-        {children}
-      </motion.article>
-    </Fragment>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   )
 }

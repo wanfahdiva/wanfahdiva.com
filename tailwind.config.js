@@ -65,6 +65,9 @@ module.exports = {
       animation: {
         flicker: 'flicker 3s linear infinite',
       },
+      backgroundImage: {
+        hero: "url('/images/bg-hero.png')",
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

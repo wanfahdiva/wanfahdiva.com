@@ -19,6 +19,7 @@ export const RollTextLink = React.forwardRef<
 
   useEffect(() => {
     const rollButtons = document.querySelectorAll('.rollButton')
+    if (!isDesktop) return
     rollButtons.forEach(
       (button) =>
         (button.innerHTML =
@@ -26,17 +27,10 @@ export const RollTextLink = React.forwardRef<
           button?.textContent?.trim().split('').join('</span><span>') +
           '</span></div>')
     )
-  }, [])
+  }, [isDesktop])
   return (
     <Link href={href} passHref>
-      <a
-        className={clsxm(
-          'text-xs uppercase',
-          isDesktop && 'rollButton',
-          className
-        )}
-        ref={ref}
-      >
+      <a className={clsxm('rollButton text-xs uppercase', className)} ref={ref}>
         {children}
       </a>
     </Link>

@@ -1,33 +1,25 @@
-import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
-import clsxm from '@/lib/clsxm'
 import { useIsDesktop } from '@/hooks/useWindowSize'
 
 import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import Seo from '@/components/SEO'
 
-import Footer from './Footer'
-import Header from './Header'
-
-interface LayoutProps {
+interface MainLayoutProps {
   children: React.ReactNode
-  class?: string
 }
 
-export const Layout = ({ children, class: className }: LayoutProps) => {
+export const MainLayout = ({ children }: MainLayoutProps) => {
   const router = useRouter()
   const [loadingRoute, setLoadingRoute] = useState(false)
   const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
   const [loadingSplash, setLoadingSplash] = useState(true)
   const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
   const isDesktop = useIsDesktop()
-  const variants = {
-    hiddenMain: { x: 0, y: 0, opacity: 0 },
-    enterMain: { x: 0, y: 0, opacity: 1 },
-    exitMain: { x: 0, y: 0, opacity: 1 },
-  }
 
   // handle animation when route change
   useEffect(() => {
@@ -81,31 +73,20 @@ export const Layout = ({ children, class: className }: LayoutProps) => {
   }, [loadingSplash, router.asPath])
 
   return (
-    <>
+    <Fragment>
+      <Seo />
       <Noise />
       {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
       {!loadingSplash && (
         <>
           <Header />
-          {!loadingRoute && isDesktop && <Cursor />}
-          <motion.main
-            initial='hiddenMain'
-            animate='enterMain'
-            exit='exitMain'
-            variants={variants}
-            transition={{ duration: 1, delay: 0.75, type: 'easeInOut' }}
-            className={clsxm(
-              'h-full w-full',
-              // router.asPath != '/' ? ' py-24' : '',
-              className
-            )}
-          >
-            {children}
-          </motion.main>
+          {isDesktop && <Cursor />}
+          <div className='absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all ease-in-out dark:opacity-20 md:bg-[length:300px_450px]' />
+          {children}
           <Footer />
         </>
       )}
-    </>
+    </Fragment>
   )
 }

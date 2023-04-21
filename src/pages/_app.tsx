@@ -1,9 +1,12 @@
+import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 import { GlobalStyles } from 'twin.macro'
 
 import '@/styles/colors.css'
 import '@/styles/globals.css'
 import 'tailwindcss/tailwind.css'
+
+import { MainLayout } from '@/components/Layout'
 
 const _APP = ({ Component, pageProps }: any) => {
   const getLayout = Component.getLayout ?? ((page: any) => page)
@@ -15,7 +18,11 @@ const _APP = ({ Component, pageProps }: any) => {
       defaultTheme='system'
     >
       <GlobalStyles />
-      {getLayout(<Component {...pageProps} />)}
+      <MainLayout>
+        <AnimatePresence exitBeforeEnter initial={true}>
+          {getLayout(<Component {...pageProps} />)}
+        </AnimatePresence>
+      </MainLayout>
     </ThemeProvider>
   )
 }
