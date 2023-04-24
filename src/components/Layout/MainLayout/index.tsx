@@ -18,12 +18,13 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   const router = useRouter()
-  const [loadingRoute, setLoadingRoute] = useState(false)
-  const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
-  const [loadingSplash, setLoadingSplash] = useState(true)
-  const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
-  const [refreshCursor, setRefreshCursor] = useState(false)
   const isDesktop = useIsDesktop()
+  const [loadingRoute, setLoadingRoute] = useState<boolean>(false)
+  const [endedLoadingRoute, setEndedLoadingRoute] = useState<boolean>(true)
+  const [loadingSplash, setLoadingSplash] = useState<boolean>(true)
+  const [endedLoadingSplash, setEndedLoadingSplash] = useState<boolean>(false)
+  const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
+  const [isBlur, setIsBlur] = useState<boolean>(true)
 
   const globalStateSplash = useLoadSplash()
 
@@ -95,8 +96,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     setLoadingSplash,
     setEndedLoadingSplash,
   ])
-
-  const [isBlur, setIsBlur] = useState<boolean>(true)
 
   useEffect(() => {
     setTimeout(() => {
