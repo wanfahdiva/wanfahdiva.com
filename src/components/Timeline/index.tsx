@@ -26,7 +26,7 @@ export const Timeline = () => {
           <ol className='relative mt-5 border-l border-gray-400 dark:border-gray-700'>
             {i == 0 && (
               <li className='mb-10 ml-6' key={i}>
-                <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-snow transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-blackdop'>
+                <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-[#dddddd] transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-[#202023]'>
                   <Icons.Coffee />
                 </span>
                 <div className='flex flex-col space-y-1'>
@@ -42,7 +42,7 @@ export const Timeline = () => {
             )}
             {item.data.map((e: any, i: number) => (
               <li className='mb-10 ml-6 -mt-1' key={i}>
-                <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-snow transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-blackdop'>
+                <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-[#dddddd] transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-[#202023]'>
                   <SvgIcon iconz={e.icon} />
                 </span>
                 <div className='flex flex-col space-y-1'>

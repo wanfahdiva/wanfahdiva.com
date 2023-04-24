@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 
@@ -9,6 +10,8 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import Seo from '@/components/SEO'
 
+import { useLoadSplash } from '@/store/index'
+
 interface MainLayoutProps {
   children: React.ReactNode
 }
@@ -19,7 +22,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [endedLoadingRoute, setEndedLoadingRoute] = useState(true)
   const [loadingSplash, setLoadingSplash] = useState(true)
   const [endedLoadingSplash, setEndedLoadingSplash] = useState(false)
+  const [refreshCursor, setRefreshCursor] = useState(false)
   const isDesktop = useIsDesktop()
+
+  const globalStateSplash = useLoadSplash()
 
   // handle animation when route change
   useEffect(() => {
@@ -28,19 +34,22 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       if (url === router.asPath) {
         return
       }
+      setRefreshCursor(true)
       setLoadingRoute(true)
       body?.classList.add('overflow-hidden')
     }
     const handleRouteChangeComplete = () => {
+      setRefreshCursor(false)
       setTimeout(() => {
         setLoadingRoute(false)
         body?.classList.remove('overflow-hidden')
-      }, 2000)
+      }, 700)
       setTimeout(() => {
         setEndedLoadingRoute(true)
-      }, 1500)
+      }, 1200)
     }
     const handleRouteChangeError = () => {
+      setRefreshCursor(true)
       setLoadingRoute(false)
       body?.classList.remove('overflow-hidden')
     }
@@ -52,25 +61,50 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       router.events.off('routeChangeComplete', handleRouteChangeComplete)
       router.events.off('routeChangeError', handleRouteChangeError)
     }
-  }, [router.events, router.asPath])
+  }, [
+    router.events,
+    router.asPath,
+    setRefreshCursor,
+    setLoadingRoute,
+    setEndedLoadingRoute,
+  ])
 
   // handle animation when page loaded
   useEffect(() => {
     const body = document.querySelector('body')
     if (loadingSplash) {
+      globalStateSplash.setstatus(true)
       if (router.asPath == '/') {
         body?.classList.add('overflow-hidden')
       } else {
         body?.classList.remove('overflow-hidden')
       }
+      setTimeout(() => {
+        setLoadingSplash(false)
+      }, 4000)
+      setTimeout(() => {
+        setEndedLoadingSplash(true)
+      }, 3000)
+    } else {
+      globalStateSplash.setstatus(false)
     }
+  }, [
+    loadingSplash,
+    router.asPath,
+    globalStateSplash,
+    setLoadingSplash,
+    setEndedLoadingSplash,
+  ])
+
+  const [isBlur, setIsBlur] = useState<boolean>(true)
+
+  useEffect(() => {
     setTimeout(() => {
-      setLoadingSplash(false)
-    }, 4000)
-    setTimeout(() => {
-      setEndedLoadingSplash(true)
-    }, 3000)
-  }, [loadingSplash, router.asPath])
+      if (endedLoadingSplash) {
+        setIsBlur(false)
+      }
+    }, 1500)
+  }, [endedLoadingSplash])
 
   return (
     <Fragment>
@@ -81,8 +115,14 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       {!loadingSplash && (
         <>
           <Header />
-          {isDesktop && <Cursor />}
-          <div className='absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all ease-in-out dark:opacity-20 md:bg-[length:300px_450px]' />
+          {isDesktop && <Cursor routerChange={refreshCursor} />}
+          <div
+            className={clsx(
+              'absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all duration-200 ease-in-out dark:opacity-20 md:bg-[length:300px_450px]',
+              isBlur && 'blur-sm'
+            )}
+          />
+
           {children}
           <Footer />
         </>

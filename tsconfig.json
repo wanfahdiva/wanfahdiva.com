@@ -18,11 +18,13 @@
     "paths": {
       "@/types/*": ["@types/*"],
       "@/lib/*": ["./src/lib/*"],
+      "@/store/*": ["./src/store/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/api/*": ["./src/pages/api/*"],
       "@/services/*": ["./src/services/*"],
       "@/jsons/*": ["./src/shared/jsons/*"],
+      "@/constants/*": ["./src/constants/*"],
       "@/styles/*": ["./src/shared/styles/*"],
       "@/components/*": ["./src/components/*"]
     },

@@ -1,0 +1,1 @@
+export { useLoadSplash } from './useLoadSplash'

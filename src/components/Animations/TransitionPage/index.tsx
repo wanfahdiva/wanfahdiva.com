@@ -31,7 +31,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           duration: isDesktop ? 1.5 : 0.5,
           delay: isDesktop ? 0.25 : 0.15,
         }}
-        className='absolute top-0 z-50 h-screen w-full bg-[#cfcfcf] dark:bg-[#1d1d1dc1]'
+        className='absolute top-0 z-50 h-screen w-full bg-[#FBFBFB] dark:bg-[#1d1d1dc1]'
       ></motion.div>
       <motion.div
         initial='hiddenLoad'
@@ -42,7 +42,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           duration: isDesktop ? 1.7 : 0.7,
           delay: isDesktop ? 0.5 : 0.4,
         }}
-        className='absolute top-0 z-40 h-screen w-full bg-[#d8d8d8] dark:bg-[#171717e4]'
+        className='absolute top-0 z-40 h-screen w-full bg-[#F7F7F7] dark:bg-[#171717e4]'
       ></motion.div>
     </div>
   )
