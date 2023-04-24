@@ -42,11 +42,6 @@ module.exports = {
         warning: '#E9B01E',
         info: '#FCF2E6',
         muted: '#8E8E8E',
-        unicorn: '#7048e8',
-        crown: '#fbd38d',
-        snow: '#dddddd',
-        blackdop: '#202023',
-        blacktext: '#1a202c',
         transparent: 'rgba(0,0,0,0)',
       },
       keyframes: {

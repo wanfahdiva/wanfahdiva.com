@@ -9,19 +9,19 @@ const Header = () => {
   const themes = useTheme()
 
   const variants = {
-    hiddenHeader: { opacity: 0, delay: 0.75 },
-    enterHeader: { opacity: 1 },
-    exitHeader: { opacity: 0 },
+    hiddenHeader: { y: -20, opacity: 0, delay: 0.95 },
+    enterHeader: { y: 0, opacity: 1 },
+    exitHeader: { y: 0, opacity: 0 },
   }
 
   return (
     <motion.header
-      className='fixed top-0 z-30 w-full py-8 md:py-11'
+      className='fixed top-0 z-30 w-full py-8 md:py-10'
       initial='hiddenHeader'
       animate='enterHeader'
       exit='exitHeader'
       variants={variants}
-      transition={{ duration: 1, delay: 0.75, type: 'easeInOut' }}
+      transition={{ duration: 1.25, type: 'easeInOut' }}
     >
       <nav className='flex w-full items-center justify-between px-6 md:px-10'>
         <Link href='/' passHref>

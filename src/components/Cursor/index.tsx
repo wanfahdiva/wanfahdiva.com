@@ -2,7 +2,11 @@ import cn from 'clsx'
 import { gsap } from 'gsap'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-export const Cursor = () => {
+type CursorProps = {
+  routerChange: boolean
+}
+
+export const Cursor = ({ routerChange }: CursorProps) => {
   const cursor = useRef<any>()
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
@@ -49,14 +53,13 @@ export const Cursor = () => {
         link.removeEventListener('mouseleave', handleMouseLeave, false)
       })
     }
-  }, [])
+  }, [routerChange])
+
   return (
-    <div>
-      <div
-        style={{ opacity: hasMoved ? 1 : 0 }}
-        ref={cursor}
-        className={cn('cursor-class', isPointer && 'pointer')}
-      ></div>
-    </div>
+    <div
+      style={{ opacity: hasMoved ? 1 : 0 }}
+      ref={cursor}
+      className={cn('cursor-class', isPointer && 'pointer')}
+    />
   )
 }
