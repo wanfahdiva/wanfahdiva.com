@@ -1,1 +1,1 @@
-export { useLoadSplash } from './useLoadSplash'
+export { useMainAnimatedState } from './useMainAnimatedState'

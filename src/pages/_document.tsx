@@ -43,6 +43,14 @@ export default class _DOCUMENT extends Document<{
             href='https://fonts.gstatic.com'
             crossOrigin='anonymous'
           />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap'
+            rel='stylesheet'
+          />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+            rel='stylesheet'
+          />
         </Head>
         <body className='bg-[#F2F2F2] text-[#1a202c] duration-300 ease-in dark:bg-[#111111] dark:text-white'>
           <Main />
