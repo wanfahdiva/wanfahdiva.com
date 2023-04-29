@@ -44,10 +44,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       setTimeout(() => {
         setLoadingRoute(false)
         body?.classList.remove('overflow-hidden')
-      }, 700)
+      }, 1000)
       setTimeout(() => {
         setEndedLoadingRoute(true)
-      }, 1200)
+      }, 1250)
     }
     const handleRouteChangeError = () => {
       setRefreshCursor(true)

@@ -37,6 +37,12 @@ export default class _DOCUMENT extends Document<{
             data-emotion-css={this.props.ids?.join(' ')}
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link
+            rel='preconnect'
+            href='https://fonts.gstatic.com'
+            crossOrigin='anonymous'
+          />
         </Head>
         <body className='bg-[#F2F2F2] text-[#1a202c] duration-300 ease-in dark:bg-[#111111] dark:text-white'>
           <Main />

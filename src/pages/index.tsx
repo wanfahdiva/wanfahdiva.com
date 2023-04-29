@@ -29,7 +29,7 @@ const HomePage: NextLayoutComponentType = () => {
             <p className='inline'>Hi, my name is</p>
             <h1 className='text-3xl md:text-7xl'>Wanfah Diva.</h1>
             <h3 className='!-mt-2 text-3xl opacity-80 md:text-7xl'>
-              I build things for the web
+              I build things for the web.
             </h3>
           </motion.div>
           <motion.div
@@ -56,7 +56,7 @@ const HomePage: NextLayoutComponentType = () => {
               <Link href='https://github.com/wanfahdiva' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-black p-2 opacity-80 md:bg-transparent'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <FiGithub />
                   <span className='hidden md:block'>wanfahdiva</span>
@@ -65,7 +65,7 @@ const HomePage: NextLayoutComponentType = () => {
               <Link href='mailto:wanfahdivaa@gmail.com' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-black p-2 opacity-80 md:bg-transparent'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <GoMail />
                   <span className='hidden md:block'>wanfahdivaa@gmail.com</span>
@@ -74,7 +74,7 @@ const HomePage: NextLayoutComponentType = () => {
               <Link href='https://www.linkedin.com/in/wanfahdiva/' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-black p-2 opacity-80 md:bg-transparent'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <FaLinkedin />
                   <span className='hidden md:block'>wanfahdiva</span>
