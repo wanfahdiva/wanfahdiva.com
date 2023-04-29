@@ -19,7 +19,7 @@ const HomePage: NextLayoutComponentType = () => {
     <Fragment>
       <Seo templateTitle='Home' />
       <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
-        <div className='relative flex max-w-3xl flex-col items-center justify-center'>
+        <div className='relative flex max-w-4xl flex-col items-center justify-center px-4 md:px-0'>
           <motion.div
             className='text-center'
             initial='hiddenTop'
@@ -27,8 +27,8 @@ const HomePage: NextLayoutComponentType = () => {
             variants={showAnimation ? ANIMATED_VARIANT : {}}
           >
             <p className='inline'>Hi, my name is</p>
-            <h1 className='text-3xl md:text-7xl'>Wanfah Diva.</h1>
-            <h3 className='!-mt-2 text-3xl opacity-80 md:text-7xl'>
+            <h1 className='text-3xl md:text-6xl'>Wanfah Diva.</h1>
+            <h3 className='text-3xl opacity-80 md:text-6xl'>
               I build things for the web.
             </h3>
           </motion.div>
