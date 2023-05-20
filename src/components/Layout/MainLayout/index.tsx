@@ -10,8 +10,6 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import Seo from '@/components/SEO'
 
-import { useMainAnimatedState } from '@/store/index'
-
 interface MainLayoutProps {
   children: React.ReactNode
 }
@@ -26,8 +24,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
   const [isBlur, setIsBlur] = useState<boolean>(true)
 
-  const animatedHookStates = useMainAnimatedState()
-
   // handle animation when route change
   useEffect(() => {
     const body = document.querySelector('body')
@@ -37,21 +33,16 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       }
       setRefreshCursor(true)
       setLoadingRoute(true)
-      animatedHookStates.route = true
-      animatedHookStates.cursor = true
       body?.classList.add('overflow-hidden')
     }
     const handleRouteChangeComplete = () => {
       setRefreshCursor(false)
-      animatedHookStates.cursor = false
       setTimeout(() => {
         setLoadingRoute(false)
-        animatedHookStates.route = true
         body?.classList.remove('overflow-hidden')
       }, 1000)
       setTimeout(() => {
         setEndedLoadingRoute(true)
-        animatedHookStates.endedRoute = true
       }, 1250)
     }
     const handleRouteChangeError = () => {
@@ -73,46 +64,33 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     setRefreshCursor,
     setLoadingRoute,
     setEndedLoadingRoute,
-    animatedHookStates,
   ])
 
   // handle animation when page loaded
   useEffect(() => {
     const body = document.querySelector('body')
     if (loadingSplash) {
-      animatedHookStates.splash = true
       if (router.asPath == '/') {
         body?.classList.add('overflow-hidden')
       } else {
         body?.classList.remove('overflow-hidden')
       }
       setTimeout(() => {
-        animatedHookStates.splash = false
         setLoadingSplash(false)
       }, 4000)
       setTimeout(() => {
         setEndedLoadingSplash(true)
-        animatedHookStates.endedSplash = true
       }, 3000)
-    } else {
-      animatedHookStates.splash = false
     }
-  }, [
-    loadingSplash,
-    router.asPath,
-    animatedHookStates,
-    setLoadingSplash,
-    setEndedLoadingSplash,
-  ])
+  }, [loadingSplash, router.asPath, setLoadingSplash, setEndedLoadingSplash])
 
   useEffect(() => {
     setTimeout(() => {
       if (endedLoadingSplash) {
         setIsBlur(false)
-        animatedHookStates.blur = false
       }
     }, 1500)
-  }, [endedLoadingSplash, animatedHookStates])
+  }, [endedLoadingSplash])
 
   return (
     <Fragment>
