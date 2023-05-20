@@ -33,7 +33,7 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
     >
       <div className='example'>
         <LogoIcon />
-        <div className='text-center' ref={counterRef}>
+        <div className='text-center font-semibold' ref={counterRef}>
           0%
         </div>
       </div>

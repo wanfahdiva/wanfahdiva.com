@@ -18,7 +18,7 @@
     "paths": {
       "@/types/*": ["@types/*"],
       "@/lib/*": ["./src/lib/*"],
-      "@/store/*": ["./src/store/*"],
+      "@/store/*": ["src/states/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/api/*": ["./src/pages/api/*"],

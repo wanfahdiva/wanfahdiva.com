@@ -19,8 +19,10 @@ const Footer = () => {
       transition={{ duration: 1.25, type: 'easeInOut' }}
     >
       <div className='flex w-full items-center justify-between px-6 md:px-10'>
-        <p className='text-xs uppercase'>&copy;Wanfah Diva</p>
-        <RollTextLink href='/profile'>Profile</RollTextLink>
+        <p className='text-xs font-semibold uppercase'>&copy;Wanfah Diva</p>
+        <RollTextLink href='/profile' className='font-semibold'>
+          Profile
+        </RollTextLink>
       </div>
     </motion.footer>
   )

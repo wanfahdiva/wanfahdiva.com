@@ -6,14 +6,12 @@ import { FaLinkedin } from 'react-icons/fa'
 import { FiGithub } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 
-import { useTimestamp } from '@/hooks/useTimestamp'
-
 import Seo from '@/components/SEO'
 
 import { ANIMATED_VARIANT } from '@/constants/animated'
 
 const HomePage: NextLayoutComponentType = () => {
-  const showAnimation = useTimestamp('initial')
+  const showAnimation = true
 
   return (
     <Fragment>
@@ -26,9 +24,9 @@ const HomePage: NextLayoutComponentType = () => {
             animate='visibleTop'
             variants={showAnimation ? ANIMATED_VARIANT : {}}
           >
-            <p className='inline'>Hi, my name is</p>
-            <h1 className='text-3xl md:text-6xl'>Wanfah Diva.</h1>
-            <h3 className='text-3xl opacity-80 md:text-6xl'>
+            <p className='inline font-medium'>Hi, my name is</p>
+            <h1 className='text-3xl font-semibold md:text-6xl'>Wanfah Diva.</h1>
+            <h3 className='text-3xl font-semibold opacity-80 md:text-6xl'>
               I build things for the web.
             </h3>
           </motion.div>
@@ -39,7 +37,7 @@ const HomePage: NextLayoutComponentType = () => {
             variants={showAnimation ? ANIMATED_VARIANT : {}}
           >
             <div className='mx-auto !mt-12 w-11/12 text-center'>
-              <p className='inline text-sm opacity-80 md:text-base'>
+              <p className='inline text-sm font-medium opacity-80 md:text-base'>
                 I am a Software Engineer with expertise in building Frontend
                 Developments, based in Indonesia.
                 <br />
@@ -56,28 +54,34 @@ const HomePage: NextLayoutComponentType = () => {
               <Link href='https://github.com/wanfahdiva' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-70 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <FiGithub />
-                  <span className='hidden md:block'>wanfahdiva</span>
+                  <span className='hidden font-medium md:block'>
+                    wanfahdiva
+                  </span>
                 </a>
               </Link>
               <Link href='mailto:wanfahdivaa@gmail.com' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-70 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <GoMail />
-                  <span className='hidden md:block'>wanfahdivaa@gmail.com</span>
+                  <span className='hidden font-medium md:block'>
+                    wanfahdivaa@gmail.com
+                  </span>
                 </a>
               </Link>
               <Link href='https://www.linkedin.com/in/wanfahdiva/' passHref>
                 <a
                   target='_blank'
-                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-50 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
+                  className='inline-flex items-center space-x-1 rounded-md bg-gray-300 p-2 opacity-70 shadow-md dark:bg-opacity-30 md:bg-inherit md:shadow-none'
                 >
                   <FaLinkedin />
-                  <span className='hidden md:block'>wanfahdiva</span>
+                  <span className='hidden font-medium md:block'>
+                    wanfahdiva
+                  </span>
                 </a>
               </Link>
             </div>

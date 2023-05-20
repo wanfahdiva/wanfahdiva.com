@@ -36,7 +36,9 @@ const Header = () => {
             />
           </a>
         </Link>
-        <RollTextLink href='/work'>Work</RollTextLink>
+        <RollTextLink href='/work' className='font-semibold'>
+          Work
+        </RollTextLink>
       </nav>
     </motion.header>
   )
