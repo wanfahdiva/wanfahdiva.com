@@ -88,6 +88,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     setTimeout(() => {
       if (endedLoadingSplash) {
         setIsBlur(false)
+        setRefreshCursor(true)
       }
     }, 1500)
   }, [endedLoadingSplash])
@@ -98,22 +99,20 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <Noise />
       {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
-      {!loadingSplash && (
-        <>
-          <Header />
-          {isDesktop && <Cursor routerChange={refreshCursor} />}
-          {router.asPath == '/' && (
-            <div
-              className={clsx(
-                'absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all duration-200 ease-in-out dark:opacity-20 md:bg-[length:300px_450px]',
-                isBlur && 'blur-sm'
-              )}
-            />
-          )}
-          {children}
-          <Footer />
-        </>
-      )}
+      <div className={loadingSplash ? 'opacity-0' : 'opacity-100'}>
+        <Header />
+        {isDesktop && <Cursor routerChange={refreshCursor} />}
+        {router.asPath == '/' && (
+          <div
+            className={clsx(
+              'absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all duration-500 ease-in-out dark:opacity-20 md:bg-[length:300px_450px]',
+              isBlur && 'blur-sm'
+            )}
+          />
+        )}
+        {!loadingSplash && children}
+        <Footer />
+      </div>
     </Fragment>
   )
 }

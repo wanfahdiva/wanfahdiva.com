@@ -16,7 +16,7 @@ const Footer = () => {
       animate='enterFooter'
       exit='exitFooter'
       variants={variants}
-      transition={{ duration: 1.25, type: 'easeInOut' }}
+      transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
     >
       <div className='flex w-full items-center justify-between px-6 md:px-10'>
         <p className='text-xs font-semibold uppercase'>&copy;Wanfah Diva</p>

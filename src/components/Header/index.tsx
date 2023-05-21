@@ -21,7 +21,7 @@ const Header = () => {
       animate='enterHeader'
       exit='exitHeader'
       variants={variants}
-      transition={{ duration: 1.25, type: 'easeInOut' }}
+      transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
     >
       <nav className='flex w-full items-center justify-between px-6 md:px-10'>
         <Link href='/' passHref>

@@ -34,7 +34,7 @@ const AboutPage: NextLayoutComponentType = () => {
               delay: i * 0.5,
             }}
             className={clsx(
-              '!font-poltawski text-7xl italic md:text-[9rem]',
+              '-ml-4 !font-poltawski text-7xl italic md:ml-0 md:text-[9rem]',
               i != 0 ? 'text-stroke text-transparent opacity-50' : '!opacity-75'
             )}
           >
@@ -42,7 +42,7 @@ const AboutPage: NextLayoutComponentType = () => {
           </motion.p>
         ))}
         <motion.div
-          className='absolute h-[358px] w-[265px] !rotate-[9deg]'
+          className='absolute h-[258px] w-[175px] !rotate-[9deg] md:h-[358px] md:w-[265px]'
           initial='hidden'
           animate='visible'
           variants={variantImage}
@@ -54,7 +54,7 @@ const AboutPage: NextLayoutComponentType = () => {
           <Image src='/images/profile.jpg' alt='profile' layout='fill' />
         </motion.div>
         <motion.span
-          className='absolute translate-y-24 -rotate-6 transform !font-montglades text-6xl font-medium'
+          className='absolute translate-y-24 -rotate-6 transform !font-montglades text-2xl font-medium md:text-6xl'
           initial='hidden'
           animate='visible'
           variants={variantText}
