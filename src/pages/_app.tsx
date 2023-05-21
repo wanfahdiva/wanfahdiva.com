@@ -12,11 +12,7 @@ const _APP = ({ Component, pageProps }: any) => {
   const getLayout = Component.getLayout ?? ((page: any) => page)
 
   return (
-    <ThemeProvider
-      forcedTheme={Component.theme || undefined}
-      attribute='class'
-      defaultTheme='system'
-    >
+    <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
       <GlobalStyles />
       <MainLayout>
         <AnimatePresence exitBeforeEnter initial={true}>

@@ -6,12 +6,17 @@ import { FaLinkedin } from 'react-icons/fa'
 import { FiGithub } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 
+import { useVisitedPage } from '@/hooks/useVisitedPage'
+
 import Seo from '@/components/SEO'
 
 import { ANIMATED_VARIANT } from '@/constants/animated'
 
 const HomePage: NextLayoutComponentType = () => {
-  const showAnimation = true
+  const pageVisited = useVisitedPage()
+  const showAnimation = pageVisited
+    ? ANIMATED_VARIANT.ANIMATE_OFF
+    : ANIMATED_VARIANT.ANIMATE_ON
 
   return (
     <Fragment>
@@ -22,7 +27,7 @@ const HomePage: NextLayoutComponentType = () => {
             className='text-center'
             initial='hiddenTop'
             animate='visibleTop'
-            variants={showAnimation ? ANIMATED_VARIANT : {}}
+            variants={showAnimation}
           >
             <p className='inline font-medium'>Hi, my name is</p>
             <h1 className='text-3xl font-semibold md:text-6xl'>Wanfah Diva.</h1>
@@ -34,7 +39,7 @@ const HomePage: NextLayoutComponentType = () => {
             className='flex flex-col items-center space-y-5 text-center'
             initial='hiddenBottom'
             animate='visibleBottom'
-            variants={showAnimation ? ANIMATED_VARIANT : {}}
+            variants={showAnimation}
           >
             <div className='mx-auto !mt-12 w-11/12 text-center'>
               <p className='inline text-sm font-medium opacity-80 md:text-base'>
