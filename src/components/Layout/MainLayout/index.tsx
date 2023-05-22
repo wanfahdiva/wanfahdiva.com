@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 
@@ -8,6 +7,7 @@ import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { SocialMediaSection } from '@/components/Section'
 import Seo from '@/components/SEO'
 
 interface MainLayoutProps {
@@ -23,6 +23,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [endedLoadingSplash, setEndedLoadingSplash] = useState<boolean>(false)
   const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
   const [isBlur, setIsBlur] = useState<boolean>(true)
+  const [headerHeight, setHeaderHeight] = useState<string>('')
 
   // handle animation when route change
   useEffect(() => {
@@ -70,19 +71,17 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   useEffect(() => {
     const body = document.querySelector('body')
     if (loadingSplash) {
-      if (router.asPath == '/') {
-        body?.classList.add('overflow-hidden')
-      } else {
-        body?.classList.remove('overflow-hidden')
-      }
+      body?.classList.add('overflow-hidden')
       setTimeout(() => {
         setLoadingSplash(false)
       }, 4000)
       setTimeout(() => {
         setEndedLoadingSplash(true)
       }, 3000)
+    } else {
+      body?.classList.remove('overflow-hidden')
     }
-  }, [loadingSplash, router.asPath, setLoadingSplash, setEndedLoadingSplash])
+  }, [loadingSplash, setLoadingSplash, setEndedLoadingSplash])
 
   useEffect(() => {
     setTimeout(() => {
@@ -93,6 +92,12 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     }, 1500)
   }, [endedLoadingSplash])
 
+  useEffect(() => {
+    const header = document.getElementById('header')
+    const headerHeight = header?.clientHeight
+    setHeaderHeight(`${headerHeight}px`)
+  }, [])
+
   return (
     <Fragment>
       <Seo />
@@ -102,15 +107,15 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <div className={loadingSplash ? 'opacity-0' : 'opacity-100'}>
         <Header />
         {isDesktop && <Cursor routerChange={refreshCursor} />}
-        {router.asPath == '/' && (
+        {!loadingSplash && (
           <div
-            className={clsx(
-              'absolute left-0 top-0 -z-10 h-screen w-full bg-hero bg-[length:250px_370px] bg-center bg-no-repeat opacity-30 transition-all duration-500 ease-in-out dark:opacity-20 md:bg-[length:300px_450px]',
-              isBlur && 'blur-sm'
-            )}
-          />
+            className={isBlur ? 'blur-sm' : ''}
+            style={{ paddingTop: router.pathname != '/' ? headerHeight : '' }}
+          >
+            {children}
+          </div>
         )}
-        {!loadingSplash && children}
+        <SocialMediaSection />
         <Footer />
       </div>
     </Fragment>

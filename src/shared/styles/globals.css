@@ -133,6 +133,57 @@
   }
   /* END TYPOGRAPY */
 
+  /* CUSTOM SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 1.5px 0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(225, 225, 225, 0.9);
+    border: 3px solid transparent;
+    border-radius: 10px;
+  }
+  /* END CUSTOM SCROLLBAR */
+
+  /* LINE ANIMATION */
+  .c-scrolldown {
+    width: 1px;
+    height: 40px;
+    position: absolute;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .c-scrolldown .c-line {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(
+      to bottom,
+      white 50%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    background-position: 0 -60px;
+    background-size: 100% 200%;
+    animation: scrolldown 2.2s cubic-bezier(0.76, 0, 0.3, 1) forwards infinite;
+  }
+
+  @keyframes scrolldown {
+    0% {
+      background-position: 0 -40px;
+    }
+    75% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 40px;
+    }
+  }
+  /* END LINE ANIMATION */
+
   /* OTHER GLOBAL STYLE */
   @media screen and (max-width: 768px) {
     *,
@@ -425,4 +476,26 @@
     background-image: url('/images/noise.gif');
   }
   /* END NOISE BACKGROUND ANIMATION */
+
+  .text-vertical {
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+  }
+
+  .scrambleText {
+    animation: scrambleAnimation 0.2s infinite;
+  }
+
+  @keyframes scrambleAnimation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateX(5px);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }

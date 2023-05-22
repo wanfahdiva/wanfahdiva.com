@@ -7,7 +7,7 @@ const NotFound: NextLayoutComponentType = () => {
   return (
     <Fragment>
       <Seo templateTitle='404' />
-      <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
+      <div className='mx-auto flex h-screen max-w-6xl items-center justify-center'>
         <p>404 PAGE</p>
       </div>
     </Fragment>

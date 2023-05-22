@@ -32,7 +32,7 @@ const WorkDetail: NextLayoutComponentType = ({ work }) => {
   return (
     <Fragment>
       <Seo templateTitle='Work Detail' />
-      <div className='py-10 md:py-16' id='mdx'>
+      <div className='mx-auto w-full max-w-5xl py-5 md:py-10'>
         <MDXRemote {...data.source} components={{ YouTube, Image }} />
       </div>
     </Fragment>
