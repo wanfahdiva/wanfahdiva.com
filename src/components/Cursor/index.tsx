@@ -34,7 +34,7 @@ export const Cursor = ({ routerChange }: CursorProps) => {
   }, [hasMoved, onMouseMove])
 
   useEffect(() => {
-    const links = document.querySelectorAll('a')
+    const links = document.querySelectorAll('button, a')
     const handleMouseEnter = () => {
       setIsPointer(true)
     }

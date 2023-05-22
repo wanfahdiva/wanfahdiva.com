@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 
-import { RollTextLink } from '@/components/Links/RollTextLink'
-
 const Footer = () => {
   const variants = {
     hiddenFooter: { opacity: 0, y: 20, delay: 0.95 },
@@ -11,18 +9,17 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className='fixed bottom-0 z-30 w-full py-8 md:py-11'
+      className='mt-24 w-full py-5'
       initial='hiddenFooter'
       animate='enterFooter'
       exit='exitFooter'
       variants={variants}
       transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
     >
-      <div className='flex w-full items-center justify-between px-6 md:px-10'>
-        <p className='text-xs font-semibold uppercase'>&copy;Wanfah Diva</p>
-        <RollTextLink href='/profile' className='font-semibold'>
-          Profile
-        </RollTextLink>
+      <div className='flex w-full flex-col items-center justify-center px-6 md:px-14'>
+        <p className='text-xs font-medium uppercase'>
+          © {new Date().getFullYear()} Wanfah Diva. All rights reserved.
+        </p>
       </div>
     </motion.footer>
   )

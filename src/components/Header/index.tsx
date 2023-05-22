@@ -16,14 +16,15 @@ const Header = () => {
 
   return (
     <motion.header
-      className='fixed top-0 z-30 w-full py-8 md:py-10'
+      className='fixed top-0 z-30 w-full py-5 backdrop-blur-md'
       initial='hiddenHeader'
       animate='enterHeader'
       exit='exitHeader'
       variants={variants}
       transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
+      id='header'
     >
-      <nav className='flex w-full items-center justify-between px-6 md:px-10'>
+      <nav className='flex w-full items-center justify-between px-6 md:px-14'>
         <Link href='/' passHref>
           <a>
             <NextImage
@@ -36,9 +37,17 @@ const Header = () => {
             />
           </a>
         </Link>
-        <RollTextLink href='/work' className='font-semibold'>
-          Work
-        </RollTextLink>
+        <div className='flex items-center space-x-5'>
+          <RollTextLink href='/profile' className='font-semibold'>
+            Profile
+          </RollTextLink>
+          <RollTextLink href='/work' className='font-semibold'>
+            Work
+          </RollTextLink>
+          <RollTextLink href='/blog' className='font-semibold'>
+            Blog
+          </RollTextLink>
+        </div>
       </nav>
     </motion.header>
   )

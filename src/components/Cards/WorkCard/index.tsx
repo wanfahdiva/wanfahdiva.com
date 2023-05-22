@@ -1,44 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
 import Link from 'next/link'
-import tw, { styled } from 'twin.macro'
-
-import ArrowLink from '@/components/Links/ArrowLink'
-import UnstyledLink from '@/components/Links/UnstyledLink'
 
 import { WorkMeta } from '@/api/work'
 
-const Content = styled.p`
-  ${tw`h-[2.7rem] overflow-hidden overflow-ellipsis text-sm font-medium text-gray-600 dark:text-white`}
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`
 type WorkCardProps = {
   data: WorkMeta
 }
 export const WorkCard = ({ data }: WorkCardProps) => {
   return (
-    <Link href={`/work/${data.slug}`} passHref>
-      <a
-        href={`/work/${data.slug}`}
-        className='group break-inside mb-5 flex w-full cursor-pointer flex-row rounded-md bg-white p-2 shadow-lg transition-all duration-300 hover:bg-gray-200 hover:shadow-xl dark:bg-muted md:flex-col'
-      >
-        <div className='flex-1 flex-col'>
-          <div className='flex flex-col p-2'>
-            <h2 className='mb-2 text-lg font-bold text-black dark:text-white'>
-              {data.title}
-            </h2>
-            <Content>{data.excerpt}</Content>
-          </div>
-          <div className='flex justify-end'>
-            <ArrowLink
-              as={UnstyledLink}
-              className='mt-1 inline-flex items-center text-sm'
-              href={`/work/${data.slug}`}
-            >
-              learnmore
-            </ArrowLink>
-          </div>
+    <Link href={`/work/${data?.slug}`} passHref>
+      <a className='group flex items-center space-x-4 border-t pt-5 pb-10'>
+        <div className='relative h-44 w-64'>
+          <Image
+            src={data?.coverImage ? data.coverImage : '/images/bg-hero.jpg'}
+            alt='profile'
+            layout='fill'
+            className='object-cover object-center transition-all duration-300 group-hover:scale-125'
+          />
+        </div>
+        <div className='flex-1 flex-col space-y-3'>
+          <h2 className='text-lg font-semibold uppercase'>{data?.title}</h2>
+          <p className='pb-1.5 line-clamp-2'>{data?.excerpt}</p>
+          <small>Tag: {data?.tags.join(', ')}</small>
         </div>
       </a>
     </Link>
