@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-
+import { ContainerLayout } from '@/components/Layout'
 import ButtonLink from '@/components/Links/ButtonLink'
 const TEXT_PROCESS = [
   {
@@ -29,38 +28,8 @@ const TEXT_PROCESS = [
 ]
 
 export const MyProcess: React.FC = () => {
-  const sectionRef = useRef<any>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const section = sectionRef.current
-
-      if (section) {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        const windowHeight = window.innerHeight
-        const scrollY = window.scrollY
-
-        if (scrollY > sectionTop + sectionHeight - windowHeight) {
-          const opacity =
-            1 - (scrollY - (sectionTop + sectionHeight - windowHeight)) / 350
-
-          section.style.opacity = opacity
-        } else {
-          section.style.opacity = 1
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <div
-      ref={sectionRef}
-      className='mx-auto flex h-full w-full max-w-5xl justify-between py-5 md:py-10'
-    >
+    <ContainerLayout className='mx-auto flex h-full w-full max-w-5xl justify-between py-5 md:py-10'>
       <div className='flex w-2/5'>
         <div className='sticky top-1/3 h-48'>
           <div className='relative inline-block opacity-75'>
@@ -94,6 +63,6 @@ export const MyProcess: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </ContainerLayout>
   )
 }

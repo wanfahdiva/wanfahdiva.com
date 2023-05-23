@@ -4,7 +4,7 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { FaLinkedin } from 'react-icons/fa'
 import { FiGithub } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
-export const SocialMediaSection = () => {
+export const SocialMediaSection: React.FC = () => {
   return (
     <Fragment>
       <div className='fixed bottom-0 left-14 flex flex-col items-center justify-center space-y-2 opacity-70'>

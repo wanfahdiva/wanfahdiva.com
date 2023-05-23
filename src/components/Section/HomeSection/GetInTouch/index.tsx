@@ -1,6 +1,6 @@
 import ButtonLink from '@/components/Links/ButtonLink'
 
-export const GetInTouch = () => {
+export const GetInTouch: React.FC = () => {
   return (
     <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
       <div className='flex max-w-xl flex-col items-center justify-center space-y-5'>
