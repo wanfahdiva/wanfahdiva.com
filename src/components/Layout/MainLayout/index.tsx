@@ -7,7 +7,7 @@ import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { SocialMediaSection } from '@/components/Section'
+import { SocialMediaSection } from '@/components/Section/GlobalSection'
 import Seo from '@/components/SEO'
 
 interface MainLayoutProps {

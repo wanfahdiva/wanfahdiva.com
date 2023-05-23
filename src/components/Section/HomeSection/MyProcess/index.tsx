@@ -1,4 +1,3 @@
-import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 
 import ButtonLink from '@/components/Links/ButtonLink'
@@ -29,7 +28,7 @@ const TEXT_PROCESS = [
   },
 ]
 
-export const ProcessSection: React.FC = () => {
+export const MyProcess: React.FC = () => {
   const sectionRef = useRef<any>(null)
 
   useEffect(() => {
@@ -57,36 +56,6 @@ export const ProcessSection: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const processCount = document.getElementById('processCount')
-    const process1 = document.getElementById('process-1')
-    const process2 = document.getElementById('process-2')
-    const process3 = document.getElementById('process-3')
-    const process4 = document.getElementById('process-4')
-    const process5 = document.getElementById('process-5')
-    const process6 = document.getElementById('process-6')
-
-    if (
-      processCount &&
-      process1 &&
-      process2 &&
-      process3 &&
-      process4 &&
-      process5 &&
-      process6
-    ) {
-      const tl = gsap.timeline({ defaults: { duration: 1 } })
-
-      tl.fromTo(processCount, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process1, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process2, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process3, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process4, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process5, { opacity: 0 }, { opacity: 1 })
-        .fromTo(process6, { opacity: 0 }, { opacity: 1 })
-    }
-  }, [])
-
   return (
     <div
       ref={sectionRef}
@@ -95,9 +64,7 @@ export const ProcessSection: React.FC = () => {
       <div className='flex w-2/5'>
         <div className='sticky top-1/3 h-48'>
           <div className='relative inline-block opacity-75'>
-            <div className='text-center text-sm uppercase' id='processCount'>
-              My Process 1-6
-            </div>
+            <div className='text-center text-sm uppercase'>My Process 1-6</div>
           </div>
           <h2 className='mt-2 w-11/12 text-4xl'>
             Your Dream Website in just few steps
@@ -118,8 +85,7 @@ export const ProcessSection: React.FC = () => {
         {TEXT_PROCESS.map((item, index) => (
           <div
             key={index}
-            className='mt-5 ml-5 flex h-52 w-4/5 flex-col items-start justify-center space-y-2 opacity-0 first:mt-0'
-            id={`process-${index + 1}`}
+            className='mt-5 ml-5 flex h-52 w-4/5 flex-col items-start justify-center space-y-2 first:-mt-6'
           >
             <h1 className='text-2xl'>
               {index + 1}. {item.title}
