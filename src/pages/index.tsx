@@ -2,10 +2,12 @@ import { NextLayoutComponentType } from 'next'
 import { Fragment, ReactChild } from 'react'
 
 import {
+  FeaturedBlog,
   FeaturedProject,
-  HeroSection,
-  ProcessSection,
-} from '@/components/Section/Home'
+  GetInTouch,
+  Hero,
+  MyProcess,
+} from '@/components/Section/HomeSection'
 import Seo from '@/components/SEO'
 
 import { getAllContent, WorkMeta } from '@/api/work'
@@ -18,17 +20,11 @@ const HomePage: NextLayoutComponentType<LandingProps> = ({ work }) => {
   return (
     <Fragment>
       <Seo templateTitle='Home' />
-      <HeroSection />
+      <Hero />
       <FeaturedProject data={work} />
-      <ProcessSection />
-      {Array.from({ length: 1 }).map((_, index) => (
-        <div
-          className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'
-          key={index}
-        >
-          dummy section
-        </div>
-      ))}
+      <MyProcess />
+      <FeaturedBlog />
+      <GetInTouch />
     </Fragment>
   )
 }

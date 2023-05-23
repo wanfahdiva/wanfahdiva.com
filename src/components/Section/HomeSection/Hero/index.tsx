@@ -8,7 +8,7 @@ import { useVisitedPage } from '@/hooks/useVisitedPage'
 import { ScrambelText } from '@/components/Animations'
 import ButtonLink from '@/components/Links/ButtonLink'
 
-export const HeroSection: React.FC = () => {
+export const Hero: React.FC = () => {
   const pageVisited = useVisitedPage()
   const sectionRef = useRef<any>(null)
 
