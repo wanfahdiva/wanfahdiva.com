@@ -1,37 +1,10 @@
-import { useEffect, useRef } from 'react'
-
 import { BlogCard } from '@/components/Cards'
+import { ContainerLayout } from '@/components/Layout'
 import ArrowLink from '@/components/Links/ArrowLink'
 
-export const FeaturedBlog = () => {
-  const sectionRef = useRef<any>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const section = sectionRef.current
-
-      if (section) {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        const windowHeight = window.innerHeight
-        const scrollY = window.scrollY
-
-        if (scrollY > sectionTop + sectionHeight - windowHeight) {
-          const opacity =
-            1 - (scrollY - (sectionTop + sectionHeight - windowHeight)) / 500
-          section.style.opacity = opacity
-        } else {
-          section.style.opacity = 1
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
+export const FeaturedBlog: React.FC = () => {
   return (
-    <div className='mx-auto w-full max-w-5xl py-5 md:py-24' ref={sectionRef}>
+    <ContainerLayout className='mx-auto w-full max-w-5xl py-5 md:py-24'>
       <div className='mb-7 flex w-full items-center justify-between'>
         <h1 className='w-24 text-2xl font-semibold uppercase'>Featured Blog</h1>
         <div className='-mb-9 h-full'>
@@ -46,6 +19,6 @@ export const FeaturedBlog = () => {
           <BlogCard key={index} id={index} />
         ))}
       </div>
-    </div>
+    </ContainerLayout>
   )
 }
