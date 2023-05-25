@@ -34,6 +34,7 @@ export const ContainerLayout: React.FC<ContainerLayoutProps> = ({
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
   return (
     <div ref={sectionRef} className={className}>
       {children}

@@ -12,8 +12,8 @@ const WorkPage: NextLayoutComponentType<WorkPageProps> = () => {
   return (
     <Fragment>
       <Seo templateTitle='Work' />
-      <div className='mx-auto flex h-screen max-w-6xl items-center justify-center py-5 md:py-10'>
-        <p>WORK PAGE</p>
+      <div className='mx-auto flex h-[70vh] max-w-6xl items-center justify-center py-5 md:py-10'>
+        <p>COMING SOON</p>
       </div>
     </Fragment>
   )

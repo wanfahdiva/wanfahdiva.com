@@ -12,8 +12,8 @@ export const Hero: React.FC = () => {
   const pageVisited = useVisitedPage()
 
   return (
-    <ContainerLayout className='relative mx-auto flex h-screen max-w-5xl items-center justify-start py-5 md:py-10'>
-      <div className='mt-3 flex max-w-4xl flex-col items-center justify-start space-y-5'>
+    <ContainerLayout className='relative mx-7 flex h-[95vh] items-center justify-start md:mx-auto md:h-screen md:max-w-5xl md:py-10'>
+      <div className='mt-3 flex flex-col items-center justify-start space-y-5 md:max-w-4xl'>
         <motion.div className='flex w-full flex-col items-start justify-start'>
           <p className='inline font-medium'>Hi, my name is</p>
           {!pageVisited ? (
@@ -21,16 +21,16 @@ export const Hero: React.FC = () => {
           ) : (
             <h1 className='text-4xl font-semibold md:text-6xl'>Wanfah Diva.</h1>
           )}
-          <h3 className='text-4xl font-semibold opacity-80 md:text-6xl'>
+          <h3 className='text-3xl font-semibold opacity-80 md:text-6xl'>
             I build things for the web.
           </h3>
         </motion.div>
         <motion.div className='flex flex-col items-start justify-start space-y-7'>
-          <div className='w-11/12'>
+          <div className='w-full md:w-11/12'>
             <p className='inline text-sm font-medium opacity-80 md:text-base'>
               I am a Software Engineer with expertise in building Frontend
-              Developments, based in Indonesia.
-              <br />
+              Developments.
+              <br className='hidden md:block' />
               Presently, my focus lies in crafting accessible and
               high-performance web applications at &nbsp;
             </p>

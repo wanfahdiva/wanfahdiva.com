@@ -7,8 +7,8 @@ const BlogPage: NextLayoutComponentType = () => {
   return (
     <Fragment>
       <Seo templateTitle='Blog' />
-      <div className='flex h-screen items-center justify-center'>
-        <h1 className='text-2xl font-semibold uppercase'>Coming soon</h1>
+      <div className='mx-auto flex h-[70vh] max-w-6xl items-center justify-center py-5 md:py-10'>
+        <p>COMING SOON</p>
       </div>
     </Fragment>
   )

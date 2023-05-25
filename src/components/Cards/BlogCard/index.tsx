@@ -15,13 +15,13 @@ export const BlogCard: React.FC<BlogCardProps> = ({ id }) => {
             </span>
             <span className='text-xs uppercase'>10/05/2022</span>
           </div>
-          <h1 className='mt-5 text-xl font-semibold uppercase line-clamp-3'>
+          <h1 className='mt-2.5 text-base font-semibold uppercase line-clamp-3 md:mt-5 md:text-xl'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
             perspiciatis veritatis omnis nesciunt tempore voluptatum blanditiis
             sequi dignissimos asperiores, excepturi fugit sapiente, maxime
             labore! Odio in at animi quia quod!
           </h1>
-          <div className='mt-16 flex items-center justify-between'>
+          <div className='mt-10 flex items-center justify-between md:mt-16'>
             <div className='flex space-x-1'>
               {Array.from({ length: 3 }).map((_, index) => (
                 <h2 className='text-xs uppercase' key={index}>
