@@ -58,7 +58,7 @@ export const MyProcess: React.FC = () => {
             className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-4'
           >
             <div className='absolute top-1.5 -left-[20.5px] h-4 w-4 rounded-full border-4 border-[#111111] bg-white md:hidden' />
-            <h1 className='text-lg md:text-xl'>
+            <h1 className='text-lg md:text-xl md:font-semibold'>
               {index + 1}. {item.title}
             </h1>
             <p className='text-sm md:text-base'>{item.description}</p>
