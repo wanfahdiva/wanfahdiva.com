@@ -9,13 +9,12 @@ interface RollTextLinkProps {
   children: React.ReactNode
   href: string
   className?: string
-  disabled?: boolean
 }
 
 export const RollTextLink = React.forwardRef<
   HTMLAnchorElement,
   RollTextLinkProps
->(({ children, href, className, disabled = false }, ref) => {
+>(({ children, href, className }, ref) => {
   const isDesktop = useIsDesktop()
 
   useEffect(() => {
@@ -30,8 +29,14 @@ export const RollTextLink = React.forwardRef<
     )
   }, [isDesktop])
   return (
-    <Link href={disabled ? '#' : href} passHref>
-      <a className={clsxm('rollButton text-xs uppercase', className)} ref={ref}>
+    <Link href={href} passHref>
+      <a
+        className={clsxm(
+          'md:rollButton text-xs font-semibold uppercase',
+          className
+        )}
+        ref={ref}
+      >
         {children}
       </a>
     </Link>
