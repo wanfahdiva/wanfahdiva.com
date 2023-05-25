@@ -30,7 +30,7 @@ const TEXT_PROCESS = [
 
 export const MyProcess: React.FC = () => {
   return (
-    <ContainerLayout className='relative mx-auto mt-10 flex h-full w-11/12 flex-col justify-between py-5 md:mt-0 md:max-w-5xl md:flex-row md:py-10'>
+    <ContainerLayout className='relative mx-7 mt-10 flex h-full flex-col justify-between py-5 md:mx-auto md:mt-0 md:max-w-5xl md:flex-row md:py-10'>
       <div className='flex w-full md:w-2/5'>
         <div className='sticky top-1/3 h-48'>
           <div className='inline-block opacity-75'>
@@ -58,7 +58,7 @@ export const MyProcess: React.FC = () => {
             className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-4'
           >
             <div className='absolute top-1.5 -left-[20.5px] h-4 w-4 rounded-full border-4 border-[#111111] bg-white md:hidden' />
-            <h1 className='text-lg font-semibold uppercase md:text-xl'>
+            <h1 className='text-lg md:text-xl'>
               {index + 1}. {item.title}
             </h1>
             <p className='text-sm md:text-base'>{item.description}</p>

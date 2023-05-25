@@ -2,7 +2,7 @@ import ButtonLink from '@/components/Links/ButtonLink'
 
 export const GetInTouch: React.FC = () => {
   return (
-    <div className='mx-auto mt-20 flex h-[50vh] w-11/12 items-center justify-center py-5 md:mt-0 md:h-screen md:w-full md:max-w-6xl md:py-10'>
+    <div className='mx-7 mt-20 flex h-[50vh] items-center justify-center py-5 md:mx-auto md:mt-0 md:h-screen md:w-full md:max-w-6xl md:py-10'>
       <div className='flex max-w-xl flex-col items-center justify-center space-y-5'>
         <h1 className='text-center !font-saoldisplay text-2xl font-semibold md:text-4xl'>
           Let&apos;s make your Website shine.

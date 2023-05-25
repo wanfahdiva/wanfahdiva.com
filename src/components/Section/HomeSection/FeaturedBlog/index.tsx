@@ -4,9 +4,9 @@ import ArrowLink from '@/components/Links/ArrowLink'
 
 export const FeaturedBlog: React.FC = () => {
   return (
-    <ContainerLayout className='mx-auto mt-10 w-11/12 py-5 md:mt-0 md:w-full md:max-w-5xl md:py-10'>
+    <ContainerLayout className='mx-7 mt-10 py-5 md:mx-auto md:mt-0 md:w-full md:max-w-5xl md:py-10'>
       <div className='mb-7 flex w-full items-center justify-between'>
-        <h1 className='text-xl font-semibold uppercase md:text-2xl'>
+        <h1 className='text-lg font-semibold uppercase md:text-2xl'>
           Featured <br /> Blog
         </h1>
         <div className='-mb-9 h-full'>
