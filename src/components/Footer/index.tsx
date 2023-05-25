@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className='mx-auto mt-20 w-full max-w-6xl py-10'
+      className='mx-auto mt-20 w-full max-w-6xl py-6'
       initial='hiddenFooter'
       animate='enterFooter'
       exit='exitFooter'
