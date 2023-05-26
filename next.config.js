@@ -8,7 +8,7 @@ module.exports = {
 
   // Uncoment to add domain whitelist
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['dummyimage.com'],
   },
   env: {
     BASE_URL: process.env.BASE_URL || 'http://localhost:3000',

@@ -13,8 +13,10 @@ export const WorkCard: React.FC<WorkCardProps> = ({ data }) => {
     <div className='group flex flex-col items-start space-y-2 border-t py-5 md:flex-row md:items-center md:space-y-0 md:space-x-4 md:pb-10'>
       <div className='relative h-52 w-full md:h-44 md:w-80'>
         <Image
-          src={`/images/work/${
-            data?.coverImage ? data.coverImage : 'bg-hero.jpg'
+          src={`${
+            data?.coverImage
+              ? data.coverImage
+              : 'https://dummyimage.com/600x400/000000/fff.png'
           }`}
           alt={data?.title}
           className='object-cover object-center transition-all duration-300 md:grayscale md:group-hover:grayscale-0'
