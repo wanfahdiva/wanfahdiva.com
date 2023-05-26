@@ -475,6 +475,11 @@
     height: 100%;
     background-image: url('/images/noise.gif');
   }
+  @media screen and (max-width: 1024px) {
+    .noise-container {
+      opacity: 0.01;
+    }
+  }
   /* END NOISE BACKGROUND ANIMATION */
 
   .text-vertical {

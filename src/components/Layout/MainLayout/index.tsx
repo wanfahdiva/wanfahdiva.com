@@ -70,18 +70,26 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   // handle animation when page loaded
   useEffect(() => {
     const body = document.querySelector('body')
-    if (loadingSplash) {
+
+    if (router.pathname === '/404' || router.pathname === '/500') {
       body?.classList.add('overflow-hidden')
-      setTimeout(() => {
-        setLoadingSplash(false)
-      }, 4000)
-      setTimeout(() => {
-        setEndedLoadingSplash(true)
-      }, 3000)
+      setLoadingSplash(false)
+      setEndedLoadingSplash(true)
+      setIsBlur(false)
     } else {
-      body?.classList.remove('overflow-hidden')
+      if (loadingSplash) {
+        body?.classList.add('overflow-hidden')
+        setTimeout(() => {
+          setLoadingSplash(false)
+        }, 4000)
+        setTimeout(() => {
+          setEndedLoadingSplash(true)
+        }, 3000)
+      } else {
+        body?.classList.remove('overflow-hidden')
+      }
     }
-  }, [loadingSplash, setLoadingSplash, setEndedLoadingSplash])
+  }, [loadingSplash, setLoadingSplash, setEndedLoadingSplash, router.pathname])
 
   useEffect(() => {
     setTimeout(() => {
