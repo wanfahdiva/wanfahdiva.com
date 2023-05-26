@@ -31,13 +31,18 @@ const TEXT_PROCESS = [
 export const MyProcess: React.FC = () => {
   return (
     <ContainerLayout
-      className='relative mx-7 mt-10 flex h-full flex-col justify-between py-5 md:mx-auto md:mt-0 md:max-w-5xl md:flex-row md:py-10'
+      className='relative mx-7 mt-10 flex h-full flex-col justify-between py-5 md:mx-auto md:mt-0 md:max-w-5xl md:flex-row md:py-0'
       id='procces'
     >
       <div className='flex w-full md:w-2/5'>
-        <div className='sticky top-1/3 h-48'>
+        <div
+          className='sticky top-[30%] flex h-48 flex-col items-start justify-center'
+          id='sticky'
+        >
           <div className='inline-block opacity-75'>
-            <div className='text-center text-sm uppercase'>My Process 1-6</div>
+            <div className='text-center text-sm uppercase' id='countProcess'>
+              My Process 1-6
+            </div>
           </div>
           <h2 className='mt-2 text-2xl font-semibold md:w-11/12 md:text-4xl md:font-medium'>
             Your Dream Website in just few steps
@@ -58,7 +63,8 @@ export const MyProcess: React.FC = () => {
         {TEXT_PROCESS.map((item, index) => (
           <div
             key={index}
-            className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-4'
+            className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-0'
+            id={`process-${index + 1}`}
           >
             <div className='absolute top-1.5 -left-[21px] h-4 w-4 rounded-full border-4 border-[#F2F2F2] bg-[#111111] dark:border-[#111111] dark:bg-white md:-left-[20.5px] md:hidden' />
             <h1 className='text-lg md:text-xl md:font-semibold'>
