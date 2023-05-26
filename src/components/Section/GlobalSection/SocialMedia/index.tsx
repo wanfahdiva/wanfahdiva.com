@@ -28,18 +28,18 @@ export const SocialMediaSection: React.FC = () => {
             <AiOutlineInstagram />
           </a>
         </Link>
-        <div className='h-24 w-px bg-white opacity-40'></div>
+        <div className='h-24 w-px bg-[#111111] opacity-40 dark:bg-white'></div>
       </div>
       <div className='fixed bottom-0 right-14 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
         <Link href='mailto:wanfahdivaa@gmail.com' passHref>
           <a
             target='_blank'
-            className='inline-flex items-center space-x-1 rounded-md p-2 opacity-70 shadow-md'
+            className='inline-flex items-center space-x-1 rounded-md p-2'
           >
             <span className='text-vertical text-xs'>wanfahdivaa@gmail.com</span>
           </a>
         </Link>
-        <div className='h-24 w-px bg-white opacity-40'></div>
+        <div className='h-24 w-px bg-[#111111] opacity-40 dark:bg-white'></div>
       </div>
     </Fragment>
   )
