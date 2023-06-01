@@ -12,7 +12,7 @@ export const Cursor = ({ routerChange }: CursorProps) => {
   const [hasMoved, setHasMoved] = useState(false)
 
   const onMouseMove = useCallback(
-    ({ clientX, clientY }) => {
+    ({ clientX, clientY }: { clientX: number; clientY: number }) => {
       gsap.to(cursor.current as any, {
         x: clientX,
         y: clientY,

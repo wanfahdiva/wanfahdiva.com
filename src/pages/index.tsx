@@ -1,5 +1,5 @@
 import { NextLayoutComponentType } from 'next'
-import { Fragment, ReactChild } from 'react'
+import { Fragment } from 'react'
 
 import {
   FeaturedBlog,
@@ -29,7 +29,7 @@ const HomePage: NextLayoutComponentType<LandingProps> = ({ work }) => {
   )
 }
 
-HomePage.getLayout = function getLayout(page: ReactChild) {
+HomePage.getLayout = function getLayout(page: React.ReactNode) {
   return page
 }
 

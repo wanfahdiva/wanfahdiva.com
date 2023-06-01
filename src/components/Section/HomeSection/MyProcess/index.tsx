@@ -52,7 +52,6 @@ export const MyProcess: React.FC = () => {
               href='mailto:wanfahdivaa@gmail.com'
               className='mt-5 text-sm'
               variant='light'
-              as='a'
             >
               Get In Touch
             </ButtonLink>
