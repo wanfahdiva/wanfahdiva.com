@@ -29,8 +29,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ id }) => {
                 </h2>
               ))}
             </div>
-            <div className='relative h-7 w-7 rounded-full bg-white p-1.5 !text-black transition-all duration-500 ease-in-out group-hover:!bg-black group-hover:!text-white'>
-              <BsArrowRightShort className='absolute -ml-2 translate-x-1/2 -rotate-45 transform' />
+            <div className='relative h-7 w-7 -rotate-45 overflow-hidden rounded-full bg-white p-1.5 !text-black'>
+              <BsArrowRightShort className='absolute -ml-2 translate-x-1/2 transform opacity-100 transition-all duration-300 ease-in-out group-hover:translate-x-[170%] group-hover:opacity-0' />
+              <BsArrowRightShort className='absolute -ml-2 -translate-x-[170%] transform opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-1/2 group-hover:opacity-100' />
             </div>
           </div>
         </div>

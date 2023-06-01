@@ -49,36 +49,35 @@ export const ContainerLayout: React.FC<ContainerLayoutProps> = ({
   }, [isDekstop])
 
   useEffect(() => {
-    const section = document.getElementById('procces')
-
-    if (section) {
-      gsap.from(section, {
-        opacity: 1,
-        y: 0,
-        scrollTrigger: {
-          trigger: section,
-          start: 'top center',
-          end: 'bottom center',
-          toggleActions: 'play none none reverse',
-          onEnter: () => {
-            // Change the theme when the section is in view
-            setTheme('light')
-          },
-          onLeaveBack: () => {
-            // Change the theme back when the section is out of view
-            setTheme('dark')
-          },
-          onLeave: () => {
-            // Change the theme back when the section is out of view
-            setTheme('dark')
-          },
-          onEnterBack: () => {
-            // Change the theme when the section is in view
-            setTheme('light')
-          },
-        },
-      })
-    }
+    // const section = document.getElementById('procces')
+    // if (section) {
+    //   gsap.from(section, {
+    //     opacity: 1,
+    //     y: 0,
+    //     scrollTrigger: {
+    //       trigger: section,
+    //       start: 'top center',
+    //       end: 'bottom center',
+    //       toggleActions: 'play none none reverse',
+    //       onEnter: () => {
+    //         // Change the theme when the section is in view
+    //         setTheme('light')
+    //       },
+    //       onLeaveBack: () => {
+    //         // Change the theme back when the section is out of view
+    //         setTheme('dark')
+    //       },
+    //       onLeave: () => {
+    //         // Change the theme back when the section is out of view
+    //         setTheme('dark')
+    //       },
+    //       onEnterBack: () => {
+    //         // Change the theme when the section is in view
+    //         setTheme('light')
+    //       },
+    //     },
+    //   })
+    // }
   }, [setTheme])
 
   return (

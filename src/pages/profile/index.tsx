@@ -105,7 +105,7 @@ const AboutPage: NextLayoutComponentType = () => {
               href='https://sawala.tech'
               target='_blank'
               rel='noreferrer'
-              className='border-b border-dotted font-semibold'
+              className='font-semibold'
             >
               Sawala Technology
             </a>
@@ -133,7 +133,7 @@ const AboutPage: NextLayoutComponentType = () => {
                   variants={variantText}
                   transition={{
                     duration: 1,
-                    delay: 2.5 + index * 0.5,
+                    delay: 1.5 + index * 0.5,
                   }}
                 >
                   -&nbsp;
