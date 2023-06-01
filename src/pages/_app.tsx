@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 import { GlobalStyles } from 'twin.macro'
 
@@ -19,11 +18,7 @@ const _APP = ({ Component, pageProps }: any) => {
       forcedTheme={Component.theme || undefined}
     >
       <GlobalStyles />
-      <MainLayout>
-        <AnimatePresence exitBeforeEnter initial={true}>
-          {getLayout(<Component {...pageProps} />)}
-        </AnimatePresence>
-      </MainLayout>
+      <MainLayout>{getLayout(<Component {...pageProps} />)}</MainLayout>
     </ThemeProvider>
   )
 }
