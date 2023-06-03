@@ -37,8 +37,12 @@ export default class _DOCUMENT extends Document<{
             data-emotion-css={this.props.ids?.join(' ')}
             dangerouslySetInnerHTML={{ __html: this.props.css }}
           />
+          <meta
+            name='google-site-verification'
+            content='I716bANDKemWazZdBga7TmakokO-kYkVgJ_IOhae4aQ'
+          />
         </Head>
-        <body className='bg-[#F2F2F2] text-[#1a202c] duration-300 ease-in dark:bg-[#111111] dark:text-white'>
+        <body className='bg-white text-black duration-300 ease-in dark:bg-black dark:text-white'>
           <Main />
           <NextScript />
         </body>

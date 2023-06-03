@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { FaLinkedin } from 'react-icons/fa'
@@ -6,21 +5,8 @@ import { FiGithub } from 'react-icons/fi'
 import { GoMail } from 'react-icons/go'
 
 const Footer = () => {
-  const variants = {
-    hiddenFooter: { opacity: 0, y: 20, delay: 0.95 },
-    enterFooter: { opacity: 1, y: 0 },
-    exitFooter: { opacity: 0, y: 0 },
-  }
-
   return (
-    <motion.footer
-      className='mx-auto mt-20 w-full max-w-6xl py-6 md:mt-0'
-      initial='hiddenFooter'
-      animate='enterFooter'
-      exit='exitFooter'
-      variants={variants}
-      transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
-    >
+    <footer className='mx-auto mt-20 w-full max-w-6xl py-6 md:mt-0'>
       <div className='flex w-full flex-col items-center justify-center space-y-4'>
         <div className='flex space-x-3 md:hidden'>
           <Link href='https://github.com/wanfahdiva' passHref>
@@ -67,7 +53,7 @@ const Footer = () => {
           </a>
         </Link>
       </div>
-    </motion.footer>
+    </footer>
   )
 }
 export default Footer

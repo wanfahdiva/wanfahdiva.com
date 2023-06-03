@@ -39,6 +39,7 @@ export interface WorkMeta {
   tags: string[]
   date: string
   coverImage?: string
+  blurUrl?: string
 }
 
 export const getWorkFromSlug = (slug: string): Work => {
@@ -55,6 +56,7 @@ export const getWorkFromSlug = (slug: string): Work => {
       tags: (data.tags ?? []).sort(),
       date: (data.date ?? new Date()).toString(),
       coverImage: data.coverImage ?? '',
+      blurUrl: data.blurUrl ?? '',
     },
   }
 }
