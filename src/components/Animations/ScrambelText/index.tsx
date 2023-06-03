@@ -1,14 +1,18 @@
 import anime from 'animejs'
 import { useEffect, useRef } from 'react'
 
+import clsxm from '@/lib/clsxm'
+
 interface ScrambelTextProps {
   text: string
   animationDelay?: number
+  className?: string
 }
 
 export const ScrambelText: React.FC<ScrambelTextProps> = ({
   text,
   animationDelay = 150,
+  className,
 }) => {
   const animatedTextRef = useRef<HTMLDivElement>(null)
 
@@ -59,6 +63,9 @@ export const ScrambelText: React.FC<ScrambelTextProps> = ({
   }
 
   return (
-    <div ref={animatedTextRef} className='text-3xl font-semibold md:text-6xl' />
+    <div
+      ref={animatedTextRef}
+      className={clsxm('text-3xl font-semibold md:text-6xl', className)}
+    />
   )
 }

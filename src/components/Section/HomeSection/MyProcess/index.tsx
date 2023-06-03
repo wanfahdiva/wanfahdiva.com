@@ -31,17 +31,17 @@ const TEXT_PROCESS = [
 export const MyProcess: React.FC = () => {
   return (
     <ContainerLayout
-      className='relative mx-7 mt-10 flex h-full flex-col justify-between py-5 md:mx-auto md:mt-0 md:max-w-5xl md:flex-row md:py-0'
+      className='relative mx-7 flex h-full flex-col justify-between py-20 md:mx-auto md:mt-0 md:max-w-5xl md:flex-row md:pb-0 md:pt-20'
       id='procces'
     >
-      <div className='flex w-full md:w-2/5'>
+      <div className='flex w-full pt-5 md:w-2/5'>
         <div
-          className='sticky top-[30%] flex h-48 flex-col items-start justify-center'
+          className='sticky top-[35%] flex h-48 flex-col items-start justify-center'
           id='sticky'
         >
           <div className='inline-block opacity-75'>
             <div className='text-center text-sm uppercase' id='countProcess'>
-              My Process 1-6
+              How Do I Work?
             </div>
           </div>
           <h2 className='mt-2 text-2xl font-semibold md:w-11/12 md:text-4xl md:font-medium'>
@@ -62,7 +62,7 @@ export const MyProcess: React.FC = () => {
         {TEXT_PROCESS.map((item, index) => (
           <div
             key={index}
-            className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-0'
+            className='relative mb-10 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-0'
             id={`process-${index + 1}`}
           >
             <div className='absolute top-1.5 -left-[21px] h-4 w-4 rounded-full border-4 border-[#F2F2F2] bg-[#111111] dark:border-[#111111] dark:bg-white md:-left-[20.5px] md:hidden' />

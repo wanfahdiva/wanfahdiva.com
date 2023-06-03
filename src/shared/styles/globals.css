@@ -140,7 +140,7 @@
   /* LINE ANIMATION */
   .c-scrolldown {
     width: 1px;
-    height: 40px;
+    height: 30px;
     position: absolute;
     margin: 0 auto;
     overflow: hidden;
@@ -162,13 +162,13 @@
 
   @keyframes scrolldown {
     0% {
-      background-position: 0 -40px;
+      background-position: 0 -30px;
     }
     75% {
       background-position: 0 0;
     }
     100% {
-      background-position: 0 40px;
+      background-position: 0 30px;
     }
   }
   /* END LINE ANIMATION */
@@ -451,7 +451,7 @@
     height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
     pointer-events: none;
-    opacity: 0.019;
+    opacity: 0.011;
     z-index: 9999;
   }
   .noise-animate {

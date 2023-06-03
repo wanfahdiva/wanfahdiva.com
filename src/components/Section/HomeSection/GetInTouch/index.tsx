@@ -9,7 +9,7 @@ export const GetInTouch: React.FC = () => {
       {({ inView, ref }) => (
         <div
           className={clsx(
-            'mx-7 mt-20 flex h-[50vh] items-center justify-center py-5 md:mx-auto md:mt-0 md:h-screen md:w-full md:max-w-6xl md:py-10',
+            'mx-7 mt-20 flex h-[60vh] items-center justify-center md:mx-auto md:mt-0 md:h-screen md:w-full md:max-w-6xl',
             inView && 'fade-in-start'
           )}
           ref={ref}

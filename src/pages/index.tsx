@@ -34,7 +34,9 @@ HomePage.getLayout = function getLayout(page: React.ReactNode) {
 }
 
 export async function getStaticProps() {
-  const work = getAllContent().map((work) => work.meta)
+  const work = getAllContent()
+    .slice(0, 2)
+    .map((work) => work.meta)
   return { props: { work } }
 }
 export default HomePage

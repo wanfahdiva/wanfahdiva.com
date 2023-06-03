@@ -3,15 +3,10 @@ import Link from 'next/link'
 import { HiDocumentText } from 'react-icons/hi'
 import InView from 'react-intersection-observer'
 
-import { useVisitedPage } from '@/hooks/useVisitedPage'
-
-import { ScrambelText } from '@/components/Animations'
 import { ContainerLayout } from '@/components/Layout'
 import ButtonLink from '@/components/Links/ButtonLink'
 
 export const Hero: React.FC = () => {
-  const pageVisited = useVisitedPage()
-
   return (
     <ContainerLayout>
       <InView triggerOnce rootMargin='-40% 0px'>
@@ -28,22 +23,14 @@ export const Hero: React.FC = () => {
                 <p className='inline font-medium' data-fade='3'>
                   Hi, my name is
                 </p>
-                {!pageVisited ? (
-                  <ScrambelText
-                    text='Wanfah Diva.'
-                    animationDelay={200}
-                    data-fade='5'
-                  />
-                ) : (
-                  <h1
-                    className='text-4xl font-semibold md:text-6xl'
-                    data-fade='5'
-                  >
-                    Wanfah Diva.
-                  </h1>
-                )}
+                <h1
+                  className='text-4xl font-semibold md:text-6xl'
+                  data-fade='5'
+                >
+                  Wanfah Diva.
+                </h1>
                 <h3
-                  className='text-3xl font-semibold opacity-80 md:text-6xl'
+                  className='text-3xl font-semibold !text-gray-300 md:text-6xl'
                   data-fade='7'
                 >
                   I build things for the web.
@@ -83,7 +70,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className='c-scrolldown absolute bottom-3 left-1/2 !opacity-40'>
+            <div className='c-scrolldown absolute bottom-3 left-1/2 !opacity-40 md:hidden'>
               <div className='c-line'></div>
             </div>
           </section>
