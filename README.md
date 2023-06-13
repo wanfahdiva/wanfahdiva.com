@@ -44,4 +44,4 @@
 
 ## - License
 
-This Website is under [MIT License](https://github.com/wanfahdiva/wanfahdiva.com/blob/master/LICENSE)
+This Website is under [MIT License](https://github.com/wanfahdiva/wanfahdiva.com/blob/main/LICENSE)
