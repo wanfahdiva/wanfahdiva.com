@@ -143,6 +143,7 @@ const Header = ({
               </span>
               {/* @ts-ignore */}
               <ScrollLink
+                to={link.toLowerCase()}
                 onClick={() => {
                   scrollToPage(link.toLowerCase())
                 }}
@@ -157,8 +158,7 @@ const Header = ({
           <input
             type='checkbox'
             id='burger-toggle'
-            onClick={(e: any) => setIsOpen(e.target.checked)}
-            defaultChecked={false}
+            onChange={(e: any) => setIsOpen(e.target.checked)}
             checked={isOpen}
           />
           <label htmlFor='burger-toggle' className='burger-menu'>
@@ -182,6 +182,7 @@ const Header = ({
                   <span className='pl-7 opacity-75'>0{index + 1}.</span>
                   {/* @ts-ignore */}
                   <ScrollLink
+                    to={link.toLowerCase()}
                     onClick={() => {
                       scrollToPage(link.toLowerCase()), setIsOpen(false)
                     }}
