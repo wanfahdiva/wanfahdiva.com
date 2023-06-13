@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-    <img src="https://vercelbadge.vercel.app/api/wanfahdiva/wanfahdiva.com" alt="Netlify Status" />
+    <img src="https://vercelbadge.vercel.app/api/wanfahdiva/wanfahdiva.com" alt="Vercel Status" />
 </p>
 
 ![demo](https://raw.githubusercontent.com/wanfahdiva/wanfahdiva.com/main/public/images/demo.png)
