@@ -23,7 +23,7 @@ const WorkPage: NextLayoutComponentType<WorkPageProps> = ({ work }) => {
             <div className='flex flex-col space-y-5 md:flex-row md:items-end md:justify-between md:space-y-0'>
               <div>
                 <div className='mb-7 flex w-full items-center space-x-5'>
-                  <h2 className='text-5xl font-normal'>Work</h2>
+                  <h2 className='text-2xl font-normal md:text-5xl'>Work</h2>
                   <div
                     className={clsx(
                       'h-px bg-gray-300',
