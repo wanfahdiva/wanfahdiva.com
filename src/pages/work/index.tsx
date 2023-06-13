@@ -39,6 +39,8 @@ const WorkPage: NextLayoutComponentType<WorkPageProps> = ({ work }) => {
                 </p>
               </div>
               <div>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
                 <Link
                   to='work-section'
                   smooth={true}
@@ -55,6 +57,8 @@ const WorkPage: NextLayoutComponentType<WorkPageProps> = ({ work }) => {
               </div>
             </div>
 
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <Element
               className='grid grid-cols-1 gap-10 py-10 md:my-20 md:grid-cols-3'
               name='work-section'

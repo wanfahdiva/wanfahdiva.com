@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Element } from 'react-scroll'
 
 interface ContainerLayoutProps {
@@ -14,10 +15,14 @@ export const ContainerLayout: React.FC<ContainerLayoutProps> = ({
   name = '',
 }) => {
   return (
-    <Element name={name}>
-      <div className={className} id={id}>
-        {children}
-      </div>
-    </Element>
+    <Fragment>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <Element name={name}>
+        <div className={className} id={id}>
+          {children}
+        </div>
+      </Element>
+    </Fragment>
   )
 }

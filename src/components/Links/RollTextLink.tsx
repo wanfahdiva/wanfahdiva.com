@@ -34,6 +34,8 @@ export const RollTextLink = React.forwardRef<
         isDesktop && 'rollButton',
         className
       )}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       ref={ref}
     >
       {children}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -114,6 +115,7 @@ const Header = ({
               />
             </a>
           </Link>
+          {/* @ts-ignore */}
           <ScrollLink
             to='hero'
             smooth={true}
@@ -139,6 +141,7 @@ const Header = ({
               <span className='text-xs opacity-75 md:font-semibold'>
                 0{index + 1}.
               </span>
+              {/* @ts-ignore */}
               <ScrollLink
                 onClick={() => {
                   scrollToPage(link.toLowerCase())
@@ -177,6 +180,7 @@ const Header = ({
                   className='flex space-x-1 border-b border-white py-6 text-lg uppercase'
                 >
                   <span className='pl-7 opacity-75'>0{index + 1}.</span>
+                  {/* @ts-ignore */}
                   <ScrollLink
                     onClick={() => {
                       scrollToPage(link.toLowerCase()), setIsOpen(false)
