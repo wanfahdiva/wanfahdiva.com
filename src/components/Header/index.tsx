@@ -158,7 +158,7 @@ const Header = ({
             type='checkbox'
             id='burger-toggle'
             onClick={(e: any) => setIsOpen(e.target.checked)}
-            defaultChecked={isOpen}
+            defaultChecked={false}
             checked={isOpen}
           />
           <label htmlFor='burger-toggle' className='burger-menu'>
