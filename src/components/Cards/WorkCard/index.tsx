@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import ArrowLink from '@/components/Links/ArrowLink'
 
-import { WorkMeta } from '@/api/work'
+import { WorkMeta } from '@/api/get-work'
 
 type WorkCardProps = {
   data: WorkMeta

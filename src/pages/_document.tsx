@@ -42,7 +42,7 @@ export default class _DOCUMENT extends Document<{
             content='I716bANDKemWazZdBga7TmakokO-kYkVgJ_IOhae4aQ'
           />
         </Head>
-        <body className='bg-white text-black duration-300 ease-in dark:bg-black dark:text-white'>
+        <body className='bg-[#f6f6f6] text-black duration-300 ease-in dark:bg-black dark:text-white'>
           <Main />
           <NextScript />
         </body>

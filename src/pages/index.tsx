@@ -2,15 +2,15 @@ import { NextLayoutComponentType } from 'next'
 import { Fragment } from 'react'
 
 import {
-  FeaturedBlog,
-  FeaturedProject,
-  GetInTouch,
-  Hero,
-  MyProcess,
+  SectionAbout,
+  SectionExperience,
+  SectionGetInTouch,
+  SectionHero,
+  SectionProject,
 } from '@/components/Section/HomeSection'
 import Seo from '@/components/SEO'
 
-import { getAllContent, WorkMeta } from '@/api/work'
+import { getFeaturedWork, WorkMeta } from '@/api/get-work'
 
 interface LandingProps {
   work: WorkMeta[]
@@ -20,11 +20,11 @@ const HomePage: NextLayoutComponentType<LandingProps> = ({ work }) => {
   return (
     <Fragment>
       <Seo templateTitle='Home' />
-      <Hero />
-      <FeaturedProject data={work} />
-      <MyProcess />
-      <FeaturedBlog />
-      <GetInTouch />
+      <SectionHero />
+      <SectionAbout />
+      <SectionExperience />
+      <SectionProject data={work} />
+      <SectionGetInTouch />
     </Fragment>
   )
 }
@@ -34,9 +34,7 @@ HomePage.getLayout = function getLayout(page: React.ReactNode) {
 }
 
 export async function getStaticProps() {
-  const work = getAllContent()
-    .slice(0, 2)
-    .map((work) => work.meta)
+  const work = getFeaturedWork().map((work) => work.meta)
   return { props: { work } }
 }
 export default HomePage

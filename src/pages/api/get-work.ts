@@ -15,7 +15,7 @@ export const getSlugs = (): string[] => {
   })
 }
 
-export const getAllContent = () => {
+export const getAllWork = () => {
   const work = getSlugs()
     .map((slug) => getWorkFromSlug(slug))
     .sort((a, b) => {
@@ -25,6 +25,12 @@ export const getAllContent = () => {
     })
     .reverse()
   return work
+}
+
+export const getFeaturedWork = () => {
+  const work = getAllWork()
+  const featured = work.filter((work) => work.meta.isFeatured)
+  return featured
 }
 
 interface Work {
@@ -40,6 +46,7 @@ export interface WorkMeta {
   date: string
   coverImage?: string
   blurUrl?: string
+  isFeatured?: string
 }
 
 export const getWorkFromSlug = (slug: string): Work => {
@@ -57,6 +64,7 @@ export const getWorkFromSlug = (slug: string): Work => {
       date: (data.date ?? new Date()).toString(),
       coverImage: data.coverImage ?? '',
       blurUrl: data.blurUrl ?? '',
+      isFeatured: data.isFeatured ?? '',
     },
   }
 }

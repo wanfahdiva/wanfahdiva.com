@@ -32,6 +32,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       if (url === router.asPath) {
         return
       }
+      window.scrollTo(0, 0)
       setRefreshCursor(true)
       setLoadingRoute(true)
       body?.classList.add('overflow-hidden')
@@ -93,6 +94,14 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   }, [endedLoadingSplash])
 
   useEffect(() => {
+    setTimeout(() => {
+      if (endedLoadingRoute) {
+        setIsBlur(false)
+      }
+    }, 2000)
+  }, [endedLoadingRoute])
+
+  useEffect(() => {
     const header = document.getElementById('header')
     const headerHeight = header?.clientHeight
     setHeaderHeight(`${headerHeight}px`)
@@ -104,8 +113,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <Noise />
       {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
-      <div className={loadingSplash ? 'opacity-0' : 'opacity-100'}>
-        <Header />
+      <div
+        className={loadingSplash || loadingRoute ? 'opacity-0' : 'opacity-100'}
+      >
+        <Header isSplashScreen={loadingSplash} isLoadingRoute={loadingRoute} />
         {isDesktop && <Cursor routerChange={refreshCursor} />}
         {!loadingSplash && (
           <div

@@ -10,6 +10,7 @@ export const Cursor = ({ routerChange }: CursorProps) => {
   const cursor = useRef<any>()
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
+  const [hoverWork, setHoverWork] = useState(false)
 
   const onMouseMove = useCallback(
     ({ clientX, clientY }: { clientX: number; clientY: number }) => {
@@ -35,10 +36,16 @@ export const Cursor = ({ routerChange }: CursorProps) => {
 
   useEffect(() => {
     const links = document.querySelectorAll('button, a')
-    const handleMouseEnter = () => {
+    const handleMouseEnter = (event: any) => {
+      const hrefValue = event.target.getAttribute('href')
+      const includesWork = hrefValue && hrefValue.includes('work')
+      const isButton = event.target.classList.contains('focus-visible:ring')
+      setHoverWork(isButton ? false : includesWork)
       setIsPointer(true)
     }
+
     const handleMouseLeave = () => {
+      setHoverWork(false)
       setIsPointer(false)
     }
 
@@ -59,7 +66,22 @@ export const Cursor = ({ routerChange }: CursorProps) => {
     <div
       style={{ opacity: hasMoved ? 1 : 0 }}
       ref={cursor}
-      className={cn('cursor-class', isPointer && 'pointer')}
-    />
+      className={cn(
+        'cursor-class',
+        isPointer && 'pointer mix-blend-difference',
+        hoverWork && '!bg-black !mix-blend-normal'
+      )}
+    >
+      <div
+        className={cn(
+          'flex h-full w-full items-center justify-center',
+          hoverWork ? 'block' : 'hidden'
+        )}
+      >
+        <p className='scale-50 text-center !text-xs font-semibold !text-white'>
+          Explore
+        </p>
+      </div>
+    </div>
   )
 }
