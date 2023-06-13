@@ -6,9 +6,9 @@ import InView from 'react-intersection-observer'
 import { ContainerLayout } from '@/components/Layout'
 import ButtonLink from '@/components/Links/ButtonLink'
 
-export const Hero: React.FC = () => {
+export const SectionHero: React.FC = () => {
   return (
-    <ContainerLayout>
+    <ContainerLayout name='hero'>
       <InView triggerOnce rootMargin='-40% 0px'>
         {({ inView, ref }) => (
           <section
@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
           >
             <div className='mt-3 flex flex-col items-center justify-start space-y-5 md:max-w-4xl'>
               <div className='flex w-full flex-col items-start justify-start'>
-                <p className='inline font-medium' data-fade='3'>
+                <p className='inline font-medium !text-[#d4d4d4]' data-fade='3'>
                   Hi, my name is
                 </p>
                 <h1
@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
                   Wanfah Diva.
                 </h1>
                 <h3
-                  className='text-3xl font-semibold !text-gray-300 md:text-6xl'
+                  className='text-3xl font-semibold !text-[#BEBEBB] md:text-6xl'
                   data-fade='7'
                 >
                   I build things for the web.
@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
                 data-fade='8'
               >
                 <div className='w-full md:w-11/12'>
-                  <p className='inline text-sm font-medium opacity-80 md:text-base'>
+                  <p className='inline text-sm font-medium !text-[#d4d4d4] md:text-base'>
                     I am a Software Engineer with expertise in building Frontend
                     Developments.
                     <br className='hidden md:block' />
@@ -49,7 +49,10 @@ export const Hero: React.FC = () => {
                     high-performance web applications at &nbsp;
                   </p>
                   <Link href='https://sawala.tech/' passHref>
-                    <a target='_blank' className='text-sm md:text-base'>
+                    <a
+                      target='_blank'
+                      className='text-sm font-semibold underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
+                    >
                       PT. Sawala Technology Indonesia.
                     </a>
                   </Link>
@@ -61,11 +64,12 @@ export const Hero: React.FC = () => {
                   <ButtonLink
                     href='https://adinusa.id/media/files/cv/2021/08/11/Cv_compressed.pdf'
                     variant='light'
-                    target='_blank'
                     className='inline-flex items-center justify-center space-x-2'
                   >
                     <HiDocumentText />
-                    <span className='text-sm font-semibold'>Resume</span>
+                    <span className='text-xs font-semibold md:text-sm'>
+                      Resume
+                    </span>
                   </ButtonLink>
                 </div>
               </div>

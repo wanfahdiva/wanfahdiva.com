@@ -16,7 +16,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 import { YouTube } from '@/components/MDX/'
 import Seo from '@/components/SEO'
 
-import { getSlugs, getWorkFromSlug, WorkMeta } from '@/api/work'
+import { getSlugs, getWorkFromSlug, WorkMeta } from '@/api/get-work'
 
 interface MDXWork {
   source: MDXRemoteSerializeResult<Record<string, unknown>>

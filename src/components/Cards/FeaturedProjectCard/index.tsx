@@ -1,10 +1,13 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+
+import clsxm from '@/lib/clsxm'
 
 import ArrowLink from '@/components/Links/ArrowLink'
 
-import { WorkMeta } from '@/api/work'
+import { WorkMeta } from '@/api/get-work'
 
 type FeaturedProjectCardProps = {
   data: WorkMeta
@@ -15,8 +18,10 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
   data,
   index,
 }) => {
+  const [isLoading, setLoading] = useState(true)
   const tags = data.tags.map((tag) => `#${tag}`).join(' ')
   const isEven = index % 2 === 0
+
   return (
     <div
       className={clsx(
@@ -33,12 +38,15 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
                   ? data.coverImage
                   : 'https://dummyimage.com/600x400/ffffff/000000.png'
               }`}
-              alt={data?.title}
-              className='object-cover object-top transition-all duration-300 md:rounded'
               layout='fill'
-              placeholder='blur'
-              loading='lazy'
-              blurDataURL={data.blurUrl}
+              alt={data?.title}
+              className={clsxm(
+                'opacity-85 object-cover object-top transition-all ease-in-out md:rounded',
+                isLoading
+                  ? 'scale-110 blur-2xl grayscale duration-700'
+                  : 'scale-100 blur-0 grayscale-0 duration-300'
+              )}
+              onLoadingComplete={() => setLoading(false)}
             />
             <h4 className='absolute left-2 bottom-2 block bg-black bg-opacity-90 px-1 text-sm text-white backdrop-blur-sm md:-mt-6 md:hidden'>
               Featured Project
@@ -59,7 +67,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
         <div className='z-20 flex flex-col space-y-2 overflow-hidden rounded rounded-t-none border-2 bg-black bg-opacity-90 p-4 backdrop-blur-sm md:w-[120%] md:rounded-t md:px-6 md:pb-6 md:pt-4'>
           <h2
             className={clsx(
-              'text-xl font-semibold',
+              'text-lg font-semibold md:text-xl',
               isEven ? 'text-left' : 'md:text-right'
             )}
           >
@@ -67,15 +75,15 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           </h2>
           <p
             className={clsx(
-              'line-clamp-2 md:line-clamp-2',
-              isEven ? 'text-left' : 'md:text-right'
+              'text-sm !text-[#d4d4d4] line-clamp-2 md:text-base ',
+              isEven ? 'text-left' : 'md:pr-2 md:text-right'
             )}
           >
             {data?.excerpt}
           </p>
           <small
             className={clsx(
-              'flex space-x-2 text-sm',
+              'flex space-x-2 text-sm !text-[#BEBEBB]',
               isEven ? 'justify-start' : 'md:justify-end'
             )}
           >

@@ -55,7 +55,7 @@ export default function ArrowLink<C extends React.ElementType>({
           strokeWidth='1.5'
           strokeLinecap='round'
           className={clsxm(
-            'origin-left transition-all duration-200',
+            'origin-left transition-transform duration-200',
             'opacity-0 motion-safe:-translate-x-1',
             'group-hover:translate-x-0 group-hover:opacity-100'
           )}

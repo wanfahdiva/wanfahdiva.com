@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { useEffect } from 'react'
 import React from 'react'
 
@@ -7,14 +6,14 @@ import { useIsDesktop } from '@/hooks/useWindowSize'
 
 interface RollTextLinkProps {
   children: React.ReactNode
-  href: string
   className?: string
+  as?: string
 }
 
 export const RollTextLink = React.forwardRef<
   HTMLAnchorElement,
   RollTextLinkProps
->(({ children, href, className }, ref) => {
+>(({ children, className }, ref) => {
   const isDesktop = useIsDesktop()
 
   useEffect(() => {
@@ -29,17 +28,15 @@ export const RollTextLink = React.forwardRef<
     )
   }, [isDesktop])
   return (
-    <Link href={href} passHref>
-      <a
-        className={clsxm(
-          'text-xs font-semibold uppercase',
-          isDesktop && 'rollButton',
-          className
-        )}
-        ref={ref}
-      >
-        {children}
-      </a>
-    </Link>
+    <div
+      className={clsxm(
+        'cursor-pointer text-xs font-semibold uppercase',
+        isDesktop && 'rollButton',
+        className
+      )}
+      ref={ref}
+    >
+      {children}
+    </div>
   )
 })
