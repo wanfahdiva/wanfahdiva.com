@@ -68,3 +68,29 @@ export const getWorkFromSlug = (slug: string): Work => {
     },
   }
 }
+
+export const getNextSlug = (slug: string) => {
+  const slugs = getSlugs()
+  const index = slugs.indexOf(slug)
+  const nextIndex = (index + 1) % slugs.length
+  const data = getWorkFromSlug(slugs[nextIndex])
+  if (data.meta) {
+    return {
+      title: data.meta.title,
+      slug: data.meta.slug,
+    }
+  }
+}
+
+export const getPrevSlug = (slug: string) => {
+  const slugs = getSlugs()
+  const index = slugs.indexOf(slug)
+  const prevIndex = (index - 1 + slugs.length) % slugs.length
+  const data = getWorkFromSlug(slugs[prevIndex])
+  if (data.meta) {
+    return {
+      title: data.meta.title,
+      slug: data.meta.slug,
+    }
+  }
+}

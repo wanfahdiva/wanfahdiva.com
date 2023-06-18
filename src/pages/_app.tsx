@@ -3,6 +3,7 @@ import { GlobalStyles } from 'twin.macro'
 
 import '@/styles/colors.css'
 import '@/styles/globals.css'
+import '@/styles/mdx.css'
 import 'tailwindcss/tailwind.css'
 
 import { MainLayout } from '@/components/Layout'

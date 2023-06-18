@@ -13,8 +13,8 @@ export const WorkCard: React.FC<WorkCardProps> = ({ data }) => {
   return (
     <div className='flex w-full flex-col space-y-3'>
       <div className='flex items-center justify-between'>
-        <h2 className='!font-saoldisplay text-xl'>{data.title}</h2>
-        <small className='!font-saoldisplay'>{data.date}</small>
+        <h2 className='text-xl'>{data.title}</h2>
+        <small className=''>{data.date}</small>
       </div>
       <div className='relative h-48 w-full rounded-t'>
         <Image
@@ -41,6 +41,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ data }) => {
           </ArrowLink>
         </div>
       </div>
+      <div className='mx-auto h-px w-full bg-gray-400 md:w-11/12'></div>
     </div>
   )
 }

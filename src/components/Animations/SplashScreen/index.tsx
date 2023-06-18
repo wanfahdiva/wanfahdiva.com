@@ -34,8 +34,8 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
       )}
     >
       <div className='example'>
-        <LogoIcon className={isDesktop ? '' : 'h-32 w-32'} />
-        <div className='text-center font-semibold' ref={counterRef}>
+        <LogoIcon className={isDesktop ? 'h-40 w-40' : 'h-32 w-32'} />
+        <div className='text-center' ref={counterRef}>
           0%
         </div>
       </div>

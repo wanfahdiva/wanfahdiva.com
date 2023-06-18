@@ -41,21 +41,19 @@ export const SectionHero: React.FC = () => {
                 data-fade='8'
               >
                 <div className='w-full md:w-11/12'>
-                  <p className='inline text-sm font-medium !text-[#d4d4d4] md:text-base'>
+                  <p className='text-sm font-medium !text-[#d4d4d4] md:text-base'>
                     I am a Software Engineer with expertise in building Frontend
-                    Developments.
-                    <br className='hidden md:block' />
-                    Presently, my focus lies in building accessible and
-                    high-performance web applications at &nbsp;
+                    Developments. Presently, my focus lies in building
+                    accessible and high-performance web applications at &nbsp;
+                    <Link href='https://sawala.tech/' passHref>
+                      <a
+                        target='_blank'
+                        className='text-sm font-semibold text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
+                      >
+                        PT. Sawala Technology Indonesia.
+                      </a>
+                    </Link>
                   </p>
-                  <Link href='https://sawala.tech/' passHref>
-                    <a
-                      target='_blank'
-                      className='text-sm font-semibold underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
-                    >
-                      PT. Sawala Technology Indonesia.
-                    </a>
-                  </Link>
                 </div>
                 <div
                   className='inline-flex items-center space-x-2 md:space-x-5'
