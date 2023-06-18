@@ -1,30 +1,40 @@
 import { NextLayoutComponentType } from 'next'
-import { Fragment, ReactChild } from 'react'
+import { Fragment } from 'react'
 
-import { ScrambelText } from '@/components/Animations'
+import {
+  SectionAbout,
+  SectionExperience,
+  SectionGetInTouch,
+  SectionHero,
+  SectionProject,
+} from '@/components/Section/HomeSection'
+import Seo from '@/components/SEO'
 
-import { getAllContent, WorkMeta } from '@/api/work'
+import { getFeaturedWork, WorkMeta } from '@/api/get-work'
 
 interface LandingProps {
   work: WorkMeta[]
 }
 
-const HomePage: NextLayoutComponentType<LandingProps> = () => {
+const HomePage: NextLayoutComponentType<LandingProps> = ({ work }) => {
   return (
     <Fragment>
-      <div className='flex h-screen items-center justify-center !font-saoldisplay font-semibold uppercase'>
-        <ScrambelText text='Coming Soon' />
-      </div>
+      <Seo templateTitle='Home' />
+      <SectionHero />
+      <SectionAbout />
+      <SectionExperience />
+      <SectionProject data={work} />
+      <SectionGetInTouch />
     </Fragment>
   )
 }
 
-HomePage.getLayout = function getLayout(page: ReactChild) {
+HomePage.getLayout = function getLayout(page: React.ReactNode) {
   return page
 }
 
 export async function getStaticProps() {
-  const work = getAllContent().map((work) => work.meta)
+  const work = getFeaturedWork().map((work) => work.meta)
   return { props: { work } }
 }
 export default HomePage

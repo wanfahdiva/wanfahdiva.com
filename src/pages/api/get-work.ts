@@ -15,7 +15,7 @@ export const getSlugs = (): string[] => {
   })
 }
 
-export const getAllContent = () => {
+export const getAllWork = () => {
   const work = getSlugs()
     .map((slug) => getWorkFromSlug(slug))
     .sort((a, b) => {
@@ -25,6 +25,12 @@ export const getAllContent = () => {
     })
     .reverse()
   return work
+}
+
+export const getFeaturedWork = () => {
+  const work = getAllWork()
+  const featured = work.filter((work) => work.meta.isFeatured)
+  return featured
 }
 
 interface Work {
@@ -39,6 +45,8 @@ export interface WorkMeta {
   tags: string[]
   date: string
   coverImage?: string
+  blurUrl?: string
+  isFeatured?: string
 }
 
 export const getWorkFromSlug = (slug: string): Work => {
@@ -55,6 +63,34 @@ export const getWorkFromSlug = (slug: string): Work => {
       tags: (data.tags ?? []).sort(),
       date: (data.date ?? new Date()).toString(),
       coverImage: data.coverImage ?? '',
+      blurUrl: data.blurUrl ?? '',
+      isFeatured: data.isFeatured ?? '',
     },
+  }
+}
+
+export const getNextSlug = (slug: string) => {
+  const slugs = getSlugs()
+  const index = slugs.indexOf(slug)
+  const nextIndex = (index + 1) % slugs.length
+  const data = getWorkFromSlug(slugs[nextIndex])
+  if (data.meta) {
+    return {
+      title: data.meta.title,
+      slug: data.meta.slug,
+    }
+  }
+}
+
+export const getPrevSlug = (slug: string) => {
+  const slugs = getSlugs()
+  const index = slugs.indexOf(slug)
+  const prevIndex = (index - 1 + slugs.length) % slugs.length
+  const data = getWorkFromSlug(slugs[prevIndex])
+  if (data.meta) {
+    return {
+      title: data.meta.title,
+      slug: data.meta.slug,
+    }
   }
 }

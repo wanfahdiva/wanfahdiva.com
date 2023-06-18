@@ -5,6 +5,9 @@ import { useIsDesktop } from '@/hooks/useWindowSize'
 
 import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import { SocialMediaSection } from '@/components/Section/GlobalSection'
 import Seo from '@/components/SEO'
 
 interface MainLayoutProps {
@@ -29,6 +32,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       if (url === router.asPath) {
         return
       }
+      window.scrollTo(0, 0)
       setRefreshCursor(true)
       setLoadingRoute(true)
       body?.classList.add('overflow-hidden')
@@ -90,6 +94,14 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   }, [endedLoadingSplash])
 
   useEffect(() => {
+    setTimeout(() => {
+      if (endedLoadingRoute) {
+        setIsBlur(false)
+      }
+    }, 2000)
+  }, [endedLoadingRoute])
+
+  useEffect(() => {
     const header = document.getElementById('header')
     const headerHeight = header?.clientHeight
     setHeaderHeight(`${headerHeight}px`)
@@ -101,7 +113,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <Noise />
       {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
-      <div className={loadingSplash ? 'opacity-0' : 'opacity-100'}>
+      <div
+        className={loadingSplash || loadingRoute ? 'opacity-0' : 'opacity-100'}
+      >
+        <Header isSplashScreen={loadingSplash} isLoadingRoute={loadingRoute} />
         {isDesktop && <Cursor routerChange={refreshCursor} />}
         {!loadingSplash && (
           <div
@@ -111,6 +126,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             {children}
           </div>
         )}
+        <SocialMediaSection />
+        <Footer />
       </div>
     </Fragment>
   )
