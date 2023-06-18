@@ -30,7 +30,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
       )}
     >
       <div className='flex items-center justify-start rounded-t border-2 md:w-2/3 md:border-0'>
-        <Link href={`/work/${data.slug}`} passHref>
+        <Link href={`/work/${data.slug}`}>
           <a className='group relative h-52 w-full md:h-[22rem]'>
             <Image
               src={`${

@@ -144,6 +144,12 @@
     border: 3px solid transparent;
     border-radius: 10px;
   }
+
+  @media screen and (max-width: 768px) {
+    ::-webkit-scrollbar {
+      height: 3px;
+    }
+  }
   /* END CUSTOM SCROLLBAR */
 
   /* LINE ANIMATION */
@@ -287,57 +293,6 @@
     }
   }
   /* END PROGRESS BAR LOADING ANIMATION */
-
-  /* CUSTOM STYLE FOR MDX CONTENT */
-  #mdx a {
-    color: #7048e8 !important;
-  }
-
-  #mdx h2 {
-    color: #7048e8 !important;
-    font-size: 1.25rem;
-    text-align: left;
-    width: 100%;
-    margin: 0.5rem 0 1rem 0;
-  }
-
-  #mdx p {
-    text-align: justify;
-  }
-
-  .dark #mdx a {
-    color: #fbd38d !important;
-  }
-
-  #mdx code {
-    @apply my-5 rounded-md;
-  }
-
-  .dark #mdx h2 {
-    color: #fbd38d !important;
-    font-size: 1.25rem;
-    text-align: left;
-    width: 100%;
-  }
-
-  .dark blockquote {
-    border-left: 0.25rem solid #fbd38d;
-    padding: 0.5rem 1rem;
-    margin: 1rem 0;
-    background: #333539c6;
-  }
-
-  blockquote > {
-    border-left: 0.25rem solid #7048e8;
-    padding: 0.5rem 1rem;
-    margin: 1rem 0;
-    background: #f3f4f68c;
-  }
-
-  #mdx code {
-    font-family: 'Fira Code', monospace !important;
-  }
-  /* END CUSTOM STYLE FOR MDX CONTENT */
 
   /* SPLASHSCREEN LOADING */
   .example {
