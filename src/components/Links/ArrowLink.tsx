@@ -6,7 +6,7 @@ import UnderlineLink from '@/components/Links/UnderlineLink'
 import { UnstyledLinkProps } from '@/components/Links/UnstyledLink'
 
 type ArrowLinkProps<C extends React.ElementType> = {
-  aka?: C
+  as?: C
   direction?: 'left' | 'right'
 } & UnstyledLinkProps &
   React.ComponentProps<C>
@@ -39,9 +39,7 @@ export default function ArrowLink<C extends React.ElementType>({
         className={clsxm(
           'relative',
           'transition-transform duration-200',
-          direction === 'right'
-            ? 'motion-safe:-translate-x-1'
-            : 'rotate-180 motion-safe:translate-x-1',
+          direction === 'right' ? 'motion-safe:-translate-x-1' : 'rotate-180',
           'group-hover:translate-x-0'
         )}
       >
@@ -55,7 +53,7 @@ export default function ArrowLink<C extends React.ElementType>({
           strokeWidth='1.5'
           strokeLinecap='round'
           className={clsxm(
-            'origin-left transition-transform duration-200',
+            'origin-left transition-all duration-200',
             'opacity-0 motion-safe:-translate-x-1',
             'group-hover:translate-x-0 group-hover:opacity-100'
           )}

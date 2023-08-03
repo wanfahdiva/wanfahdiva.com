@@ -1,19 +1,18 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
 
   reactStrictMode: true,
+  swcMinify: true,
 
   // Uncoment to add domain whitelist
-  images: {
-    domains: ['dummyimage.com'],
-  },
-  env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
-    API_URL: process.env.API_URL || 'http://localhost:1337/api',
-  },
+  // images: {
+  //   domains: [
+  //     'res.cloudinary.com',
+  //   ],
+  // },
 
   // SVGR
   webpack(config) {
@@ -34,3 +33,5 @@ module.exports = {
     return config
   },
 }
+
+module.exports = nextConfig

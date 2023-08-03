@@ -1,0 +1,30 @@
+.mdx p {
+  @apply text-primary-400 text-justify;
+}
+
+.mdx code {
+  @apply font-firacode my-5 rounded-md;
+}
+
+.mdx a {
+  @apply text-sm text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base;
+}
+
+.mdx h2 {
+  @apply mt-10 w-full text-left text-xl font-semibold !no-underline decoration-0 underline-offset-0;
+}
+
+.mdx h3 {
+  @apply text-lg !no-underline !decoration-0 !underline-offset-0;
+}
+
+.mdx img {
+  @apply !py-4;
+}
+
+.mdx blockquote {
+  border-left: 0.25rem solid #d4d4d4;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  background: #33353910;
+}

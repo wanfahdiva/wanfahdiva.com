@@ -1,11 +1,18 @@
+import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 
-import { useIsDesktop } from '@/hooks/useWindowSize'
+import { useHeaderHeight } from '@/hooks/useHeaderHeight'
+import { useIsDesktop } from '@/hooks/useIsDesktop'
 
-import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
+import {
+  Noise,
+  SmootherLayout,
+  SplashScreen,
+  TransitionPage,
+} from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
-import Footer from '@/components/Footer'
+import { Footer } from '@/components/Footer/DefaultFooter'
 import Header from '@/components/Header'
 import { SocialMediaSection } from '@/components/Section/GlobalSection'
 import Seo from '@/components/SEO'
@@ -17,15 +24,14 @@ interface MainLayoutProps {
 export const MainLayout = ({ children }: MainLayoutProps) => {
   const router = useRouter()
   const isDesktop = useIsDesktop()
+  const headerHeight = useHeaderHeight()
   const [loadingRoute, setLoadingRoute] = useState<boolean>(false)
   const [endedLoadingRoute, setEndedLoadingRoute] = useState<boolean>(true)
   const [loadingSplash, setLoadingSplash] = useState<boolean>(true)
   const [endedLoadingSplash, setEndedLoadingSplash] = useState<boolean>(false)
   const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
   const [isBlur, setIsBlur] = useState<boolean>(true)
-  const [headerHeight, setHeaderHeight] = useState<string>('')
 
-  // handle animation when route change
   useEffect(() => {
     const body = document.querySelector('body')
     const handleRouteChangeStart = (url: string) => {
@@ -68,7 +74,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     setEndedLoadingRoute,
   ])
 
-  // handle animation when page loaded
   useEffect(() => {
     const body = document.querySelector('body')
     if (loadingSplash) {
@@ -101,33 +106,65 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     }, 2000)
   }, [endedLoadingRoute])
 
+  const offset = useMemo(() => {
+    const path = ['/resume', '/']
+    if (path.includes(router.pathname)) {
+      return 0
+    } else {
+      return headerHeight
+    }
+  }, [headerHeight, router])
+
   useEffect(() => {
     const header = document.getElementById('header')
-    const headerHeight = header?.clientHeight
-    setHeaderHeight(`${headerHeight}px`)
-  }, [])
+    const footer = document.getElementById('footer')
+    const social = document.getElementById('social-media')
+    const cursor = document.getElementById('cursor')
+    if (header && footer && social) {
+      if (router.pathname.includes('/resume')) {
+        header.classList.add('hidden')
+        footer.classList.add('hidden')
+        social.classList.add('hidden')
+        cursor?.classList.add('hidden')
+      } else {
+        header.classList.remove('hidden')
+        footer.classList.remove('hidden')
+        social.classList.remove('hidden')
+        cursor?.classList.remove('hidden')
+      }
+    }
+  }, [router])
 
   return (
     <Fragment>
-      <Seo />
+      {loadingSplash && <Seo />}
       <Noise />
       {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
       <div
         className={loadingSplash || loadingRoute ? 'opacity-0' : 'opacity-100'}
       >
-        <Header isSplashScreen={loadingSplash} isLoadingRoute={loadingRoute} />
         {isDesktop && <Cursor routerChange={refreshCursor} />}
         {!loadingSplash && (
-          <div
-            className={isBlur ? 'blur-sm' : ''}
-            style={{ paddingTop: router.pathname != '/' ? headerHeight : '' }}
-          >
-            {children}
+          <div>
+            <Header
+              isSplashScreen={loadingSplash}
+              isLoadingRoute={loadingRoute}
+            />
+            <SmootherLayout refreshSize={refreshCursor}>
+              <div
+                className={clsx('relative', isBlur ? 'blur-sm' : '')}
+                style={{
+                  paddingTop: offset,
+                }}
+              >
+                {children}
+              </div>
+              <Footer />
+            </SmootherLayout>
+            <SocialMediaSection />
           </div>
         )}
-        <SocialMediaSection />
-        <Footer />
       </div>
     </Fragment>
   )

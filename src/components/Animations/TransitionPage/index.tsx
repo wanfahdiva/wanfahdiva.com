@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
-import { useIsDesktop } from '@/hooks/useWindowSize'
+import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 interface TransitionPageProps {
   endedLoading?: boolean
@@ -18,7 +18,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
   return (
     <div
       className={clsx(
-        'fixed top-0 left-0 z-30 h-screen w-full opacity-100 transition-opacity duration-700 ease-in-out',
+        'fixed left-0 top-0 z-30 h-screen w-full opacity-100 transition-opacity duration-700 ease-in-out',
         endedLoading && 'opacity-0'
       )}
     >
@@ -34,9 +34,9 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           exit='exitLoad'
           variants={variants}
           transition={{
-            duration: isDesktop ? 1.5 : 0.8,
+            duration: isDesktop ? 1.7 : 0.8,
           }}
-          className='absolute top-0 z-50 h-screen w-full bg-dark bg-opacity-10'
+          className='bg-primary-600 absolute top-0 z-50 h-screen w-full opacity-10'
         />
         <motion.div
           initial='hiddenLoad'
@@ -44,10 +44,10 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           exit='exitLoad'
           variants={variants}
           transition={{
-            duration: isDesktop ? 1.7 : 1,
+            duration: isDesktop ? 1.9 : 1,
             delay: isDesktop ? 0.2 : 0.175,
           }}
-          className='absolute top-0 z-40 h-screen w-full bg-dark bg-opacity-5'
+          className='bg-primary-600 absolute top-0 z-40 h-screen w-full opacity-5'
         />
       </div>
     </div>

@@ -207,7 +207,7 @@ export const LogoIcon = ({ className = '' }) => (
       initial={{ pathLength: 0 }}
       animate={{ pathLength: 1 }}
       transition={{
-        duration: 3,
+        duration: 4,
         ease: 'easeInOut',
         repeat: Infinity,
         repeatType: 'loop',

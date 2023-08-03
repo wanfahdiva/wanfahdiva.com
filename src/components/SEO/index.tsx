@@ -1,16 +1,15 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
   title: 'Wanfah Diva',
   siteName: 'wanfahdiva.me',
   description:
     'An online portfolio and blog by Wanfah Diva. Showcase of my projects, and some of my thoughts about website development.',
-  url: 'wanfahdiva.me',
+  url: 'https://wanfahdiva.me',
   type: 'website',
   robots: 'follow, index',
-  image: '',
+  image: 'https://wanfahdiva.me/images/large-og.png',
 }
 
 type SeoProps = {
@@ -43,6 +42,7 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
+      <meta name='twitter:site' content='@wanfahdivaa' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />

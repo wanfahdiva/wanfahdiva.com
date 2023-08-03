@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { AiOutlineInstagram } from 'react-icons/ai'
-import { FaLinkedin } from 'react-icons/fa'
-import { FiGithub } from 'react-icons/fi'
-import { GoMail } from 'react-icons/go'
+
+import { Social } from '@/components/Footer/SocialFooter'
 
 export const SocialMediaSection: React.FC = () => {
   const variants = {
-    hidden: { y: 20, opacity: 0, delay: 0.95 },
+    hidden: { y: 20, opacity: 0, transition: { duration: 0.5 } },
     enter: { y: 0, opacity: 1 },
     exit: { y: 0, opacity: 0 },
   }
@@ -18,33 +16,21 @@ export const SocialMediaSection: React.FC = () => {
       animate='enter'
       exit='exit'
       variants={variants}
-      transition={{ duration: 1.25, type: 'easeInOut', delay: 4 }}
+      transition={{ duration: 1.25, type: 'easeInOut', delay: 0.5 }}
       id='social-media'
+      className='fixed bottom-0 left-0 right-0 z-50'
     >
-      <div className='fixed bottom-0 left-14 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
-        <Link href='https://github.com/wanfahdiva' passHref>
-          <a target='_blank' className='inline-flex items-center p-2'>
-            <FiGithub />
-          </a>
-        </Link>
-        <Link href='mailto:wanfahdivaa@gmail.com' passHref>
-          <a target='_blank' className='inline-flex items-center p-2'>
-            <GoMail />
-          </a>
-        </Link>
-        <Link href='https://www.linkedin.com/in/wanfahdiva' passHref>
-          <a target='_blank' className='inline-flex items-center p-2'>
-            <FaLinkedin />
-          </a>
-        </Link>
-        <Link href='https://www.instagram.com/wanfahdiva' passHref>
-          <a target='_blank' className='inline-flex items-center p-2'>
-            <AiOutlineInstagram />
-          </a>
-        </Link>
-        <div className='h-24 w-px bg-[#111111] opacity-40 dark:bg-white'></div>
+      <div className='fixed bottom-0 left-20 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
+        {Social.map((item, index) => (
+          <Link href={item.link} passHref key={index}>
+            <a target='_blank' className='inline-flex items-center p-2'>
+              {item.icon}
+            </a>
+          </Link>
+        ))}
+        <div className='h-24 w-px bg-white opacity-40'></div>
       </div>
-      <div className='fixed bottom-0 right-14 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
+      <div className='fixed bottom-0 right-20 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
         <Link href='mailto:wanfahdivaa@gmail.com' passHref>
           <a
             target='_blank'
@@ -53,7 +39,7 @@ export const SocialMediaSection: React.FC = () => {
             <span className='text-vertical text-xs'>wanfahdivaa@gmail.com</span>
           </a>
         </Link>
-        <div className='h-24 w-px bg-[#111111] opacity-40 dark:bg-white'></div>
+        <div className='h-24 w-px bg-white opacity-40'></div>
       </div>
     </motion.div>
   )
