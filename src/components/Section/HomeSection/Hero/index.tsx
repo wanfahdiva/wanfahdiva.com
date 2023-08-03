@@ -20,17 +20,20 @@ export const SectionHero: React.FC = () => {
           >
             <div className='mt-3 flex flex-col items-center justify-start space-y-5 md:max-w-4xl'>
               <div className='flex w-full flex-col items-start justify-start'>
-                <p className='inline font-medium !text-[#d4d4d4]' data-fade='3'>
+                <p
+                  className='text-primary-400 inline font-medium'
+                  data-fade='3'
+                >
                   Hi, my name is
                 </p>
                 <h1
                   className='text-4xl font-semibold md:text-6xl'
                   data-fade='5'
                 >
-                  Wanfah Diva.
+                  Wanfah Diva,
                 </h1>
                 <h3
-                  className='text-3xl font-semibold !text-[#BEBEBB] md:text-6xl'
+                  className='text-primary-400 text-3xl font-semibold md:text-6xl'
                   data-fade='7'
                 >
                   I build things for the web.
@@ -41,9 +44,9 @@ export const SectionHero: React.FC = () => {
                 data-fade='8'
               >
                 <div className='w-full md:w-11/12'>
-                  <p className='text-sm font-medium !text-[#d4d4d4] md:text-base'>
+                  <p className='text-primary-400 text-sm font-medium md:text-base'>
                     I am a Software Engineer with expertise in building Frontend
-                    Developments. Presently, my focus lies in building
+                    Web Developments. Presently, my focus lies in building
                     accessible and high-performance web applications at &nbsp;
                     <Link href='https://sawala.tech/' passHref>
                       <a
@@ -60,7 +63,7 @@ export const SectionHero: React.FC = () => {
                   data-fade='10'
                 >
                   <ButtonLink
-                    href='https://adinusa.id/media/files/cv/2021/08/11/Cv_compressed.pdf'
+                    href='/resume'
                     variant='light'
                     className='inline-flex items-center justify-center space-x-2'
                   >

@@ -1,0 +1,608 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* #region  /**=========== primary color =========== */
+  --tw-color-primary-50: 253, 253, 253;
+  --tw-color-primary-100: 246, 246, 246;
+  --tw-color-primary-200: 238, 238, 238;
+  --tw-color-primary-300: 222, 222, 222;
+  --tw-color-primary-400: 191, 191, 191;
+  --tw-color-primary-500: 128, 128, 128;
+  --tw-color-primary-600: 65, 65, 65;
+  --tw-color-primary-700: 34, 34, 34;
+  --tw-color-primary-800: 18, 18, 18;
+  --tw-color-primary-900: 2, 2, 2;
+  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #fdfdfd */
+  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #f6f6f6 */
+  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #eeeeee */
+  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #dddddd */
+  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #bfbfbf */
+  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #808080 */
+  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #414141 */
+  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #222222 */
+  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #121212 */
+  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #020202 */
+  /* #endregion  /**======== primary color =========== */
+}
+
+@layer base {
+  /* #region  /**=========== typography =========== */
+  @font-face {
+    font-family: 'Poltawski Nowy';
+    src: url('/fonts/Poltawski-Nowy/poltawskinowy-variablefont_wght-webfont.woff2')
+        format('woff2'),
+      url('/fonts/Poltawski-Nowy/poltawskinowy-variablefont_wght-webfont.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Saol Display';
+    src: url('/fonts/Saol-Display/saoldisplay-regular-webfont.woff2')
+        format('woff2'),
+      url('/fonts/Saol-Display/saoldisplay-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Mont Glades';
+    src: url('/fonts/Mont-Glades/monthglade-webfont.woff2') format('woff2'),
+      url('/fonts/Mont-Glades/monthglade-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Fira Code';
+    src: url('/fonts//Fira-Code/firacode-variablefont_wght-webfont.woff2')
+        format('woff2'),
+      url('/fonts//Fira-Code/firacode-variablefont_wght-webfont.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('/fonts/Space-Grotesk/spacegrotesk-variablefont_wght-webfont.woff2')
+        format('woff2'),
+      url('/fonts/Space-Grotesk/spacegrotesk-variablefont_wght-webfont.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .h0 {
+    @apply text-3xl font-bold md:text-5xl;
+  }
+
+  h1,
+  .h1 {
+    @apply text-2xl font-bold md:text-4xl;
+  }
+
+  h2,
+  .h2 {
+    @apply text-xl font-bold md:text-3xl;
+  }
+
+  h3,
+  .h3 {
+    @apply text-lg font-bold md:text-2xl;
+  }
+
+  h4,
+  .h4 {
+    @apply text-base font-bold md:text-lg;
+  }
+
+  p,
+  .p {
+    @apply text-sm md:text-base;
+  }
+
+  *,
+  body {
+    @apply font-spacegrotesk;
+  }
+
+  .text-vertical {
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+  }
+
+  .text-stroke {
+    color: transparent;
+    -webkit-text-stroke-color: #717171;
+    -webkit-text-stroke-width: 0.2mm;
+  }
+
+  ::selection {
+    background-color: white;
+    color: black;
+  }
+  /* #endregion  /**======== typography =========== */
+
+  /* #region  /**=========== splash screen =========== */
+  .example {
+    border: none;
+    margin: 0 auto;
+    height: min-content;
+    padding: 4%;
+    @apply stroke-[#111111] dark:stroke-white;
+  }
+  /* #endregion  /**======== splash screen =========== */
+
+  /* #region  /**=========== vertical scroll wrapper =========== */
+  .scroll-section-inner {
+    height: 100vh;
+    width: 400vw;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+
+  .scroll-section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* #endregion  /**======== vertical scroll wrapper =========== */
+
+  /* #region  /**=========== custom scrollbar =========== */
+  ::-webkit-scrollbar {
+    height: 4px !important;
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    /* background-color: #e1e1e11a; */
+    background-color: transparent;
+    margin: 1.5px 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #e1e1e1e6;
+    /* border: 3px solid transparent; */
+    border-radius: 10px;
+  }
+
+  /* #endregion  /**======== custom scrollbar =========== */
+
+  /* #region  /**=========== burger menu =========== */
+  #burger-toggle {
+    position: absolute;
+    appearance: none;
+    opacity: 0;
+  }
+  #burger-toggle:checked ~ .menu {
+    opacity: 1;
+    visibility: visible;
+  }
+  #burger-toggle:checked ~ .menu .menu-nav-link span div,
+  #burger-toggle:checked ~ .menu img,
+  #burger-toggle:checked ~ .menu .title p {
+    transform: translateY(0);
+    transition: 1.2s 0.1s cubic-bezier(0.35, 0, 0.07, 1);
+  }
+  #burger-toggle:checked ~ .menu .image-link:nth-child(1) img {
+    transition-delay: 0.18s;
+  }
+  #burger-toggle:checked ~ .menu .image-link:nth-child(2) img {
+    transition-delay: 0.26s;
+  }
+  #burger-toggle:checked ~ .menu .image-link:nth-child(3) img {
+    transition-delay: 0.34s;
+  }
+  #burger-toggle:checked ~ .menu .image-link:nth-child(4) img {
+    transition-delay: 0.42s;
+  }
+  #burger-toggle:checked ~ .burger-menu .line::after {
+    transform: translateX(0);
+  }
+  #burger-toggle:checked ~ .burger-menu .line:nth-child(1) {
+    transform: translateY(calc(2.5em / 5)) rotate(45deg);
+  }
+  #burger-toggle:checked ~ .burger-menu .line:nth-child(2) {
+    transform: scaleX(0);
+  }
+  #burger-toggle:checked ~ .burger-menu .line:nth-child(3) {
+    transform: translateY(calc(2.5em / -5)) rotate(-45deg);
+  }
+
+  .burger-menu {
+    position: relative;
+    z-index: 100;
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    outline: none;
+    cursor: pointer;
+  }
+  .burger-menu .line {
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    transition: 0.5s;
+  }
+  .burger-menu .line:nth-child(1) {
+    top: 25%;
+  }
+  .burger-menu .line:nth-child(2) {
+    top: 45%;
+  }
+  .burger-menu .line:nth-child(3) {
+    top: 65%;
+  }
+  .burger-menu .line::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: translateX(-100%);
+    transition: 0.25s;
+  }
+  .burger-menu .line:nth-child(2)::after {
+    transition-delay: 0.1s;
+  }
+  .burger-menu .line:nth-child(3)::after {
+    transition-delay: 0.2s;
+  }
+  .burger-menu:hover .line::after {
+    transform: translateX(0);
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #191919;
+    opacity: 0;
+    overflow-x: hidden;
+    visibility: hidden;
+    transition: 0.3s;
+  }
+  @media screen and (max-width: 750px) {
+    .menu {
+      display: block;
+    }
+  }
+  /* #endregion  /**======== burger menu =========== */
+
+  @media screen and (max-width: 768px) {
+    *,
+    button > * {
+      cursor: auto !important;
+    }
+  }
+
+  .cursor-newtab {
+    cursor: url('/images/new-tab.png') 10 10, pointer;
+  }
+
+  .layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  .smooth-scroll-wrapper {
+    position: fixed;
+    width: 100%;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
+}
+
+@layer utilities {
+  /* #region  /**=========== scroll line =========== */
+  .c-scrolldown {
+    width: 1.5px;
+    height: 30px;
+    position: absolute;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .c-scrolldown .c-line {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(
+      to bottom,
+      white 50%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    background-position: 0 -60px;
+    background-size: 100% 200%;
+    animation: scrolldown 2.2s cubic-bezier(0.76, 0, 0.3, 1) forwards infinite;
+  }
+  @keyframes scrolldown {
+    0% {
+      background-position: 0 -30px;
+    }
+    75% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 30px;
+    }
+  }
+  /* #endregion  /**======== scroll line =========== */
+
+  /* #region  /**=========== rolltext link =========== */
+  .rollText {
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 24px;
+    display: block;
+    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    background: transparent;
+    transition: transform 0.44s ease, box-shadow 0.44s ease;
+    @apply text-black dark:text-white;
+  }
+
+  .rollText div {
+    display: flex;
+    overflow: hidden;
+    text-shadow: 0 18px 0;
+  }
+
+  .rollText div span {
+    display: block;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    font-style: normal;
+    transition: transform 0.44s ease;
+    transform: translateY(var(--m)) translateZ(0);
+  }
+
+  .rollText div span:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  .rollText div span:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  .rollText div span:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+
+  .rollText div span:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+
+  .rollText div span:nth-child(5) {
+    transition-delay: 0.25s;
+  }
+
+  .rollText div span:nth-child(6) {
+    transition-delay: 0.3s;
+  }
+
+  .rollText div span:nth-child(7) {
+    transition-delay: 0.35s;
+  }
+
+  .rollText div span:nth-child(8) {
+    transition-delay: 0.4s;
+  }
+
+  .rollText div span:nth-child(9) {
+    transition-delay: 0.45s;
+  }
+
+  .rollText div span:nth-child(10) {
+    transition-delay: 0.5s;
+  }
+
+  .rollText div span:nth-child(11) {
+    transition-delay: 0.55s;
+  }
+
+  .rollText:hover span {
+    --m: calc(16.5px * -1);
+  }
+  /* #endregion  /**======== rolltext link =========== */
+
+  /* #region  /**=========== custom cursor =========== */
+  .cursor-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+    @apply border border-black dark:border-white dark:mix-blend-difference;
+  }
+
+  .cursor-wrapper.cursor-pointer {
+    @apply border-0 bg-white text-white;
+  }
+  /* #endregion  /**======== custom cursor =========== */
+
+  /* #region  /**=========== scramble text =========== */
+  .scrambleText {
+    animation: scrambleAnimation 0.2s infinite;
+  }
+
+  @keyframes scrambleAnimation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateX(5px);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  /* #endregion  /**======== scramble text =========== */
+
+  /* #region  /**=========== noise =========== */
+  .noise-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    pointer-events: none;
+    opacity: 0.15;
+    z-index: 9999;
+  }
+  .noise-animate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    background-image: url('/images/noise.gif');
+  }
+  @media screen and (max-width: 1024px) {
+    .noise-container {
+      opacity: 0.01;
+    }
+  }
+  /* #endregion  /**======== noise =========== */
+
+  /* #region  /**=========== underline link =========== */
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(
+        to right,
+        var(--color-primary-400),
+        var(--color-primary-500)
+      );
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 0 2px, 100% 2px;
+  }
+  /* #endregion  /**======== underline link =========== */
+
+  /* #region  /**=========== fade in out =========== */
+  [data-fade] {
+    @apply !translate-y-10 !opacity-0 transition duration-300 ease-out motion-reduce:!translate-y-0 motion-reduce:!opacity-100;
+  }
+  .fade-in-start [data-fade] {
+    @apply !translate-y-0 !opacity-100;
+  }
+  .fade-in-start [data-fade='1'] {
+    transition-delay: 100ms;
+  }
+  .fade-in-start [data-fade='2'] {
+    transition-delay: 200ms;
+  }
+  .fade-in-start [data-fade='3'] {
+    transition-delay: 300ms;
+  }
+  .fade-in-start [data-fade='4'] {
+    transition-delay: 400ms;
+  }
+  .fade-in-start [data-fade='5'] {
+    transition-delay: 500ms;
+  }
+  .fade-in-start [data-fade='6'] {
+    transition-delay: 600ms;
+  }
+  .fade-in-start [data-fade='7'] {
+    transition-delay: 700ms;
+  }
+  .fade-in-start [data-fade='8'] {
+    transition-delay: 800ms;
+  }
+
+  .fade-in-start [data-fade='9'] {
+    transition-delay: 900ms;
+  }
+
+  .fade-in-start [data-fade='10'] {
+    transition-delay: 1000ms;
+  }
+
+  .fade-in-start [data-fade='11'] {
+    transition-delay: 1100ms;
+  }
+
+  .fade-in-start [data-fade='12'] {
+    transition-delay: 1200ms;
+  }
+
+  .fade-in-start [data-fade='13'] {
+    transition-delay: 1300ms;
+  }
+
+  .fade-in-start [data-fade='14'] {
+    transition-delay: 1400ms;
+  }
+
+  .fade-in-start [data-fade='15'] {
+    transition-delay: 1500ms;
+  }
+
+  .fade-in-start [data-fade='16'] {
+    transition-delay: 1600ms;
+  }
+
+  .fade-in-start [data-fade='17'] {
+    transition-delay: 1700ms;
+  }
+
+  .fade-in-start [data-fade='18'] {
+    transition-delay: 1800ms;
+  }
+
+  .fade-in-start [data-fade='19'] {
+    transition-delay: 1900ms;
+  }
+
+  .fade-in-start [data-fade='20'] {
+    transition-delay: 2000ms;
+  }
+  /* #endregion  /**======== fade in out =========== */
+}

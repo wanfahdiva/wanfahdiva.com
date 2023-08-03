@@ -1,5 +1,6 @@
 export { Noise } from './Noise'
 export { SectionRender } from './SectionRender'
 export { Skeleton } from './Skeleton'
+export { SmootherLayout } from './SmootherLayout'
 export { SplashScreen } from './SplashScreen'
 export { TransitionPage } from './TransitionPage'

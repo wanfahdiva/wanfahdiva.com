@@ -1,21 +1,15 @@
-import { NextLayoutComponentType } from 'next'
-import { Fragment, ReactChild } from 'react'
+import * as React from 'react'
 
+import { ContainerLayout } from '@/components/Layout'
 import Seo from '@/components/SEO'
 
-const NotFound: NextLayoutComponentType = () => {
+export default function NotFoundPage() {
   return (
-    <Fragment>
-      <Seo templateTitle='404' />
+    <ContainerLayout>
+      <Seo templateTitle='Not Found' />
       <div className='mx-auto flex h-[70vh] max-w-6xl items-center justify-center py-5 md:py-10'>
         <p>404 PAGE</p>
       </div>
-    </Fragment>
+    </ContainerLayout>
   )
 }
-
-NotFound.getLayout = function getLayout(page: ReactChild) {
-  return page
-}
-
-export default NotFound

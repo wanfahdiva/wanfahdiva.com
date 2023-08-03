@@ -10,7 +10,7 @@ export const Cursor = ({ routerChange }: CursorProps) => {
   const cursor = useRef<any>()
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
-  const [hoverWork, setHoverWork] = useState(false)
+  const [hoverProject, setHoverProject] = useState(false)
 
   const onMouseMove = useCallback(
     ({ clientX, clientY }: { clientX: number; clientY: number }) => {
@@ -38,14 +38,15 @@ export const Cursor = ({ routerChange }: CursorProps) => {
     const links = document.querySelectorAll('button, a')
     const handleMouseEnter = (event: any) => {
       const hrefValue = event.target.getAttribute('href')
-      const includesWork = hrefValue && hrefValue.includes('work')
+      const isToProject = hrefValue && hrefValue.includes('project')
       const isButton = event.target.classList.contains('focus-visible:ring')
-      setHoverWork(isButton ? false : includesWork)
+      const isOrdinaryLink = event.target.classList.contains('ordinary-link')
+      setHoverProject(isButton || isOrdinaryLink ? false : isToProject)
       setIsPointer(true)
     }
 
     const handleMouseLeave = () => {
-      setHoverWork(false)
+      setHoverProject(false)
       setIsPointer(false)
     }
 
@@ -64,21 +65,21 @@ export const Cursor = ({ routerChange }: CursorProps) => {
 
   return (
     <div
+      id='cursor'
       style={{ opacity: hasMoved ? 1 : 0 }}
       ref={cursor}
       className={cn(
-        'cursor-class',
-        isPointer && 'pointer mix-blend-difference',
-        hoverWork && '!bg-black !mix-blend-normal'
+        'cursor-wrapper',
+        isPointer && 'cursor-pointer mix-blend-difference'
       )}
     >
       <div
         className={cn(
           'flex h-full w-full items-center justify-center',
-          hoverWork ? 'block' : 'hidden'
+          hoverProject ? 'block' : 'hidden'
         )}
       >
-        <p className='scale-50 text-center !text-xs font-semibold !text-white'>
+        <p className='scale-50 text-center text-xs font-semibold text-white'>
           Explore
         </p>
       </div>

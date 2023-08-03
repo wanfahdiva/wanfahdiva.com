@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "downlevelIteration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,21 +15,17 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/types/*": ["@types/*"],
       "@/lib/*": ["./src/lib/*"],
-      "@/store/*": ["src/states/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/api/*": ["./src/pages/api/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/jsons/*": ["./src/shared/jsons/*"],
       "@/constants/*": ["./src/constants/*"],
-      "@/styles/*": ["./src/shared/styles/*"],
+      "@/styles/*": ["./src/styles/*"],
       "@/components/*": ["./src/components/*"]
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }

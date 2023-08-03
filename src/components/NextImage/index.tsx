@@ -1,19 +1,18 @@
-import Image, { ImageProps } from 'next/image'
-import * as React from 'react'
+import Image, { ImageProps } from 'next/image';
+import * as React from 'react';
 
-import clsxm from '@/lib/clsxm'
+import clsxm from '@/lib/clsxm';
 
 type NextImageProps = {
-  useSkeleton?: boolean
-  imgClassName?: string
-  blurClassName?: string
-  alt: string
-  width: string | number
+  useSkeleton?: boolean;
+  imgClassName?: string;
+  blurClassName?: string;
+  alt: string;
 } & (
   | { width: string | number; height: string | number }
   | { layout: 'fill'; width?: string | number; height?: string | number }
 ) &
-  ImageProps
+  ImageProps;
 
 /**
  *
@@ -33,8 +32,8 @@ export default function NextImage({
 }: NextImageProps) {
   const [status, setStatus] = React.useState(
     useSkeleton ? 'loading' : 'complete'
-  )
-  const widthIsSet = className?.includes('w-') ?? false
+  );
+  const widthIsSet = className?.includes('w-') ?? false;
 
   return (
     <figure
@@ -51,9 +50,8 @@ export default function NextImage({
         height={height}
         alt={alt}
         onLoadingComplete={() => setStatus('complete')}
-        layout='responsive'
         {...rest}
       />
     </figure>
-  )
+  );
 }

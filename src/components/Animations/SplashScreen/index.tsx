@@ -2,7 +2,7 @@ import { gsap } from 'gsap'
 import React, { useEffect, useRef } from 'react'
 
 import clsxm from '@/lib/clsxm'
-import { useIsDesktop } from '@/hooks/useWindowSize'
+import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 import { LogoIcon } from '@/components/Icons'
 interface SplashScreenProps {
@@ -35,9 +35,9 @@ export const SplashScreen = ({ endedLoading }: SplashScreenProps) => {
     >
       <div className='example'>
         <LogoIcon className={isDesktop ? 'h-40 w-40' : 'h-32 w-32'} />
-        <div className='text-center' ref={counterRef}>
+        <p className='text-primary-200 text-center' ref={counterRef}>
           0%
-        </div>
+        </p>
       </div>
     </div>
   )

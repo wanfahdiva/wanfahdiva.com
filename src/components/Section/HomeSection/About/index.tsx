@@ -35,7 +35,7 @@ export const SectionAbout: React.FC = () => {
   return (
     <ContainerLayout name='about'>
       <InView triggerOnce rootMargin='-40% 0px'>
-        {({ inView, ref }) => (
+        {({ inView, ref }: any) => (
           <section
             className={clsx(
               'mx-7 mt-10 pt-20 md:mx-auto md:mt-0 md:w-full md:max-w-4xl md:py-20',
@@ -49,7 +49,7 @@ export const SectionAbout: React.FC = () => {
                 data-fade='4'
               >
                 <h1 className='flex-none text-xl font-semibold uppercase md:text-2xl'>
-                  <span className='opacity-75'>02.</span> About
+                  <span className='opacity-75'>01.</span> About
                 </h1>
                 <div
                   className={clsx(
@@ -61,22 +61,18 @@ export const SectionAbout: React.FC = () => {
                 />
               </div>
               <div
-                className='relative float-right mt-2 ml-7 hidden items-center justify-center md:flex'
+                className='relative float-right ml-7 mt-2 hidden items-center justify-center md:flex'
                 data-fade='3'
               >
                 <div className='relative h-[258px] w-[175px] md:h-[358px] md:w-[265px]'>
-                  <Image
-                    src='/images/profile.jpg'
-                    alt='profile'
-                    layout='fill'
-                  />
+                  <Image src='/images/me.jpg' alt='me' layout='fill' />
                 </div>
-                <span className='absolute translate-y-24 -rotate-6 transform !font-montglades text-2xl font-medium md:translate-y-32 md:text-2xl'>
+                <span className='!font-montglades absolute translate-y-24 -rotate-6 transform text-2xl font-medium md:translate-y-32'>
                   Wanfah Diva
                 </span>
               </div>
               <div data-fade='6'>
-                <p className='mt-5 text-justify indent-7 text-sm !text-[#d4d4d4] md:text-base'>
+                <p className='text-primary-400 mt-5 text-justify indent-7 text-sm md:text-base'>
                   I am a frontend developer with 3 years of experience in the
                   software industry. I have skills in HTML, CSS, and JavaScript,
                   and experience using frameworks like React and Vue.js. I am
@@ -92,7 +88,7 @@ export const SectionAbout: React.FC = () => {
                     href='https://sawala.tech'
                     target='_blank'
                     rel='noreferrer'
-                    className='text-sm font-semibold !text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
+                    className='text-sm font-semibold text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
                   >
                     Sawala Technology
                   </a>
@@ -112,7 +108,7 @@ export const SectionAbout: React.FC = () => {
                         href={item.url}
                         rel='noreferrer'
                         target='_blank'
-                        className='text-sm font-semibold !text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
+                        className='text-sm font-semibold text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'
                       >
                         {item.title}
                       </a>
@@ -125,12 +121,12 @@ export const SectionAbout: React.FC = () => {
             <div className='w-full md:hidden md:pt-10'>
               <div className='relative mx-auto my-20 flex max-w-6xl flex-col items-center justify-center md:-mt-10 md:h-screen'>
                 {Array.from({ length: 4 }, (_, i) => (
-                  <div data-fade={4 + i}>
+                  <div data-fade={4 + i} key={i}>
                     <p
                       data-fade={4 + i}
                       key={i}
                       className={clsx(
-                        '-ml-5 !font-poltawski text-7xl italic md:text-[7rem]',
+                        '!font-poltawski -ml-5 text-7xl italic md:text-[7rem]',
                         i != 0
                           ? 'text-stroke text-transparent opacity-40'
                           : '!opacity-50'
@@ -144,17 +140,13 @@ export const SectionAbout: React.FC = () => {
                   className='absolute h-[258px] w-[175px] !rotate-[9deg] md:h-[358px] md:w-[265px]'
                   data-fade='9'
                 >
-                  <Image
-                    src='/images/profile.jpg'
-                    alt='profile'
-                    layout='fill'
-                  />
+                  <Image src='/images/me.jpg' alt='me' layout='fill' />
                 </div>
                 <div
                   data-fade='12'
                   className='flex h-full w-full justify-center'
                 >
-                  <span className='absolute -translate-y-20 -rotate-6 transform !font-montglades text-2xl font-medium md:text-5xl'>
+                  <span className='!font-montglades absolute -translate-y-20 -rotate-6 transform text-2xl font-medium md:text-5xl'>
                     Wanfah Diva
                   </span>
                 </div>

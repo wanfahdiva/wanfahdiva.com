@@ -2,12 +2,11 @@ import { useEffect } from 'react'
 import React from 'react'
 
 import clsxm from '@/lib/clsxm'
-import { useIsDesktop } from '@/hooks/useWindowSize'
+import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 interface RollTextLinkProps {
   children: React.ReactNode
   className?: string
-  as?: string
 }
 
 export const RollTextLink = React.forwardRef<
@@ -17,9 +16,9 @@ export const RollTextLink = React.forwardRef<
   const isDesktop = useIsDesktop()
 
   useEffect(() => {
-    const rollButtons = document.querySelectorAll('.rollButton')
+    const rollTexts = document.querySelectorAll('.rollText')
     if (!isDesktop) return
-    rollButtons.forEach(
+    rollTexts.forEach(
       (button) =>
         (button.innerHTML =
           '<div><span>' +
@@ -28,17 +27,15 @@ export const RollTextLink = React.forwardRef<
     )
   }, [isDesktop])
   return (
-    <div
+    <a
+      ref={ref}
       className={clsxm(
-        'cursor-pointer text-xs font-semibold uppercase',
-        isDesktop && 'rollButton',
+        'cursor-pointer !text-sm !font-semibold uppercase',
+        isDesktop && 'rollText',
         className
       )}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      ref={ref}
     >
       {children}
-    </div>
+    </a>
   )
 })

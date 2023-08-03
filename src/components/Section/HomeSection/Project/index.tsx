@@ -1,22 +1,25 @@
 import clsx from 'clsx'
+import Link from 'next/link'
 import React from 'react'
 import InView from 'react-intersection-observer'
 
 import { FeaturedProjectCard } from '@/components/Cards'
 import { ContainerLayout } from '@/components/Layout'
-import ButtonLink from '@/components/Links/ButtonLink'
 
-import { WorkMeta } from '@/api/get-work'
+import { ProjectMeta } from '@/api/project'
 
 interface SectionProjectProps {
-  data: WorkMeta[]
+  data: ProjectMeta[]
 }
 
 export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
+  if (!data) return null
   return (
     <ContainerLayout
-      className='mx-7 mt-10 py-20 md:mx-auto md:mt-0 md:w-full md:max-w-5xl'
-      name='work'
+      className={clsx(
+        'mx-7 mt-10 py-20 md:mx-auto md:mt-20 md:w-full md:max-w-5xl'
+      )}
+      name='project'
     >
       <InView triggerOnce>
         {({ inView, ref }) => (
@@ -36,23 +39,19 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
             </div>
             <div className='flex flex-col space-y-10 py-5 md:space-y-20'>
               {data.map((item, index) => (
-                <div key={index}>
-                  <FeaturedProjectCard data={item} index={index} />
-                </div>
+                <FeaturedProjectCard data={item} index={index} key={index} />
               ))}
             </div>
-            <div className='mt-10 flex items-center justify-center pt-10'>
-              <div className='mx-auto w-11/12 text-center md:w-1/2'>
-                <h3 className='font-semibold !text-[#A8A8A6] md:text-xl '>
-                  Let`s see my other project
-                </h3>
-                <ButtonLink
-                  href='/work'
-                  className='mt-5 text-xs md:text-sm'
-                  variant='light'
-                >
-                  All Work
-                </ButtonLink>
+            <div className='flex items-center justify-center pt-10 md:mt-10'>
+              <div className='mx-auto flex w-11/12 items-center justify-center space-x-2 text-center md:w-1/2'>
+                <p>
+                  Want to see more<span className='font-primary'>?</span>
+                </p>
+                <Link href='/project'>
+                  <a className='text-sm font-semibold text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'>
+                    View all projects
+                  </a>
+                </Link>
               </div>
             </div>
           </section>
