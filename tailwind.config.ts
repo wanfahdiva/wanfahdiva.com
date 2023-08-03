@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -75,4 +75,4 @@ export default {
     muted: '#8E8E8E',
   },
   plugins: [require('@tailwindcss/forms')],
-} satisfies Config;
+} satisfies Config

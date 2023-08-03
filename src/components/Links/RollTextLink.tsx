@@ -30,7 +30,7 @@ export const RollTextLink = React.forwardRef<
     <a
       ref={ref}
       className={clsxm(
-        'cursor-pointer !text-sm !font-semibold uppercase',
+        'cursor-pointer !text-xs !font-semibold uppercase',
         isDesktop && 'rollText',
         className
       )}

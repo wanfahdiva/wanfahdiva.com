@@ -375,7 +375,7 @@
   .rollText div {
     display: flex;
     overflow: hidden;
-    text-shadow: 0 18px 0;
+    text-shadow: 0 16.5px 0;
   }
 
   .rollText div span {
@@ -483,14 +483,14 @@
     height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
     pointer-events: none;
-    opacity: 0.15;
+    opacity: 0.099;
     z-index: 9999;
   }
   .noise-animate {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.15;
+    opacity: 0.099;
     background-image: url('/images/noise.gif');
   }
   @media screen and (max-width: 1024px) {

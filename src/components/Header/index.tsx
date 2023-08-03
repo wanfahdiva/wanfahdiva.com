@@ -73,7 +73,7 @@ const Header = ({
   return (
     <motion.header
       className={clsx(
-        'fixed top-0 z-30 w-full py-6',
+        'fixed top-0 z-30 w-full py-6 md:py-5',
         isOpen ? 'bg-[#191919]' : 'backdrop-blur-sm'
       )}
       initial='hiddenHeader'
@@ -96,8 +96,8 @@ const Header = ({
             <a>
               <NextImage
                 src='/images/white-logo.png'
-                width={IsDesktop ? 50.5 : 45.5}
-                height={IsDesktop ? 50.5 : 45.5}
+                width={45.5}
+                height={45.5}
                 alt='logo'
               />
             </a>
@@ -113,8 +113,8 @@ const Header = ({
           >
             <NextImage
               src='/images/white-logo.png'
-              width={IsDesktop ? 50.5 : 45.5}
-              height={IsDesktop ? 50.5 : 45.5}
+              width={45.5}
+              height={45.5}
               alt='logo'
             />
           </ScrollLink>
@@ -122,7 +122,7 @@ const Header = ({
         <div className='hidden items-center space-x-5 md:flex'>
           {links.map((link, index) => (
             <div key={index} className='flex space-x-1'>
-              <span className='text-sm opacity-75 md:font-semibold'>
+              <span className='text-xs opacity-75 md:font-semibold'>
                 0{index + 1}.
               </span>
               <ScrollLink

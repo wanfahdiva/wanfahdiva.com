@@ -34,7 +34,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           exit='exitLoad'
           variants={variants}
           transition={{
-            duration: isDesktop ? 1.5 : 0.8,
+            duration: isDesktop ? 1.7 : 0.8,
           }}
           className='bg-primary-600 absolute top-0 z-50 h-screen w-full opacity-10'
         />
@@ -44,7 +44,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           exit='exitLoad'
           variants={variants}
           transition={{
-            duration: isDesktop ? 1.7 : 1,
+            duration: isDesktop ? 1.9 : 1,
             delay: isDesktop ? 0.2 : 0.175,
           }}
           className='bg-primary-600 absolute top-0 z-40 h-screen w-full opacity-5'

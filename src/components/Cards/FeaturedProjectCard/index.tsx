@@ -99,7 +99,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
             )}
           >
             <ArrowLink
-              href='/project'
+              href={`/projects/${data.slug}`}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >

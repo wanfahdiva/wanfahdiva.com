@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const defaultMeta = {
   title: 'Wanfah Diva',
@@ -10,22 +10,22 @@ const defaultMeta = {
   type: 'website',
   robots: 'follow, index',
   image: 'https://wanfahdiva.me/images/large-og.png',
-};
+}
 
 type SeoProps = {
-  date?: string;
-  templateTitle?: string;
-} & Partial<typeof defaultMeta>;
+  date?: string
+  templateTitle?: string
+} & Partial<typeof defaultMeta>
 
 export default function Seo(props: SeoProps) {
-  const router = useRouter();
+  const router = useRouter()
   const meta = {
     ...defaultMeta,
     ...props,
-  };
+  }
   meta['title'] = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
-    : meta.title;
+    : meta.title
 
   return (
     <Head>
@@ -66,7 +66,7 @@ export default function Seo(props: SeoProps) {
       <meta name='msapplication-config' content='/favicon/browserconfig.xml' />
       <meta name='theme-color' content='#ffffff' />
     </Head>
-  );
+  )
 }
 
 const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
@@ -94,4 +94,4 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     color: '#00e887',
   },
   { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
-];
+]
