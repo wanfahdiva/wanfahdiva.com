@@ -78,7 +78,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           </h2>
           <p
             className={clsx(
-              'text-primary-400 line-clamp-2 text-sm md:text-base ',
+              'line-clamp-2 text-sm md:text-base ',
               isEven ? 'text-left' : 'md:pr-1 md:text-right'
             )}
           >
@@ -86,7 +86,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           </p>
           <small
             className={clsx(
-              'text-primary-400 flex space-x-2 text-sm',
+              'flex space-x-2 text-sm',
               isEven ? 'justify-start' : 'md:justify-end'
             )}
           >

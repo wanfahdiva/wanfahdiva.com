@@ -1,19 +1,36 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
+import { useMemo } from 'react'
 
 import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 interface TransitionPageProps {
   endedLoading?: boolean
+  variant?: 'vertical' | 'horizontal'
 }
 
-export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
+export const TransitionPage = ({
+  endedLoading,
+  variant = 'horizontal',
+}: TransitionPageProps) => {
   const isDesktop = useIsDesktop()
-  const variants = {
-    hiddenLoad: { x: 0, y: 0 },
-    enterLoad: { x: 0, y: 0, width: '0' },
-    exitLoad: { x: 0, y: 0 },
-  }
+  const animate = useMemo(() => {
+    let variants = {}
+    if (variant == 'horizontal') {
+      variants = {
+        hiddenLoad: { x: 0, y: 0 },
+        enterLoad: { x: 0, y: 0, width: '0' },
+        exitLoad: { x: 0, y: 0 },
+      }
+    } else {
+      variants = {
+        hiddenLoad: { x: 0, y: 0 },
+        enterLoad: { x: 0, y: 0, width: '0' },
+        exitLoad: { x: 0, y: 0 },
+      }
+    }
+    return variants
+  }, [variant])
 
   return (
     <div
@@ -32,7 +49,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           initial='hiddenLoad'
           animate='enterLoad'
           exit='exitLoad'
-          variants={variants}
+          variants={animate}
           transition={{
             duration: isDesktop ? 1.7 : 0.8,
           }}
@@ -42,7 +59,7 @@ export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
           initial='hiddenLoad'
           animate='enterLoad'
           exit='exitLoad'
-          variants={variants}
+          variants={animate}
           transition={{
             duration: isDesktop ? 1.9 : 1,
             delay: isDesktop ? 0.2 : 0.175,

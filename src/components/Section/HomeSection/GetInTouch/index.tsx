@@ -23,7 +23,7 @@ export const SectionGetInTouch: React.FC = () => {
               <h1 className='text-center text-xl font-semibold uppercase md:text-2xl'>
                 <span className='opacity-75'>04.</span> Get In Touch
               </h1>
-              <p className='text-primary-400 text-center text-sm md:text-lg'>
+              <p className='text-center text-sm md:text-lg'>
                 Although I`m not currently looking for any new opportunities, my
                 inbox is always open. Whether you have a question or just want
                 to say hi, I`ll try my best to get back to you!

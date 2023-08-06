@@ -31,6 +31,11 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [endedLoadingSplash, setEndedLoadingSplash] = useState<boolean>(false)
   const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
   const [isBlur, setIsBlur] = useState<boolean>(true)
+  const [variantTransition, setVariantTransiotion] = useState<
+    'vertical' | 'horizontal'
+  >('horizontal')
+
+  const currentRouter = router.asPath
 
   useEffect(() => {
     const body = document.querySelector('body')
@@ -38,6 +43,17 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       if (url === router.asPath) {
         return
       }
+
+      if (currentRouter.includes('/project/') && url.includes('/project')) {
+        setVariantTransiotion('vertical')
+      } else if (url.includes('/project')) {
+        setVariantTransiotion('vertical')
+      } else if (currentRouter.includes('/project/')) {
+        setVariantTransiotion('vertical')
+      } else {
+        setVariantTransiotion('horizontal')
+      }
+
       window.scrollTo(0, 0)
       setRefreshCursor(true)
       setLoadingRoute(true)
@@ -72,6 +88,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     setRefreshCursor,
     setLoadingRoute,
     setEndedLoadingRoute,
+    currentRouter,
   ])
 
   useEffect(() => {
@@ -120,26 +137,36 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     const footer = document.getElementById('footer')
     const social = document.getElementById('social-media')
     const cursor = document.getElementById('cursor')
-    if (header && footer && social) {
-      if (router.pathname.includes('/resume')) {
+    const noise = document.getElementById('noise')
+    if (router.asPath.includes('/resume')) {
+      if (header && footer && social && cursor && noise) {
         header.classList.add('hidden')
         footer.classList.add('hidden')
         social.classList.add('hidden')
-        cursor?.classList.add('hidden')
-      } else {
+        cursor.classList.add('hidden')
+        noise.classList.add('hidden')
+      }
+    } else {
+      if (header && footer && social && cursor && noise) {
         header.classList.remove('hidden')
         footer.classList.remove('hidden')
         social.classList.remove('hidden')
-        cursor?.classList.remove('hidden')
+        cursor.classList.remove('hidden')
+        noise.classList.remove('hidden')
       }
     }
-  }, [router])
+  }, [router.asPath])
 
   return (
     <Fragment>
       {loadingSplash && <Seo />}
       <Noise />
-      {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
+      {loadingRoute && (
+        <TransitionPage
+          endedLoading={endedLoadingRoute}
+          variant={variantTransition}
+        />
+      )}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
       <div
         className={loadingSplash || loadingRoute ? 'opacity-0' : 'opacity-100'}

@@ -102,7 +102,7 @@
 
   p,
   .p {
-    @apply text-sm md:text-base;
+    @apply text-primary-400 text-sm md:text-base;
   }
 
   *,
@@ -483,14 +483,15 @@
     height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
     pointer-events: none;
-    opacity: 0.099;
+    opacity: 0.165;
     z-index: 9999;
+    backdrop-filter: sepia(1);
   }
   .noise-animate {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.099;
+    opacity: 0.165;
     background-image: url('/images/noise.gif');
   }
   @media screen and (max-width: 1024px) {

@@ -72,7 +72,7 @@ export const SectionAbout: React.FC = () => {
                 </span>
               </div>
               <div data-fade='6'>
-                <p className='text-primary-400 mt-5 text-justify indent-7 text-sm md:text-base'>
+                <p className='mt-5 text-justify indent-7 text-sm md:text-base'>
                   I am a frontend developer with 3 years of experience in the
                   software industry. I have skills in HTML, CSS, and JavaScript,
                   and experience using frameworks like React and Vue.js. I am
@@ -97,7 +97,7 @@ export const SectionAbout: React.FC = () => {
                 </p>
               </div>
               <div className='mt-5' data-fade='8'>
-                <p className='text-sm opacity-90 md:text-base'>
+                <p className=' text-sm md:text-base'>
                   Here are a few technologies I’ve been working with recently:
                 </p>
                 <div className='grid grid-cols-2 grid-rows-3' data-fade='10'>
