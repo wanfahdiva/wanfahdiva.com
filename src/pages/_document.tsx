@@ -13,10 +13,10 @@ export default function Document() {
         />
         <meta
           name='google-site-verification'
-          content='I716bANDKemWazZdBga7TmakokO-kYkVgJ_IOhae4aQ'
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
         />
       </Head>
-      <body className='font-spacegrotesk bg-[#191919] text-white duration-300 ease-in'>
+      <body className='font-spacegrotesk bg-primary-700 text-white'>
         <Main />
         <NextScript />
       </body>

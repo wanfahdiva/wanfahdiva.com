@@ -1,5 +1,8 @@
+import clsx from 'clsx'
 import * as React from 'react'
 import { useEffect } from 'react'
+
+import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 interface SmootherLayoutProps {
   children: React.ReactNode
@@ -10,30 +13,32 @@ export const SmootherLayout = ({
   children,
   refreshSize,
 }: SmootherLayoutProps) => {
+  const IsDekstop = useIsDesktop()
   useEffect(() => {
-    const body = document.body
-    const scrollWrap = document.getElementsByClassName(
-      'smooth-scroll-wrapper'
-    )[0] as HTMLElement
-    const height = scrollWrap.getBoundingClientRect().height - 1
-    const speed = 0.06
+    if (IsDekstop) {
+      const body = document.body
+      const scrollWrap = document.getElementsByClassName(
+        'smooth-scroll-wrapper'
+      )[0] as HTMLElement
+      const height = scrollWrap.getBoundingClientRect().height - 1
+      const speed = 0.06
 
-    let offset = 0
-    body.style.height = Math.floor(height) + 'px'
+      let offset = 0
+      body.style.height = Math.floor(height) + 'px'
 
-    function smoothScroll() {
-      offset += (window.pageYOffset - offset) * speed
-      const scroll = 'translateY(-' + offset + 'px) translateZ(0)'
-      scrollWrap.style.transform = scroll
-      const callScroll = requestAnimationFrame(smoothScroll)
-      return callScroll
+      const smoothScroll = () => {
+        offset += (window.pageYOffset - offset) * speed
+        const scroll = 'translateY(-' + offset + 'px) translateZ(0)'
+        scrollWrap.style.transform = scroll
+        const callScroll = requestAnimationFrame(smoothScroll)
+        return callScroll
+      }
+      smoothScroll()
     }
-
-    smoothScroll()
-  }, [refreshSize])
+  }, [refreshSize, IsDekstop])
   return (
-    <div className='smooth-scroll-wrapper'>
-      <div className='content'>{children}</div>
+    <div className={clsx(IsDekstop && 'smooth-scroll-wrapper')}>
+      <div className={clsx(IsDekstop && 'content')}>{children}</div>
     </div>
   )
 }

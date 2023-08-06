@@ -69,21 +69,26 @@ export const getProjectFromSlug = (slug: string): Project => {
   }
 }
 
-export const getOtherSlug = (slug: string) => {
+export const getNextProject = (slug: string) => {
   const project = getAllProject()
-  const result = project
-    .filter((item) => {
-      if (item.meta.slug != slug) {
-        return item
-      }
-      return null
-    })
-    .map((item) => {
-      return {
-        title: item.meta.title,
-        slug: item.meta.slug,
-      }
-    })
-    .slice(0, 5)
-  return result
+  const index = project.findIndex((project) => project.meta.slug === slug)
+  const next = project[index + 1]?.meta ?? null
+  if (next) {
+    return {
+      slug: next.slug,
+      title: next.title,
+    }
+  }
+}
+
+export const getPrevProject = (slug: string) => {
+  const project = getAllProject()
+  const index = project.findIndex((project) => project.meta.slug === slug)
+  const prev = project[index - 1]?.meta ?? null
+  if (prev) {
+    return {
+      slug: prev.slug,
+      title: prev.title,
+    }
+  }
 }

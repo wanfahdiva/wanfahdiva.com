@@ -20,10 +20,7 @@ export const SectionHero: React.FC = () => {
           >
             <div className='mt-3 flex flex-col items-center justify-start space-y-5 md:max-w-4xl'>
               <div className='flex w-full flex-col items-start justify-start'>
-                <p
-                  className='text-primary-400 inline font-medium'
-                  data-fade='3'
-                >
+                <p className='inline font-medium' data-fade='3'>
                   Hi, my name is
                 </p>
                 <h1
@@ -44,7 +41,7 @@ export const SectionHero: React.FC = () => {
                 data-fade='8'
               >
                 <div className='w-full md:w-11/12'>
-                  <p className='text-primary-400 text-sm font-medium md:text-base'>
+                  <p className='text-sm font-medium md:text-base'>
                     I am a Software Engineer with expertise in building Frontend
                     Web Developments. Presently, my focus lies in building
                     accessible and high-performance web applications at &nbsp;

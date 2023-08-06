@@ -13,38 +13,39 @@ import rehypeSlug from 'rehype-slug'
 
 import 'highlight.js/styles/atom-one-dark.css'
 
+import clsxm from '@/lib/clsxm'
+
 import ArrowLink from '@/components/Links/ArrowLink'
 import { H2, H3 } from '@/components/MDX'
 import Seo from '@/components/SEO'
 
 import {
-  getOtherSlug,
+  getNextProject,
+  getPrevProject,
   getProjectFromSlug,
   getSlugs,
   ProjectMeta,
 } from '@/api/project'
 
-interface MDXProjectProps {
+interface ProjectProps {
   project: {
     source: MDXRemoteSerializeResult
     meta: ProjectMeta
-    tableOfContents: { slug: string; title: string; level: number }[]
-    otherProject: {
-      title: string
-      slug: string
-    }[]
+    nextProject?: { slug: string; title: string }
+    prevProject?: { slug: string; title: string }
   }
 }
 
-export default function ProjectDetail({ project }: MDXProjectProps) {
+export default function ProjectDetail({ project }: ProjectProps) {
   const tags = project.meta.tags.map((tag) => `#${tag}`).join(' ')
+
   return (
     <Fragment>
       <Seo
         templateTitle={project.meta.title}
         description={project.meta.excerpt}
       />
-      <div className='mx-auto flex w-full max-w-5xl flex-col space-y-5 px-7 py-5 md:space-y-3 md:py-7'>
+      <div className='mx-auto flex w-full max-w-5xl flex-col space-y-5 px-7 pt-5 md:space-y-3 md:pb-5 md:pt-10'>
         <div className='flex flex-col justify-start space-y-5'>
           <div className='-ml-2 inline-flex'>
             <ArrowLink href='/project' className='text-lg' direction='left'>
@@ -70,7 +71,7 @@ export default function ProjectDetail({ project }: MDXProjectProps) {
               </h1>
               <small>{project.meta.date}</small>
             </div>
-            <p className='text-primary-400'>{project.meta.excerpt}</p>
+            <p>{project.meta.excerpt}</p>
             <div className='flex flex-col-reverse space-y-2 space-y-reverse pt-3 md:flex-row md:justify-between md:space-y-0 md:pt-7'>
               <div className='flex flex-col space-y-1 md:flex-row md:space-x-4 md:space-y-0'>
                 <div className='flex items-center space-x-1 text-sm'>
@@ -113,7 +114,7 @@ export default function ProjectDetail({ project }: MDXProjectProps) {
             </div>
           </div>
         </div>
-        <div className='flex border-t py-10'>
+        <div className='flex border-t pb-2 pt-10 md:py-10'>
           <article className='mdx w-full md:pr-2'>
             <MDXRemote
               {...project.source}
@@ -124,49 +125,37 @@ export default function ProjectDetail({ project }: MDXProjectProps) {
               }}
             />
           </article>
-          {/* <div className='relative hidden w-[27.5%] pl-2 md:block'>
-            <div className='sticky left-0 top-32 overflow-y-auto p-4 pt-0'>
-              <h3 className='mb-3 text-lg font-bold'>Table of Contents</h3>
-              <ul className='flex flex-col space-y-2'>
-                {project.tableOfContents.map((item) => {
-                  return (
-                    <ScrollLink
-                      key={item.slug}
-                      to={item.slug.replace(/&/g, '').replace(/'/g, '')}
-                      spy={true}
-                      smooth={true}
-                      offset={-85}
-                      duration={500}
-                      className={clsx(
-                        'cursor-pointer text-left text-sm text-[#d4d4d4] hover:text-white'
-                      )}
-                      style={{
-                        paddingLeft: item.level > 2 ? item.level + 11 : 0,
-                      }}
-                    >
-                      - &nbsp;
-                      {item.title}
-                    </ScrollLink>
-                  )
-                })}
-              </ul>
-            </div>
-          </div> */}
         </div>
-        <div>
-          <h2 className='text-xl font-semibold'>More Case:</h2>
-          <div className='flex w-full flex-col space-y-3 md:flex-row md:space-x-3 md:space-y-0'>
-            {project.otherProject &&
-              project.otherProject.map((item, index) => (
-                <div key={index}>
-                  <Link href={`/project/${item.slug}`}>
-                    <a className='ordinary-link w-auto px-4 py-2.5 pl-0 text-center underline decoration-neutral-600 decoration-2 underline-offset-2'>
-                      <small>{item.title}</small>
-                    </a>
-                  </Link>
-                </div>
-              ))}
-          </div>
+        <div
+          className={clsxm(
+            'flex w-full items-center space-x-4',
+            project.nextProject && project.prevProject
+              ? 'justify-between'
+              : project.nextProject
+              ? 'justify-end'
+              : 'justify-start'
+          )}
+        >
+          {project.prevProject && (
+            <div className='flex-col p-3 pl-0 text-right'>
+              <p>Prev Case</p>
+              <Link href={`/project/${project.prevProject.slug}`}>
+                <a className='line-clamp-1 w-full max-w-[10rem]'>
+                  {project.prevProject.title}
+                </a>
+              </Link>
+            </div>
+          )}
+          {project.nextProject && (
+            <div className='flex-col p-3 pr-0 text-left'>
+              <p>Next Case</p>
+              <Link href={`/project/${project.nextProject.slug}`}>
+                <a className='line-clamp-1 w-full max-w-[10rem]'>
+                  {project.nextProject.title}
+                </a>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </Fragment>
@@ -176,19 +165,6 @@ export default function ProjectDetail({ project }: MDXProjectProps) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string }
   const { content, meta } = getProjectFromSlug(slug)
-  const headings = content.match(/#+\s+(.*)/g)
-
-  const tableOfContents = headings
-    ?.filter((heading) => /^#+\s/.test(heading))
-    .map((heading) => {
-      const levelMatch = heading.match(/^#+/)
-      const level = levelMatch ? levelMatch[0].length : 0
-      const slug = heading
-        .replace(/^#+\s+/g, '')
-        .toLowerCase()
-        .replace(/\s/g, '-')
-      return { slug, title: heading.replace(/^#+\s+/g, ''), level }
-    })
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
@@ -200,15 +176,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   })
 
-  const otherProject = getOtherSlug(slug)
+  const nextProject = getNextProject(slug) ?? null
+  const prevProject = getPrevProject(slug) ?? null
 
   return {
     props: {
       project: {
         source: mdxSource,
         meta,
-        tableOfContents,
-        otherProject,
+        nextProject,
+        prevProject,
       },
     },
   }

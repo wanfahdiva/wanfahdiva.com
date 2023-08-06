@@ -17,7 +17,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
   return (
     <ContainerLayout
       className={clsx(
-        'mx-7 mt-10 py-20 md:mx-auto md:mt-20 md:w-full md:max-w-5xl'
+        'mx-7 mt-10 py-10 md:mx-auto md:mt-20 md:w-full md:max-w-5xl'
       )}
       name='project'
     >
