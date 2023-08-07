@@ -40,7 +40,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
             layout='fill'
             alt={data.title}
             className={clsxm(
-              'opacity-85 object-cover object-top transition-all ease-in-out md:rounded',
+              'opacity-85 rounded object-cover object-top transition-all ease-in-out',
               isLoading
                 ? 'scale-110 blur-2xl grayscale duration-700'
                 : 'scale-100 blur-0 grayscale-0 duration-300'
@@ -67,7 +67,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
         <h4 className='hidden bg-white px-1 text-sm text-black md:-mt-6 md:block'>
           Featured Project
         </h4>
-        <div className='z-20 flex flex-col space-y-2 py-4 md:w-full md:rounded-t md:p-0 md:pb-6 md:pt-4'>
+        <div className='z-20 flex flex-col space-y-2 rounded-t py-4 md:w-full md:p-0 md:pb-6 md:pt-4'>
           <h2
             className={clsx(
               'text-lg font-semibold md:text-xl',
