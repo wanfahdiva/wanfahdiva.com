@@ -18,9 +18,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ data, index }) => {
       )}
       <div className='flex items-center justify-between'>
         <h2 className='text-xl'>{data.title}</h2>
-        <small className=''>{data.date}</small>
+        <small>{data.date}</small>
       </div>
-      <div className='relative h-48 w-full rounded-t'>
+      <div className='relative h-48 w-full rounded'>
         <Image
           src={
             data?.coverImage
@@ -33,6 +33,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ data, index }) => {
           objectPosition='top'
           placeholder='blur'
           loading='lazy'
+          className='rounded'
           blurDataURL={data.blurUrl}
         />
       </div>

@@ -60,7 +60,7 @@ export default function ProjectDetail({ project }: ProjectProps) {
                 objectPosition='top'
                 layout='fill'
                 alt={project.meta.title}
-                className='rounded-md'
+                className='rounded'
               />
             )}
           </div>
