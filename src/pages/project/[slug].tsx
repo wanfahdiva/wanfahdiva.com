@@ -128,7 +128,7 @@ export default function ProjectDetail({ project }: ProjectProps) {
         </div>
         <div
           className={clsxm(
-            'flex w-full items-center space-x-4',
+            'grid grid-cols-2 items-center gap-x-4 pt-7 md:px-10 md:pt-0',
             project.nextProject && project.prevProject
               ? 'justify-between'
               : project.nextProject
@@ -137,20 +137,30 @@ export default function ProjectDetail({ project }: ProjectProps) {
           )}
         >
           {project.prevProject && (
-            <div className='flex-col p-3 pl-0 text-right'>
-              <p>Prev Case</p>
+            <div
+              className={clsxm(
+                'inline-flex w-auto flex-col items-start pl-0',
+                !project.nextProject && 'col-span-2'
+              )}
+            >
+              <p>Previous Project</p>
               <Link href={`/project/${project.prevProject.slug}`}>
-                <a className='line-clamp-1 w-full max-w-[10rem]'>
+                <a className='line-clamp-1 w-auto max-w-[10rem]'>
                   {project.prevProject.title}
                 </a>
               </Link>
             </div>
           )}
           {project.nextProject && (
-            <div className='flex-col p-3 pr-0 text-left'>
-              <p>Next Case</p>
+            <div
+              className={clsxm(
+                'inline-flex w-auto flex-col items-end pr-0',
+                !project.prevProject && 'col-span-2'
+              )}
+            >
+              <p>Next Project</p>
               <Link href={`/project/${project.nextProject.slug}`}>
-                <a className='line-clamp-1 w-full max-w-[10rem]'>
+                <a className='line-clamp-1 w-auto max-w-[10rem]'>
                   {project.nextProject.title}
                 </a>
               </Link>

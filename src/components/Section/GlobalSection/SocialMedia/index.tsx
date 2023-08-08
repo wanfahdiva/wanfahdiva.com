@@ -28,7 +28,7 @@ export const SocialMediaSection: React.FC = () => {
             </a>
           </Link>
         ))}
-        <div className='h-24 w-px bg-white opacity-40'></div>
+        <div className='h-20 w-px bg-white opacity-40'></div>
       </div>
       <div className='fixed bottom-0 right-20 hidden flex-col items-center justify-center space-y-2 opacity-70 md:flex'>
         <Link href='mailto:wanfahdivaa@gmail.com' passHref>
@@ -39,7 +39,7 @@ export const SocialMediaSection: React.FC = () => {
             <span className='text-vertical text-xs'>wanfahdivaa@gmail.com</span>
           </a>
         </Link>
-        <div className='h-24 w-px bg-white opacity-40'></div>
+        <div className='h-20 w-px bg-white opacity-40'></div>
       </div>
     </motion.div>
   )

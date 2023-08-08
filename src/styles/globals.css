@@ -293,10 +293,6 @@
     }
   }
 
-  .cursor-newtab {
-    cursor: url('/images/new-tab.png') 10 10, pointer;
-  }
-
   .layout {
     /* 1100px */
     max-width: 68.75rem;
@@ -483,7 +479,7 @@
     height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
     pointer-events: none;
-    opacity: 0.165;
+    opacity: 0.139;
     z-index: 9999;
     backdrop-filter: sepia(1);
   }
@@ -491,7 +487,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.165;
+    opacity: 0.139;
     background-image: url('/images/noise.gif');
   }
   @media screen and (max-width: 1024px) {

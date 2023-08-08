@@ -4,32 +4,7 @@ import InView from 'react-intersection-observer'
 
 import { ContainerLayout } from '@/components/Layout'
 
-const STACK = [
-  {
-    title: 'JavaScript (ES6+)',
-    url: 'https://262.ecma-international.org/6.0/',
-  },
-  {
-    title: 'React.js',
-    url: 'https://reactjs.org/',
-  },
-  {
-    title: 'Next.js',
-    url: 'https://nextjs.org/',
-  },
-  {
-    title: 'Tailwind CSS',
-    url: 'https://tailwindcss.com/',
-  },
-  {
-    title: 'Node.js',
-    url: 'https://nodejs.org/',
-  },
-  {
-    title: 'TypeScript',
-    url: 'https://www.typescriptlang.org/',
-  },
-]
+import { STACK } from '@/constants/stack'
 
 export const SectionAbout: React.FC = () => {
   return (
