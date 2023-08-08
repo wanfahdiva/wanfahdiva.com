@@ -73,7 +73,7 @@ const Header = ({
   return (
     <motion.header
       className={clsx(
-        'fixed top-0 z-30 w-full py-6 md:py-5',
+        'fixed top-0 z-30 w-full py-5',
         isOpen ? 'bg-[#191919]' : 'backdrop-blur-sm'
       )}
       initial='hiddenHeader'

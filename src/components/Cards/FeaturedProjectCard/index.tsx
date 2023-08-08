@@ -17,31 +17,28 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
   data,
   index,
 }) => {
-  const [isLoading, setLoading] = useState(true)
-  const [isHover, setHover] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [hover, setHover] = useState(false)
   const tags = data.tags.map((tag) => `#${tag}`).join(' ')
-  const isEven = index % 2 === 0
+  const even = index % 2 === 0
+  const dummy = 'https://dummyimage.com/600x400/ffffff/000000.png'
 
   return (
     <div
       className={clsx(
         'relative flex w-full flex-col space-y-2 md:space-x-10 ',
-        isEven ? 'md:flex-row-reverse md:space-x-reverse' : 'md:flex-row'
+        even ? 'md:flex-row-reverse md:space-x-reverse' : 'md:flex-row'
       )}
     >
       <div className='flex items-center justify-start'>
         <div className='relative h-48 w-[34rem] md:h-[20rem]'>
           <Image
-            src={`${
-              data.coverImage
-                ? data.coverImage
-                : 'https://dummyimage.com/600x400/ffffff/000000.png'
-            }`}
+            src={`${data.coverImage ? data.coverImage : dummy}`}
             layout='fill'
             alt={data.title}
             className={clsxm(
               'opacity-85 rounded object-cover object-top transition-all ease-in-out',
-              isLoading
+              loading
                 ? 'scale-110 blur-2xl grayscale duration-700'
                 : 'scale-100 blur-0 grayscale-0 duration-300'
             )}
@@ -53,15 +50,15 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           <div
             className={clsx(
               'absolute left-0 top-0 hidden h-full w-full bg-black transition-all duration-300 ease-in-out md:block',
-              isHover ? 'bg-opacity-0' : 'bg-opacity-70'
+              hover ? 'bg-opacity-0' : 'bg-opacity-70'
             )}
           />
         </div>
       </div>
       <div
         className={clsx(
-          'flex w-full flex-col justify-center md:space-y-3',
-          isEven ? 'items-start' : 'items-end'
+          'flex flex-col justify-center md:space-y-3',
+          even ? 'items-start' : 'items-end'
         )}
       >
         <h4 className='hidden bg-white px-1 text-sm text-black md:-mt-6 md:block'>
@@ -71,7 +68,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           <h2
             className={clsx(
               'text-lg font-semibold md:text-xl',
-              isEven ? 'text-left' : 'md:text-right'
+              even ? 'text-left' : 'md:text-right'
             )}
           >
             {data.title}
@@ -79,7 +76,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           <p
             className={clsx(
               'line-clamp-2 text-sm md:text-base ',
-              isEven ? 'text-left' : 'md:pr-1 md:text-right'
+              even ? 'text-left' : 'md:pr-1 md:text-right'
             )}
           >
             {data.excerpt}
@@ -87,7 +84,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           <small
             className={clsx(
               'flex space-x-2 text-sm',
-              isEven ? 'justify-start' : 'md:justify-end'
+              even ? 'justify-start' : 'md:justify-end'
             )}
           >
             {tags}
@@ -95,15 +92,16 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({
           <div
             className={clsx(
               'flex pt-4',
-              isEven ? 'justify-start' : 'md:justify-end'
+              even ? 'justify-start' : 'md:justify-end'
             )}
           >
             <ArrowLink
               href={`/project/${data.slug}`}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
+              className='text-right text-sm'
             >
-              <a className='text-right text-sm'>Read More</a>
+              Read More
             </ArrowLink>
           </div>
         </div>

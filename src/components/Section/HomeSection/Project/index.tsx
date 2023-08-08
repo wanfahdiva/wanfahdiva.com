@@ -48,7 +48,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
                   Want to see more<span className='font-primary'>?</span>
                 </p>
                 <Link href='/project'>
-                  <a className='text-sm font-semibold text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'>
+                  <a className='text-sm text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'>
                     View all projects
                   </a>
                 </Link>
