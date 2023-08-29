@@ -52,7 +52,6 @@ export const MyProcess: React.FC = () => {
               href='mailto:wanfahdivaa@gmail.com'
               className='mt-5 text-sm'
               variant='light'
-              as='a'
             >
               Get In Touch
             </ButtonLink>
@@ -63,10 +62,10 @@ export const MyProcess: React.FC = () => {
         {TEXT_PROCESS.map((item, index) => (
           <div
             key={index}
-            className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mt-5 md:ml-5 md:mb-0 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-0'
+            className='relative mb-4 flex flex-col items-start justify-center first:mt-2 md:mb-0 md:ml-5 md:mt-5 md:h-48 md:w-4/5 md:space-y-2 md:first:-mt-0'
             id={`process-${index + 1}`}
           >
-            <div className='absolute top-1.5 -left-[21px] h-4 w-4 rounded-full border-4 border-[#F2F2F2] bg-[#111111] dark:border-[#111111] dark:bg-white md:-left-[20.5px] md:hidden' />
+            <div className='absolute -left-[21px] top-1.5 h-4 w-4 rounded-full border-4 border-[#F2F2F2] bg-[#111111] dark:border-[#111111] dark:bg-white md:-left-[20.5px] md:hidden' />
             <h1 className='text-lg md:text-xl md:font-semibold'>
               {index + 1}. {item.title}
             </h1>

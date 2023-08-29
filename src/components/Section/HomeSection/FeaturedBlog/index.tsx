@@ -18,7 +18,9 @@ export const FeaturedBlog: React.FC = () => {
 
       <div className='grid grid-rows-4 gap-y-5 md:grid-cols-4 md:grid-rows-1 md:gap-x-8'>
         {Array.from({ length: 4 }).map((_, index) => (
-          <BlogCard key={index} id={index} />
+          <div key={index}>
+            <BlogCard id={index} />
+          </div>
         ))}
       </div>
     </ContainerLayout>

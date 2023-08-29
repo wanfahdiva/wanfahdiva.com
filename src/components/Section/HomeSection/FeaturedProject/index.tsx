@@ -25,7 +25,9 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ data }) => {
       </div>
       <div className='flex flex-col space-y-3'>
         {data.map((item, index) => (
-          <WorkCard key={index} data={item} />
+          <div key={index}>
+            <WorkCard data={item} />
+          </div>
         ))}
       </div>
     </ContainerLayout>

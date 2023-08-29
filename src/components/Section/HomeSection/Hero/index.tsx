@@ -42,7 +42,6 @@ export const Hero: React.FC = () => {
           </div>
           <div className='inline-flex items-center space-x-2 md:space-x-5'>
             <ButtonLink
-              as='a'
               href='#'
               variant='light'
               className='inline-flex items-center justify-center space-x-2'
