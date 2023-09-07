@@ -15,7 +15,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ id }) => {
             </span>
             <span className='text-xs uppercase'>10/05/2022</span>
           </div>
-          <h1 className='mt-2.5 text-base font-semibold uppercase line-clamp-3 md:mt-5 md:text-xl'>
+          <h1 className='mt-2.5 line-clamp-3 text-base font-semibold uppercase md:mt-5 md:text-xl'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
             perspiciatis veritatis omnis nesciunt tempore voluptatum blanditiis
             sequi dignissimos asperiores, excepturi fugit sapiente, maxime

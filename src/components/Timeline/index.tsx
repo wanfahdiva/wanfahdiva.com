@@ -41,7 +41,7 @@ export const Timeline = () => {
               </li>
             )}
             {item.data.map((e: any, i: number) => (
-              <li className='mb-10 ml-6 -mt-1' key={i}>
+              <li className='-mt-1 mb-10 ml-6' key={i}>
                 <span className='absolute -left-[15px] flex h-7 w-7 items-center justify-center rounded-full bg-gray-400  ring-2 ring-[#dddddd] transition-all delay-200 ease-in-out dark:bg-gray-700 dark:ring-[#202023]'>
                   <SvgIcon iconz={e.icon} />
                 </span>

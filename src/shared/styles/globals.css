@@ -244,7 +244,7 @@
   }
 
   #nprogress .spinner {
-    @apply absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black text-center opacity-30;
+    @apply absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center bg-black text-center opacity-30;
   }
 
   #nprogress .spinner-icon {

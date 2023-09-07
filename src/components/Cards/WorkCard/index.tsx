@@ -10,7 +10,7 @@ type WorkCardProps = {
 export const WorkCard: React.FC<WorkCardProps> = ({ data }) => {
   const tags = data.tags.map((tag) => `#${tag}`).join(' ')
   return (
-    <div className='group flex flex-col items-start space-y-2 border-t py-5 md:flex-row md:items-center md:space-y-0 md:space-x-4 md:pb-10'>
+    <div className='group flex flex-col items-start space-y-2 border-t py-5 md:flex-row md:items-center md:space-x-4 md:space-y-0 md:pb-10'>
       <div className='relative h-52 w-full md:h-44 md:w-80'>
         <Image
           src={`${
