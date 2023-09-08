@@ -17,7 +17,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
   return (
     <ContainerLayout
       className={clsx(
-        'mx-7 mt-10 py-10 md:mx-auto md:mt-20 md:w-full md:max-w-5xl'
+        'mx-7 mt-10 pt-20 md:mx-auto md:mt-0 md:w-full md:max-w-5xl md:pt-20'
       )}
       name='project'
     >
@@ -26,7 +26,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
           <section ref={ref}>
             <div className='mb-7 flex w-full items-center space-x-5'>
               <h1 className='flex-none text-xl font-semibold uppercase md:text-2xl'>
-                <span className='opacity-75'>03.</span> Some Things I’ve Built
+                <span className='opacity-75'>02.</span> Some Things I’ve Built
               </h1>
               <div
                 className={clsx(
@@ -44,9 +44,6 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
             </div>
             <div className='flex items-center justify-center pt-10 md:mt-10'>
               <div className='mx-auto flex w-11/12 items-center justify-center space-x-2 text-center md:w-1/2'>
-                <p>
-                  Want to see more<span className='font-primary'>?</span>
-                </p>
                 <Link href='/project'>
                   <a className='text-sm text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'>
                     View all projects

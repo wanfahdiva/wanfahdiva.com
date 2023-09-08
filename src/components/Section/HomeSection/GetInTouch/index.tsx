@@ -21,7 +21,7 @@ export const SectionGetInTouch: React.FC = () => {
               data-fade='5'
             >
               <h1 className='text-center text-xl font-semibold uppercase md:text-2xl'>
-                <span className='opacity-75'>04.</span> Get In Touch
+                <span className='opacity-75'>03.</span> Get In Touch
               </h1>
               <p className='text-center text-sm md:text-lg'>
                 Although I`m not currently looking for any new opportunities, my
