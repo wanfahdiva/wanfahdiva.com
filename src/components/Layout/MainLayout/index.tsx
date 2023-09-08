@@ -31,9 +31,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [endedLoadingSplash, setEndedLoadingSplash] = useState<boolean>(false)
   const [refreshCursor, setRefreshCursor] = useState<boolean>(false)
   const [isBlur, setIsBlur] = useState<boolean>(true)
-  const [variantTransition, setVariantTransiotion] = useState<
-    'vertical' | 'horizontal'
-  >('horizontal')
 
   const currentRouter = router.asPath
 
@@ -42,16 +39,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     const handleRouteChangeStart = (url: string) => {
       if (url === router.asPath) {
         return
-      }
-
-      if (currentRouter.includes('/project/') && url.includes('/project')) {
-        setVariantTransiotion('vertical')
-      } else if (url.includes('/project')) {
-        setVariantTransiotion('vertical')
-      } else if (currentRouter.includes('/project/')) {
-        setVariantTransiotion('vertical')
-      } else {
-        setVariantTransiotion('horizontal')
       }
 
       window.scrollTo(0, 0)
@@ -161,12 +148,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     <Fragment>
       {loadingSplash && <Seo />}
       <Noise />
-      {loadingRoute && (
-        <TransitionPage
-          endedLoading={endedLoadingRoute}
-          variant={variantTransition}
-        />
-      )}
+      {loadingRoute && <TransitionPage endedLoading={endedLoadingRoute} />}
       {loadingSplash && <SplashScreen endedLoading={endedLoadingSplash} />}
       <div
         className={loadingSplash || loadingRoute ? 'opacity-0' : 'opacity-100'}

@@ -1,36 +1,19 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { useMemo } from 'react'
 
 import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 interface TransitionPageProps {
   endedLoading?: boolean
-  variant?: 'vertical' | 'horizontal'
 }
 
-export const TransitionPage = ({
-  endedLoading,
-  variant = 'horizontal',
-}: TransitionPageProps) => {
+export const TransitionPage = ({ endedLoading }: TransitionPageProps) => {
   const isDesktop = useIsDesktop()
-  const animate = useMemo(() => {
-    let variants = {}
-    if (variant == 'horizontal') {
-      variants = {
-        hiddenLoad: { x: 0, y: 0 },
-        enterLoad: { x: 0, y: 0, width: '0' },
-        exitLoad: { x: 0, y: 0 },
-      }
-    } else {
-      variants = {
-        hiddenLoad: { x: 0, y: 0 },
-        enterLoad: { x: 0, y: 0, width: '0' },
-        exitLoad: { x: 0, y: 0 },
-      }
-    }
-    return variants
-  }, [variant])
+  const animate = {
+    hiddenLoad: { x: 0, y: 0 },
+    enterLoad: { x: 0, y: 0, width: '0' },
+    exitLoad: { x: 0, y: 0 },
+  }
 
   return (
     <div

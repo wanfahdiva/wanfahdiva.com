@@ -10,7 +10,7 @@ export const Footer = () => {
     >
       <div className='mx-auto flex w-full flex-col items-center justify-center space-y-4 md:space-y-0'>
         <SocialFooter />
-        <Link href='https://github.com/wanfahdiva/wanfahdiva.com' passHref>
+        <Link href='https://github.com/wanfahdiva' passHref>
           <a className='flex flex-col items-center space-y-1' target='_blank'>
             <p className='text-sm font-medium'>
               Designed and Built by Wanfah Diva.

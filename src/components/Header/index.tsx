@@ -130,7 +130,7 @@ const Header = ({
                 smooth={true}
                 duration={500}
                 offset={
-                  link.toLowerCase().includes('contact')
+                  ['contact'].includes(link.toLowerCase())
                     ? 0.5
                     : -headerHeight + 30
                 }
