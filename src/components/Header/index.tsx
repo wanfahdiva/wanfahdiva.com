@@ -132,7 +132,7 @@ const Header = ({
                 offset={
                   ['contact'].includes(link.toLowerCase())
                     ? 0.5
-                    : -headerHeight + 30
+                    : -headerHeight + 35
                 }
                 onClick={() =>
                   router.asPath !== '/' && scrollToPage(link.toLowerCase())
