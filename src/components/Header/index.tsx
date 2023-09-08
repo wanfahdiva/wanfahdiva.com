@@ -95,9 +95,9 @@ const Header = ({
           >
             <a>
               <NextImage
-                src='/images/white-logo.png'
-                width={45.5}
-                height={45.5}
+                src='/images/white-logo.svg'
+                width={50.5}
+                height={50.5}
                 alt='logo'
               />
             </a>
@@ -112,9 +112,9 @@ const Header = ({
             )}
           >
             <NextImage
-              src='/images/white-logo.png'
-              width={45.5}
-              height={45.5}
+              src='/images/white-logo.svg'
+              width={50.5}
+              height={50.5}
               alt='logo'
             />
           </ScrollLink>
