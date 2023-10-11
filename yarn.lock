@@ -1679,6 +1679,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@studio-freight/lenis@^1.0.6":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@studio-freight/lenis/-/lenis-1.0.26.tgz#c47ddeed8f9b72379f385696e900f8f484936f5c"
+  integrity sha512-PLpPMtYoo50Z1otpUpGONK/BkJ0nrE7pY6Q1+KMWuPup+S+XFR/FJOXGkrtISzc6DtHgilbi1b6xDgDluFHsaA==
+
 "@svgr/babel-plugin-add-jsx-attribute@^6.5.1":
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-6.5.1.tgz#74a5d648bd0347bda99d82409d87b8ca80b9a1ba"

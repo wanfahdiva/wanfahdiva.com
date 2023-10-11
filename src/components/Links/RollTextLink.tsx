@@ -27,7 +27,7 @@ export const RollTextLink = React.forwardRef<
     )
   }, [isDesktop])
   return (
-    <a
+    <span
       ref={ref}
       className={clsxm(
         'cursor-pointer !text-xs !font-semibold uppercase',
@@ -36,6 +36,6 @@ export const RollTextLink = React.forwardRef<
       )}
     >
       {children}
-    </a>
+    </span>
   )
 })

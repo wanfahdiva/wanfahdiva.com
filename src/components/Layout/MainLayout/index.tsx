@@ -5,12 +5,7 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { useHeaderHeight } from '@/hooks/useHeaderHeight'
 import { useIsDesktop } from '@/hooks/useIsDesktop'
 
-import {
-  Noise,
-  SmootherLayout,
-  SplashScreen,
-  TransitionPage,
-} from '@/components/Animations'
+import { Noise, SplashScreen, TransitionPage } from '@/components/Animations'
 import { Cursor } from '@/components/Cursor'
 import { Footer } from '@/components/Footer/DefaultFooter'
 import Header from '@/components/Header'
@@ -160,17 +155,15 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
               isSplashScreen={loadingSplash}
               isLoadingRoute={loadingRoute}
             />
-            <SmootherLayout refreshSize={refreshCursor}>
-              <div
-                className={clsx('relative', isBlur ? 'blur-sm' : '')}
-                style={{
-                  paddingTop: offset,
-                }}
-              >
-                {children}
-              </div>
-              <Footer />
-            </SmootherLayout>
+            <div
+              className={clsx('relative', isBlur ? 'blur-sm' : '')}
+              style={{
+                paddingTop: offset,
+              }}
+            >
+              {children}
+            </div>
+            <Footer />
             <SocialMediaSection />
           </div>
         )}
