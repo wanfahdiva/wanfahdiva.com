@@ -1,5 +1,5 @@
 import Lenis from '@studio-freight/lenis'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useEffect, useRef, useState } from 'react'
 
