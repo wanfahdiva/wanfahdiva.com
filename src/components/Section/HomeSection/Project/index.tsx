@@ -76,7 +76,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
   }, [])
   if (!data) return null
   return (
-    <ContainerLayout name='project' className='mt-10'>
+    <ContainerLayout name='project' className='my-10'>
       <div className='mx-7 flex md:mx-auto md:max-w-5xl' ref={galeryRef}>
         <div className='hidden w-1/2 md:block'>
           <div className='pr-10'>
@@ -164,7 +164,7 @@ export const SectionProject: React.FC<SectionProjectProps> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className='flex items-center justify-center pt-10'>
+      <div className='mt-20 flex items-center justify-center md:mt-0'>
         <div className='mx-auto flex w-11/12 items-center justify-center space-x-2 text-center md:w-1/2'>
           <Link href='/project'>
             <a className='text-sm text-white underline decoration-neutral-600 decoration-2 underline-offset-2 md:text-base'>
