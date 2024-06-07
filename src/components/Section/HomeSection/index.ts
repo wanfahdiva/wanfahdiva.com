@@ -1,5 +1,0 @@
-export { FeaturedBlog } from './FeaturedBlog'
-export { FeaturedProject } from './FeaturedProject'
-export { GetInTouch } from './GetInTouch'
-export { Hero } from './Hero'
-export { MyProcess } from './MyProcess'

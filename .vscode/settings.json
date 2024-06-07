@@ -1,6 +1,13 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
   "files.exclude": {
-    "**/node_modules": true,
-    "**/.next": true
+    "**/node_modules/**": true,
+    "**/.next/**": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true
   }
 }

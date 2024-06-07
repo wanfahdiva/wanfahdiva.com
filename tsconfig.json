@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "downlevelIteration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,23 +12,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/types/*": ["@types/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/store/*": ["src/states/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/api/*": ["./src/pages/api/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/jsons/*": ["./src/shared/jsons/*"],
+      "@/components/*": ["./src/components/*"],
       "@/constants/*": ["./src/constants/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/stores/*": ["./src/stores/*"],
       "@/styles/*": ["./src/shared/styles/*"],
-      "@/components/*": ["./src/components/*"]
+      "@/shared/*": ["./src/shared/*"],
+      "@/restapi/*": ["./src/restapi/*"]
     },
-    "incremental": true
+    "types": ["node"],
+    "target": "es5",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx"],
-  "exclude": ["node_modules"],
-  "moduleResolution": ["node_modules", ".next", "node"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+dev
 
 # debug
 npm-debug.log*
@@ -25,18 +26,55 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
 # vercel
 .vercel
 
-# next-sitemap
-robots.txt
-sitemap.xml
-sitemap-0.xml
+# typescript
+*.tsbuildinfo
+next-env.d.ts
 
-# cache
-git rm --cached package-lock.json
+# Nest
+# compiled output
+/server/dist
+/server/node_modules
+
+# Logs
+/server/logs
+/server/*.log
+/server/npm-debug.log*
+/server/pnpm-debug.log*
+/server/yarn-debug.log*
+/server/yarn-error.log*
+/server/lerna-debug.log*
+
+# OS
+/server/.DS_Store
+
+# Tests
+/server//coverage
+/server//.nyc_output
+
+# IDEs and editors
+/server/.idea
+/server/.project
+/server/.classpath
+/server/.c9/
+/server/*.launch
+/server/.settings/
+/server/*.sublime-workspace
+
+# IDE - VSCode
+/server/.vscode/*
+/server/!.vscode/settings.json
+/server/!.vscode/tasks.json
+/server/!.vscode/launch.json
+/server/!.vscode/extensions.json
+
+# generated styles
+# src/shared/styles/app.css
+
+.env
+docker/mariadb/*
+dce-strapi

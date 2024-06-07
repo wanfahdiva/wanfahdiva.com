@@ -1,50 +1,75 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { fontFamily } = require('tailwindcss/defaultTheme')
-
-function withOpacityValue(variable) {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${variable}))`
-    }
-    return `rgb(var(${variable}) / ${opacityValue})`
-  }
-}
-
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
+  darkMode: ['class'],
+  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
-    extend: {
-      fontFamily: {
-        ...fontFamily,
-        poltawski: ['Poltawski Nowy', 'serif'],
-        saoldisplay: ['Saol Display', 'serif'],
-        montglades: ['Mont Glades', 'serif'],
-        firacode: ['Fira Code', 'monospace'],
-        spacegrotesk: ['Space Grotesk', 'sans-serif'],
-      },
-      colors: {
-        primary: {
-          // Customize it on globals.css :root
-          50: withOpacityValue('--tw-color-primary-50'),
-          100: withOpacityValue('--tw-color-primary-100'),
-          200: withOpacityValue('--tw-color-primary-200'),
-          300: withOpacityValue('--tw-color-primary-300'),
-          400: withOpacityValue('--tw-color-primary-400'),
-          500: withOpacityValue('--tw-color-primary-500'),
-          600: withOpacityValue('--tw-color-primary-600'),
-          700: withOpacityValue('--tw-color-primary-700'),
-          800: withOpacityValue('--tw-color-primary-800'),
-          900: withOpacityValue('--tw-color-primary-900'),
-        },
-        dark: '#222222',
-        muted: '#8E8E8E',
-      },
-      backgroundImage: {
-        hero: "url('/images/bg-hero.png')",
-      },
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px'
+      }
     },
+    extend: {
+      colors: {
+        onyx: '#111827', // #111827 // #0F0F0F // #10100E // #000000
+        cement: '#a1a1aa',
+        mirage: '#191919',
+        'off-white': '#ffffe3',
+        'carbon-gray': '#71717a',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        }
+      },
+      fontSize: {
+        xss: '0.6875rem'
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
+      },
+      keyframes: {},
+      animation: {},
+      backgroundImage: {}
+    },
+    fontFamily: {
+      body: ['Satoshi', 'sans-serif'],
+      heading: ['Clash Grotesk', 'sans-serif'],
+      space: ['Space Grotesk', 'sans-serif'],
+      poltawski: ['Poltawski Nowy', 'sans-serif'],
+      montglades: ['Mont Glades', 'sans-serif']
+    }
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [require('tailwindcss-animate')]
 }

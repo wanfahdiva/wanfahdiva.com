@@ -1,0 +1,141 @@
+/* #region  /**=========== Satoshi Font =========== */
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Regular.otf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Medium.otf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Black.otf');
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* #endregion  /**======== Satoshi Font =========== */
+
+/* #region  /**=========== Clash Grotesk Font =========== */
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Light.otf');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Regular.otf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Medium.otf');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Semibold.otf');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Bold.otf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* #endregion  /**======== Clash Grotesk Font =========== */
+
+/* #region  /**=========== Space Grotesk Font =========== */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src:
+    url('../fonts/Space_Grotesk/spacegrotesk-variablefont_wght-webfont.woff2') format('woff2'),
+    url('../fonts/Space_Grotesk/spacegrotesk-variablefont_wght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* #endregion  /**======== Space Grotesk Font =========== */
+
+/* #region  /**=========== Poltawski Nowy Font =========== */
+
+@font-face {
+  font-family: 'Poltawski Nowy';
+  src:
+    url('../fonts/Poltawski_Nowy/poltawskinowy-variablefont_wght-webfont.woff2') format('woff2'),
+    url('../fonts/Poltawski_Nowy/poltawskinowy-variablefont_wght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* #endregion  /**======== Poltawski Nowy Font =========== */
+
+/* #region  /**=========== Mont Glades Font =========== */
+
+@font-face {
+  font-family: 'Mont Glades';
+  src:
+    url('../fonts/Mont_Glades/monthglade-webfont.woff2') format('woff2'),
+    url('../fonts/Mont_Glades/monthglade-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* #endregion  /**======== Mont Glades Font =========== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading text-off-white;
+}
+
+body {
+  @apply bg-background text-foreground text-cement;
+  @apply font-body;
+}
+
+.text-vertical {
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+.custom-stroke {
+  color: transparent;
+  -webkit-text-stroke-color: #ffffe3;
+  -webkit-text-stroke-width: 0.2mm;
+}

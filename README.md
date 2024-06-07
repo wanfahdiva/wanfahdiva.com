@@ -7,37 +7,47 @@
 </h1>
 
 <p align="center">
-  Personal website built with <a href="https://nextjs.org/" target="_blank">Next.js</a>, <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, and <a href="https://greensock.com/gsap/" target="_blank">GSAP</a>. Hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>
+  Personal website built with <a href="https://nextjs.org/" target="_blank">Next.js</a>, <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, and <a href="https://greensock.com/gsap/" target="_blank">GSAP</a>. Hosted with <a href="https://www.vercel.com/" target="_blank">Vercel</a>.
 </p>
 
 <p align="center">
-    <img src="https://vercelbadge.vercel.app/api/wanfahdiva/wanfahdiva.com" alt="Netlify Status" />
+    <img src="https://vercelbadge.vercel.app/api/wanfahdiva/wanfahdiva.com" alt="Vercel Status" />
 </p>
 
 ![demo](https://raw.githubusercontent.com/wanfahdiva/wanfahdiva.com/main/public/images/demo.png)
 
-## 🛠 Installation & Set Up
+## - Installation & Set Up
 
-1. Install dependencies
-
-   ```sh
-   yarn install
-   ```
-
-2. Start the development server
+1. Install Bun.sh and ensure you have Node.js version 16 or higher.
 
    ```sh
-    yarn dev
+   powershell -c "irm bun.sh/install.ps1|iex"
    ```
 
-3. Build for production
+2. Install dependencies
 
    ```sh
-    yarn build
+   bun install
    ```
 
-4. Start the production server
+3. Start the development server
 
    ```sh
-    yarn start
+    bun dev
    ```
+
+4. Build for production
+
+   ```sh
+    bun run build
+   ```
+
+5. Start the production server
+
+   ```sh
+    bun start
+   ```
+
+## - License
+
+This Website is under [MIT License](https://github.com/wanfahdiva/wanfahdiva.com/blob/main/LICENSE)

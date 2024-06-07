@@ -1,1 +1,0 @@
-export { SocialMediaSection } from './SocialMedia'

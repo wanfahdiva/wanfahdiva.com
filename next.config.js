@@ -1,36 +1,20 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  eslint: {
-    dirs: ['src'],
-  },
 
+const nextConfig = {
   reactStrictMode: true,
-
-  // Uncoment to add domain whitelist
+  swcMinify: true,
   images: {
-    domains: ['dummyimage.com'],
+    remotePatterns: []
   },
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
-    API_URL: process.env.API_URL || 'http://localhost:1337/api',
-  },
-
-  // SVGR
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            typescript: true,
-            icon: true,
-          },
-        },
-      ],
-    })
-
-    return config
-  },
+    SITE_NAME: 'wanfahdiva.com',
+    APP_URL: process.env.APP_URL,
+    BASE_URL: process.env.BASE_URL,
+    API_URL: process.env.API_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    MIDTRANS_CLIENTKEY: process.env.MIDTRANS_CLIENTKEY
+  }
 }
+
+module.exports = nextConfig

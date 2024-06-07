@@ -1,41 +1,37 @@
-name: PR Source Code Check
-
+name: Code Check
 on:
-  - push
+  workflow_call:
+
+concurrency:
+  group: ${{ github.job }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:
-    name: Run ESLint
+    name: ESLint, TypeScript, Prettier
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn lint:strict
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-  tsc:
-    name: Run Type Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '14'
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn typecheck
+          bun-version: latest
 
-  prettier:
-    name: Run Prettier Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn format:check
+          node-version: 18
+
+      - name: Download deps
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint:strict
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: Prettier check
+        run: bun run prettier:format
