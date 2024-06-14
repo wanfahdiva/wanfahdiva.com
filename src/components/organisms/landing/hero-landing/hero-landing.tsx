@@ -44,7 +44,7 @@ export const HeroLanding = () => (
                 <Link
                   href="/resume"
                   passHref
-                  className="inline-flex items-center justify-center px-4 py-2 space-x-2 font-medium transition-colors duration-300 ease-in-out border-2 rounded border-off-white hover:bg-off-white hover:text-mirage"
+                  className="inline-flex items-center justify-center px-4 py-2 space-x-2 font-medium transition-colors duration-300 ease-in-out border-2 border-white rounded hover:bg-white hover:text-mirage"
                 >
                   <FileTextIcon className="w-4 h-4" />
                   <span className="text-xs font-semibold md:text-sm">Resume</span>

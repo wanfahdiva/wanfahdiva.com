@@ -115,11 +115,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #191919;
   opacity: 0;
   overflow-x: hidden;
   visibility: hidden;
   transition: 0.3s;
+  @apply bg-onyx;
 }
 
 @media screen and (max-width: 750px) {

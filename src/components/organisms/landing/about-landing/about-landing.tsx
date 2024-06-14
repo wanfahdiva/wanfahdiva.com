@@ -28,11 +28,21 @@ export const AboutLanding = () => (
                 )}
               />
             </div>
-            <div className="relative items-center justify-center hidden float-right mt-2 ml-7 md:flex" data-fade="9">
-              <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] about-image">
+            <div className="relative items-center justify-center hidden float-right mt-2 group ml-7 md:flex" data-fade="9">
+              <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
                 <NextImage src="/static/images/me.jpg" alt="me" layout="fill" />
+                {[...Array(6)].map((_, i) => (
+                  <NextImage
+                    src="/static/images/me.jpg"
+                    alt="me"
+                    layout="fill"
+                    key={i}
+                    style={{ rotate: `${i * 2}deg`, opacity: 0.1 + i * 0.1 }}
+                    className="absolute top-0 left-0 w-full h-full -z-10"
+                  />
+                ))}
               </div>
-              <span className="!font-montglades absolute translate-y-24 -rotate-6 transform text-2xl font-medium md:translate-y-32 text-off-white [text-shadow:_1.5px_1.25px_#a1a1aa]">
+              <span className="!font-montglades absolute translate-y-24 -rotate-6 transform text-2xl font-medium md:translate-y-32">
                 Wanfah Diva
               </span>
             </div>
@@ -85,18 +95,25 @@ export const AboutLanding = () => (
                     key={i}
                     className={cn(
                       '!font-poltawski -ml-5 text-7xl italic md:text-[7rem]',
-                      i != 0 ? 'custom-stroke text-transparent opacity-40' : '!opacity-70 text-off-white'
+                      i != 0 ? 'custom-stroke text-transparent opacity-40' : '!opacity-70'
                     )}
                   >
                     PROFILE
                   </p>
                 </div>
               ))}
-              <div
-                className="absolute h-[258px] w-[175px] !rotate-[9deg] md:h-[358px] md:w-[265px] about-image"
-                data-fade="9"
-              >
+              <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
                 <NextImage src="/static/images/me.jpg" alt="me" layout="fill" />
+                {[...Array(6)].map((_, i) => (
+                  <NextImage
+                    src="/static/images/me.jpg"
+                    alt="me"
+                    layout="fill"
+                    key={i}
+                    style={{ rotate: `${i * 2}deg`, opacity: 0.1 + i * 0.1 }}
+                    className="absolute top-0 left-0 w-full h-full -z-10"
+                  />
+                ))}
               </div>
               <div data-fade="12" className="flex justify-center w-full h-full">
                 <span className="!font-montglades absolute -translate-y-20 -rotate-6 transform text-2xl font-medium md:text-5xl">

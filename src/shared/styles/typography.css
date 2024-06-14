@@ -121,7 +121,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-heading text-off-white;
+  @apply text-white font-heading;
 }
 
 body {
@@ -136,6 +136,6 @@ body {
 
 .custom-stroke {
   color: transparent;
-  -webkit-text-stroke-color: #ffffe3;
+  -webkit-text-stroke-color: white;
   -webkit-text-stroke-width: 0.2mm;
 }

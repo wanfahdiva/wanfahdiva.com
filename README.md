@@ -14,7 +14,7 @@
     <img src="https://vercelbadge.vercel.app/api/wanfahdiva/wanfahdiva.com" alt="Vercel Status" />
 </p>
 
-![demo](https://raw.githubusercontent.com/wanfahdiva/wanfahdiva.com/main/public/images/demo.png)
+![demo](https://raw.githubusercontent.com/wanfahdiva/wanfahdiva.com/main/public/static/images/preview.png)
 
 ## - Installation & Set Up
 

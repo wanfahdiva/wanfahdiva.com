@@ -1,7 +1,9 @@
 'use client'
 
 import { useHeaderHeight } from '@/hooks/use-header-height'
+import { useScroll } from '@/hooks/use-scroll'
 import { motion } from 'framer-motion'
+import * as Icon from 'lucide-react'
 import Link from 'next/link'
 import { redirect, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -20,6 +22,15 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isLanding, setIsLanding] = useState(false)
   const [show, setShow] = useState(false)
+  const [classes, setClasses] = useState('h-[100px]')
+
+  useScroll((e: number) => {
+    if (e > 5) {
+      setClasses('backdrop-blur h-[80px]')
+    } else {
+      setClasses('h-[100px]')
+    }
+  })
 
   useEffect(() => {
     if (router == '/') {
@@ -56,7 +67,11 @@ export const Navbar = () => {
   return (
     <div className="navbar !hidden">
       <motion.header
-        className={cn(' fixed top-0 z-30 w-full', isOpen ? 'bg-mirage' : 'backdrop-blur')}
+        className={cn(
+          'flex items-center fixed top-0 z-30 w-full transition-all duration-300 ease-in-out',
+          isOpen && 'bg-onyx',
+          classes
+        )}
         initial="hiddenHeader"
         animate="enterHeader"
         exit="exitHeader"
@@ -64,7 +79,7 @@ export const Navbar = () => {
         style={{ marginBottom: -headerHeight }}
         transition={{ duration: 1.25, type: 'easeInOut', delay: 0.5 }}
       >
-        <nav className="flex items-center justify-between w-full px-6 md:px-20 h-[80px]">
+        <nav className="flex items-center justify-between w-full px-6 md:px-20">
           <div className="relative">
             {isLanding ? (
               <ScrollLink to="hero" smooth={true} duration={500}>
@@ -102,13 +117,13 @@ export const Navbar = () => {
             </label>
             {isOpen && (
               <div
-                className="flex items-start justify-start menu"
+                className="flex items-center justify-center menu"
                 style={{
                   marginTop: headerHeight,
                   height: `calc(100vh - ${headerHeight}px)`
                 }}
               >
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col items-center justify-center w-full -mt-24">
                   {links.map((link, index) => (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -119,9 +134,8 @@ export const Navbar = () => {
                         type: 'easeInOut'
                       }}
                       key={index}
-                      className="flex py-3 space-x-1 text-lg uppercase"
+                      className="flex py-3 space-x-1 text-4xl font-bold text-white uppercase font-space"
                     >
-                      <span className="opacity-75 pl-7">0{index + 1}.</span>
                       <ScrollLink
                         to={link.toLowerCase()}
                         onClick={() => {
@@ -134,18 +148,22 @@ export const Navbar = () => {
                   ))}
                   <div
                     className={cn(
-                      'fixed bottom-0 flex w-full items-center justify-between p-6',
+                      'fixed bottom-0 flex w-full items-center justify-between p-6 right-0',
                       isOpen ? 'opacity-100' : 'opacity-0'
                     )}
                   >
                     <div className="flex space-x-3 md:hidden">
-                      {Social.map((item, index) => (
-                        <a href={item.link} key={index} target="_blank">
-                          <div className="inline-flex items-center p-2 bg-gray-100 rounded-lg bg-opacity-20">
-                            {item.icon}
-                          </div>
-                        </a>
-                      ))}
+                      {Social.map((item, index) => {
+                        const IconComponent = Icon[item.icon] as React.ElementType
+
+                        return (
+                          <a href={item.link} key={index} target="_blank">
+                            <div className="inline-flex items-center p-2 bg-gray-100 rounded-lg bg-opacity-20">
+                              <IconComponent className="w-5 h-5" />
+                            </div>
+                          </a>
+                        )
+                      })}
                     </div>
                     <span className="font-medium">© Wanfah Diva</span>
                   </div>

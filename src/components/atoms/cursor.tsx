@@ -110,9 +110,9 @@ export const Cursor = () => {
   }, [])
 
   return (
-    <React.Fragment>
+    <div className="hidden md:block">
       <div ref={primaryCursor} className="primary-cursor !hidden" />
       <div ref={secondaryCursor} className="secondary-cursor !hidden" />
-    </React.Fragment>
+    </div>
   )
 }

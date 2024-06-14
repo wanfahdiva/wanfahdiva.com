@@ -41,7 +41,7 @@ export const Footer = () => (
         })}
       </div>
       <div className="flex flex-col items-center justify-center space-y-1">
-        {/* <p className="text-xs font-medium transition-colors duration-300 ease-in-out text-carbon-gray hover:text-off-white">
+        {/* <p className="text-xs font-medium transition-colors duration-300 ease-in-out text-carbon-gray hover:text-white">
             Built with Next.js and Tailwind CSS, hosted on Vercel
           </p> */}
         <p className="text-xs font-medium transition-colors duration-300 ease-in-out">

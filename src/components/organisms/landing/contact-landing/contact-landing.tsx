@@ -28,7 +28,7 @@ export const ContactLanding = () => (
             </p>
             <a
               href="maito:wanfahdivaa@gmail.com"
-              className="inline-flex items-center justify-center px-4 py-2 space-x-2 text-xs font-medium transition-colors duration-300 ease-in-out border-2 rounded border-off-white md:text-sm hover:bg-off-white hover:text-mirage"
+              className="inline-flex items-center justify-center px-4 py-2 space-x-2 text-xs font-medium transition-colors duration-300 ease-in-out border-2 border-white rounded md:text-sm hover:bg-white hover:text-mirage"
             >
               Say Hello
             </a>

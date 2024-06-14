@@ -41,11 +41,12 @@ export const SplashScreen = () => {
     if (counterElement) {
       gsap.to(counterElement, {
         innerHTML: 100,
-        duration: 3.5,
+        duration: 4.5,
         ease: 'power1.out',
         onUpdate: () => {
           const currentValue = counterElement.innerHTML
-          counterElement.innerHTML = `${Math.floor(parseInt(currentValue))}%`
+          const percentage = Math.floor(parseInt(currentValue))
+          counterElement.innerHTML = `${percentage <= 99 ? '0' : ''}${percentage}%`
           bar?.setAttribute('style', `width: ${currentValue}%`)
         }
       })

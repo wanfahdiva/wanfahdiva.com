@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <body className="min-h-screen antialiased bg-onyx">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <React.Fragment>
-            <NextTopLoader color="#ffffe3" showSpinner={false} />
+            <NextTopLoader color="white" showSpinner={false} />
             <SmoothScrollProvider />
             <SplashScreen />
             <Cursor />
