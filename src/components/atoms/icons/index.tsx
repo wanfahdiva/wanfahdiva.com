@@ -23,7 +23,7 @@ export const HeroIcon = ({ className }: IconsProps) => (
     <defs>
       <linearGradient id="paint-linear" x1="1272.23" y1="479.474" x2="506.242" y2="-216.277" gradientUnits="userSpaceOnUse">
         <stop stopColor="#a2a2902c" />
-        <stop offset="0.619553" stopColor="#ffffe3" />
+        <stop offset="0.619553" stopColor="#ffffff" />
         <stop offset="0.93102" stopColor="#60605526" />
       </linearGradient>
       <clipPath>

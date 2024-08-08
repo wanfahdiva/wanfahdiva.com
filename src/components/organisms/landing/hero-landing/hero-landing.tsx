@@ -54,7 +54,7 @@ export const HeroLanding = () => (
           </div>
 
           <div className="absolute rounded c-scrolldown bottom-3 left-1/2 opacity-40 md:hidden">
-            <div className="c-line"></div>
+            <div className="c-line" />
           </div>
         </section>
       )}

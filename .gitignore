@@ -76,5 +76,3 @@ next-env.d.ts
 # src/shared/styles/app.css
 
 .env
-docker/mariadb/*
-dce-strapi

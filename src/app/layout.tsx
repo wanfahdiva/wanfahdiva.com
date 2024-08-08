@@ -2,7 +2,6 @@ import '@/shared/styles/app.css'
 
 import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
-import NextTopLoader from 'nextjs-toploader'
 import React from 'react'
 
 import { Cursor } from '@/components/atoms/cursor'
@@ -34,17 +33,18 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <head />
 
       <body className="min-h-screen antialiased bg-onyx">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <React.Fragment>
-            <NextTopLoader color="white" showSpinner={false} />
-            <SmoothScrollProvider />
-            <SplashScreen />
-            <Cursor />
-            <main id="main" className="hidden">
-              {children}
-            </main>
-          </React.Fragment>
-          <Analytics />
+        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SmoothScrollProvider>
+            <SplashScreen
+              content={
+                <main>
+                  {children}
+                  <Cursor />
+                </main>
+              }
+            />
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

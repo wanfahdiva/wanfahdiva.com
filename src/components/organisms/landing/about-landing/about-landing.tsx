@@ -3,7 +3,7 @@
 import stack from '@/shared/jsons/stack.json'
 import { InView } from 'react-intersection-observer'
 
-import NextImage from '@/components/atoms/next-image'
+import { NextImage } from '@/components/atoms/next-image'
 import { Container } from '@/components/templates/container'
 
 import { cn } from '@/lib/utils'
@@ -30,7 +30,7 @@ export const AboutLanding = () => (
             </div>
             <div className="relative items-center justify-center hidden float-right mt-2 group ml-7 md:flex" data-fade="9">
               <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
-                <NextImage src="/static/images/me.jpg" alt="me" layout="fill" />
+                <NextImage src="/static/images/me.jpg" alt="me" layout="fill" useSkeleton />
                 {[...Array(6)].map((_, i) => (
                   <NextImage
                     src="/static/images/me.jpg"
@@ -102,18 +102,20 @@ export const AboutLanding = () => (
                   </p>
                 </div>
               ))}
-              <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
-                <NextImage src="/static/images/me.jpg" alt="me" layout="fill" />
-                {[...Array(6)].map((_, i) => (
-                  <NextImage
-                    src="/static/images/me.jpg"
-                    alt="me"
-                    layout="fill"
-                    key={i}
-                    style={{ rotate: `${i * 2}deg`, opacity: 0.1 + i * 0.1 }}
-                    className="absolute top-0 left-0 w-full h-full -z-10"
-                  />
-                ))}
+              <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
+                  <NextImage src="/static/images/me.jpg" alt="me" layout="fill" useSkeleton />
+                  {[...Array(6)].map((_, i) => (
+                    <NextImage
+                      src="/static/images/me.jpg"
+                      alt="me"
+                      layout="fill"
+                      key={i}
+                      style={{ rotate: `${i * 2}deg`, opacity: 0.1 + i * 0.1 }}
+                      className="absolute top-0 left-0 w-full h-full -z-10"
+                    />
+                  ))}
+                </div>
               </div>
               <div data-fade="12" className="flex justify-center w-full h-full">
                 <span className="!font-montglades absolute -translate-y-20 -rotate-6 transform text-2xl font-medium md:text-5xl">

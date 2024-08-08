@@ -108,12 +108,16 @@
     background-color: #0f0f0f;
   }
 
+  /* hide browser cursor */
+
   body,
   button,
   input,
   a {
     @apply cursor-none;
   }
+
+  /* end hide browser cursor */
 
   /* custom selection */
 

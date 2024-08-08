@@ -2,17 +2,17 @@
 
 // import cn from 'clsx'
 import { gsap } from 'gsap'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 export const Cursor = () => {
   const router = useRouter()
+  const pathname = usePathname()
   const primaryCursor = useRef<HTMLDivElement | null>(null)
   const secondaryCursor = useRef<HTMLDivElement | null>(null)
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
   const [isButton, setIsButton] = useState(false)
-  // const [isToProject, setIsProject] = useState(false)
 
   const onMouseMove = useCallback(
     (event: MouseEvent) => {
@@ -50,16 +50,15 @@ export const Cursor = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      // first set hover false on all links
+      setIsPointer(false)
+      setIsButton(false)
       const links = document.querySelectorAll<HTMLButtonElement | HTMLAnchorElement>('button, a')
 
       const handleMouseEnter = (event: Event) => {
         const target = event.target as HTMLElement
         const isButton = target.classList.contains('rounded')
 
-        // const hrefValue = target.getAttribute('href')
-        // const isToProject = hrefValue?.includes('/project/') ?? false
-
-        // setIsProject(isToProject)
         setIsButton(isButton)
         setIsPointer(true)
       }
@@ -80,8 +79,8 @@ export const Cursor = () => {
           link.removeEventListener('mouseleave', handleMouseLeave)
         })
       }
-    }, 6000)
-  }, [router])
+    }, 50)
+  }, [router, pathname])
 
   useEffect(() => {
     const handleMouseDown = () => {

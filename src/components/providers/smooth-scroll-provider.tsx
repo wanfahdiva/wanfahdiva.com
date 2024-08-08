@@ -1,17 +1,15 @@
 'use client'
 
-import useSmoothScroll from '@/hooks/use-smooth-scroll'
-import { useRouter } from 'next/navigation'
-import React from 'react'
+import { ReactLenis } from '@studio-freight/react-lenis'
 
-export const SmoothScrollProvider = () => {
-  useSmoothScroll()
+interface SmoothScrollProviderProps {
+  children: React.ReactNode
+}
 
-  const router = useRouter()
-  React.useEffect(() => {
-    // set window positon in top if route change
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [router])
-
-  return null
+export const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) => {
+  return (
+    <ReactLenis root options={{ lerp: 0.1, duration: 3, smoothWheel: true }}>
+      {children}
+    </ReactLenis>
+  )
 }

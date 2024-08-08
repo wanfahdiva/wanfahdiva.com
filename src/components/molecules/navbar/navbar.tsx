@@ -60,18 +60,14 @@ export const Navbar = () => {
 
   setTimeout(() => {
     setShow(true)
-  }, 6000)
+  }, 50)
 
   if (!show) return null
 
   return (
-    <div className="navbar !hidden">
+    <div className="navbar">
       <motion.header
-        className={cn(
-          'flex items-center fixed top-0 z-30 w-full transition-all duration-300 ease-in-out',
-          isOpen && 'bg-onyx',
-          classes
-        )}
+        className={cn('flex items-center fixed top-0 z-30 w-full', isOpen && 'bg-onyx')}
         initial="hiddenHeader"
         animate="enterHeader"
         exit="exitHeader"
@@ -79,7 +75,12 @@ export const Navbar = () => {
         style={{ marginBottom: -headerHeight }}
         transition={{ duration: 1.25, type: 'easeInOut', delay: 0.5 }}
       >
-        <nav className="flex items-center justify-between w-full px-6 md:px-20">
+        <nav
+          className={cn(
+            'flex items-center justify-between w-full px-6 md:px-20 transition-all duration-500 ease-in-out',
+            classes
+          )}
+        >
           <div className="relative">
             {isLanding ? (
               <ScrollLink to="hero" smooth={true} duration={500}>
