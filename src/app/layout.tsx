@@ -35,16 +35,14 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <body className="min-h-screen antialiased bg-onyx">
         <Analytics />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SmoothScrollProvider>
-            <SplashScreen
-              content={
-                <main>
-                  {children}
-                  <Cursor />
-                </main>
-              }
-            />
-          </SmoothScrollProvider>
+          <SplashScreen
+            content={
+              <SmoothScrollProvider>
+                {children}
+                <Cursor />
+              </SmoothScrollProvider>
+            }
+          />
         </ThemeProvider>
       </body>
     </html>
