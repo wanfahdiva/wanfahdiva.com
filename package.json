@@ -15,7 +15,7 @@
     "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "prettier:format": "prettier --write .",
     "generate": "bun plop --plopfile ./.plop/plopfile.js",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "src/**/*": [
