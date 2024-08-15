@@ -4,9 +4,7 @@ import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
 import React from 'react'
 
-import { Cursor } from '@/components/atoms/cursor'
 import { SplashScreen } from '@/components/molecules/splash-screen'
-import { SmoothScrollProvider } from '@/components/providers/smooth-scroll-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 
 export const metadata = {
@@ -35,14 +33,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <body className="min-h-screen antialiased bg-onyx">
         <Analytics />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SplashScreen
-            content={
-              <SmoothScrollProvider>
-                {children}
-                <Cursor />
-              </SmoothScrollProvider>
-            }
-          />
+          <SplashScreen content={children} />
         </ThemeProvider>
       </body>
     </html>

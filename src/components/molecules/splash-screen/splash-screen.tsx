@@ -1,9 +1,12 @@
 'use client'
 
+import ReactLenis from '@studio-freight/react-lenis'
 import { motion, useAnimation } from 'framer-motion'
 import { gsap } from 'gsap'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
+
+import { Cursor } from '@/components/atoms/cursor'
 
 import { cn } from '@/lib/utils'
 
@@ -112,7 +115,7 @@ export const SplashScreen = ({ content }: SplachScreenProps) => {
   }, [index])
 
   return (
-    <React.Fragment>
+    <>
       <div
         className={cn(
           'flex h-screen w-full items-center justify-center opacity-100 transition-opacity duration-700 ease-in-out flex-col space-y-5 relative',
@@ -139,7 +142,11 @@ export const SplashScreen = ({ content }: SplachScreenProps) => {
           </div>
         </div>
       </div>
-      {isFinished && content}
-    </React.Fragment>
+
+      <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
+        {content}
+        <Cursor />
+      </ReactLenis>
+    </>
   )
 }
