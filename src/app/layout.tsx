@@ -4,8 +4,7 @@ import { siteConfig } from '@/constants/config'
 import { Analytics } from '@vercel/analytics/react'
 import React from 'react'
 
-import { SplashScreen } from '@/components/molecules/splash-screen'
-import { ThemeProvider } from '@/components/providers/theme-provider'
+import { AnimateProvider } from '@/components/providers/animate-provider'
 
 export const metadata = {
   title: {
@@ -32,9 +31,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
       <body className="min-h-screen antialiased bg-onyx">
         <Analytics />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SplashScreen content={children} />
-        </ThemeProvider>
+        <AnimateProvider content={children} />
       </body>
     </html>
   )

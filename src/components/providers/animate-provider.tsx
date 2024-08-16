@@ -1,4 +1,5 @@
 'use client'
+'use client'
 
 import ReactLenis from '@studio-freight/react-lenis'
 import { motion, useAnimation } from 'framer-motion'
@@ -34,19 +35,18 @@ const words = [
   '👋'
 ]
 const doms = ['.primary-cursor', '.secondary-cursor', '.navbar', '.footer']
-
-interface SplachScreenProps {
+interface AnimateProviderProps {
   content: React.ReactNode
 }
 
-export const SplashScreen = ({ content }: SplachScreenProps) => {
+export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   const router = usePathname()
   const controls = useAnimation()
   const counterRef = useRef<HTMLDivElement>(null)
 
   const [index, setIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isFinished, setIsFinished] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isFinished, setIsFinished] = useState(false)
 
   const options = {
     initial: {
@@ -85,7 +85,7 @@ export const SplashScreen = ({ content }: SplachScreenProps) => {
         onUpdate: () => {
           const currentValue = counterElement.innerHTML
           const percentage = Math.floor(parseInt(currentValue))
-          counterElement.innerHTML = `${percentage <= 99 ? '0' : ''}${percentage}%`
+          counterElement.innerHTML = percentage <= 99 ? `0${percentage}%` : `${percentage}%`
           bar?.setAttribute('style', `width: ${currentValue}%`)
         }
       })
@@ -93,19 +93,26 @@ export const SplashScreen = ({ content }: SplachScreenProps) => {
   }, [])
 
   useEffect(() => {
+    document.body.classList.add('overflow-hidden')
+    document.body.classList.add('cursor-wait')
     setTimeout(() => {
       setIsLoading(false)
       showContent()
     }, 5000)
     setTimeout(() => {
+      document.body.classList.remove('overflow-hidden')
       setIsFinished(true)
+      document.body.classList.remove('cursor-wait')
     }, 6000)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    if (index == words.length - 1) return
+    if (index == words.length - 1) {
+      return
+    }
+
     setTimeout(
       () => {
         setIndex(index + 1)
@@ -144,8 +151,12 @@ export const SplashScreen = ({ content }: SplachScreenProps) => {
       </div>
 
       <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
-        {content}
-        <Cursor />
+        {!isLoading && (
+          <>
+            {content}
+            <Cursor />
+          </>
+        )}
       </ReactLenis>
     </>
   )
