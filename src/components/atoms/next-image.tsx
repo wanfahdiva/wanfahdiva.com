@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/legacy/image"
+import Image, { ImageProps } from 'next/legacy/image'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
