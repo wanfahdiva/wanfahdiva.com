@@ -1,15 +1,21 @@
 'use client'
 
+import { motion } from 'framer-motion'
 // import cn from 'clsx'
 import { gsap } from 'gsap'
 import { usePathname, useRouter } from 'next/navigation'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
-export const Cursor = () => {
+interface CursorProps {
+  isSplash?: boolean
+}
+
+export const Cursor = ({ isSplash }: CursorProps) => {
   const router = useRouter()
   const pathname = usePathname()
   const primaryCursor = useRef<HTMLDivElement | null>(null)
   const secondaryCursor = useRef<HTMLDivElement | null>(null)
+
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
   const [isButton, setIsButton] = useState(false)
@@ -80,7 +86,7 @@ export const Cursor = () => {
         })
       }
     }, 50)
-  }, [router, pathname])
+  }, [router, pathname, isSplash])
 
   useEffect(() => {
     const handleMouseDown = () => {
@@ -108,10 +114,20 @@ export const Cursor = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (isSplash) {
+      // set the cursor position into primary cursor
+      gsap.set(primaryCursor.current, {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
+      })
+    }
+  }, [isSplash])
+
   return (
     <div className="hidden md:block">
-      <div ref={primaryCursor} className="primary-cursor !hidden" />
-      <div ref={secondaryCursor} className="secondary-cursor !hidden" />
+      <motion.div ref={primaryCursor} className="primary-cursor !hidden" />
+      <motion.div ref={secondaryCursor} className="secondary-cursor !hidden" />
     </div>
   )
 }

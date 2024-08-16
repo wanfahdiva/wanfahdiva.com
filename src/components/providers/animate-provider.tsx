@@ -151,12 +151,8 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
       </div>
 
       <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
-        {!isLoading && (
-          <>
-            {content}
-            <Cursor />
-          </>
-        )}
+        {!isLoading && content}
+        <Cursor isSplash={isLoading} />
       </ReactLenis>
     </>
   )
