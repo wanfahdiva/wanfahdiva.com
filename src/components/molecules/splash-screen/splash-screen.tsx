@@ -41,12 +41,12 @@ interface SplachScreenProps {
 
 export const SplashScreen = ({ content }: SplachScreenProps) => {
   const router = usePathname()
-  const counterRef = useRef<HTMLDivElement>(null)
   const controls = useAnimation()
+  const counterRef = useRef<HTMLDivElement>(null)
 
   const [index, setIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isFinished, setIsFinished] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isFinished, setIsFinished] = useState(true)
 
   const options = {
     initial: {
