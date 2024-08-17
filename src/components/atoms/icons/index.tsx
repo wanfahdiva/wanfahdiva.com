@@ -4,7 +4,7 @@ interface IconsProps {
   className?: string
 }
 
-export const HeroIcon = ({ className }: IconsProps) => (
+export const TechLogo = ({ className }: IconsProps) => (
   <svg
     viewBox="0 0 1273 906"
     fill="none"

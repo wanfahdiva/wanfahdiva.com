@@ -4,7 +4,7 @@ import { FileTextIcon } from 'lucide-react'
 import Link from 'next/link'
 import { InView } from 'react-intersection-observer'
 
-import { HeroIcon } from '@/components/atoms/icons'
+import { TechLogo } from '@/components/atoms/icons'
 import { Container } from '@/components/templates/container'
 
 import { cn } from '@/lib/utils'
@@ -42,7 +42,7 @@ export const HeroLanding = () => (
               </div>
               <div className="inline-flex items-center space-x-2 md:space-x-5" data-fade="10">
                 <Link
-                  href="/resume"
+                  href="/"
                   passHref
                   className="inline-flex items-center justify-center px-4 py-2 space-x-2 font-medium transition-colors duration-300 ease-in-out border-2 border-white rounded hover:bg-white hover:text-mirage"
                 >
@@ -65,7 +65,7 @@ export const HeroLanding = () => (
           className={cn('transition-opacity duration-300 ease-in delay-150 z-[-1]', inView ? 'opacity-100' : 'opacity-0')}
           ref={ref}
         >
-          <HeroIcon className="z-[-1]" data-fade="3" />
+          <TechLogo className="z-[-1]" data-fade="3" />
         </div>
       )}
     </InView>
