@@ -1,5 +1,4 @@
 'use client'
-'use client'
 
 import ReactLenis from '@studio-freight/react-lenis'
 import { motion, useAnimation } from 'framer-motion'
@@ -35,6 +34,7 @@ const words = [
   '👋'
 ]
 const doms = ['.primary-cursor', '.secondary-cursor', '.navbar', '.footer']
+
 interface AnimateProviderProps {
   content: React.ReactNode
 }
@@ -53,8 +53,8 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
       opacity: 0
     },
     enter: {
-      opacity: 100,
-      transition: { duration: 1, delay: 0.2 }
+      opacity: 1,
+      transition: { duration: 0.6, delay: 0.1 }
     }
   }
 
@@ -66,7 +66,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
         doms.forEach((el) => {
           document.querySelector(el)?.classList.replace('!hidden', 'block')
         })
-      }, 1000)
+      }, 500)
     }
   }
 
@@ -80,7 +80,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
     if (counterElement) {
       gsap.to(counterElement, {
         innerHTML: 100,
-        duration: 4.5,
+        duration: 2.5,
         ease: 'power1.out',
         onUpdate: () => {
           const currentValue = counterElement.innerHTML
@@ -93,18 +93,15 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   }, [])
 
   useEffect(() => {
-    document.body.classList.add('overflow-hidden')
     document.body.classList.add('cursor-wait')
     setTimeout(() => {
       setIsLoading(false)
       showContent()
-    }, 5000)
+    }, 3000)
     setTimeout(() => {
-      document.body.classList.remove('overflow-hidden')
       setIsFinished(true)
       document.body.classList.remove('cursor-wait')
-    }, 6000)
-
+    }, 3500)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -117,7 +114,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
       () => {
         setIndex(index + 1)
       },
-      index == 0 ? 700 : 200
+      index == 0 ? 400 : 100
     )
   }, [index])
 
@@ -125,7 +122,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
     <>
       <div
         className={cn(
-          'flex h-screen w-full items-center justify-center opacity-100 transition-opacity duration-700 ease-in-out flex-col space-y-5 relative',
+          'flex h-screen w-full items-center justify-center opacity-100 transition-opacity duration-500 ease-in-out flex-col space-y-5 relative',
           !isLoading && 'opacity-0',
           isFinished && 'hidden'
         )}

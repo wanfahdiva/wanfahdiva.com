@@ -116,8 +116,12 @@ export const Cursor = ({ isSplash }: CursorProps) => {
 
   useEffect(() => {
     if (isSplash) {
-      // set the cursor position into primary cursor
       gsap.set(primaryCursor.current, {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
+      })
+
+      gsap.set(secondaryCursor.current, {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2
       })
