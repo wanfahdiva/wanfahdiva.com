@@ -37,7 +37,7 @@ export const NextImage = ({
   return (
     <figure style={!widthIsSet ? { width: `${width}px` } : undefined} className={className}>
       <Image
-        className={cn(classNames?.image, status === 'loading' && cn('animate-pulse', classNames?.blur))}
+        className={cn(classNames?.image, classNames?.blur, status === 'loading' && 'animate-pulse bg-cement')}
         src={src}
         width={width}
         height={height}

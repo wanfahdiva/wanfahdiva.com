@@ -13,10 +13,10 @@ module.exports = {
     extend: {
       colors: {
         onyx: '#111827', // #111827 // #0F0F0F // #10100E // #000000
-        cement: '#a1a1aa',
+        cement: '#A1A1AA',
         mirage: '#191919',
-        'off-white': '#ffffe3',
-        'carbon-gray': '#71717a',
+        'off-white': '#FFFFE3',
+        'carbon-gray': '#71717A',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
