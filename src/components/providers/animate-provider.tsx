@@ -3,7 +3,6 @@
 import ReactLenis from '@studio-freight/react-lenis'
 import { motion, useAnimation } from 'framer-motion'
 import { gsap } from 'gsap'
-import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Cursor } from '@/components/atoms/cursor'
@@ -40,7 +39,6 @@ interface AnimateProviderProps {
 }
 
 export const AnimateProvider = ({ content }: AnimateProviderProps) => {
-  const router = usePathname()
   const controls = useAnimation()
   const counterRef = useRef<HTMLDivElement>(null)
 
@@ -61,13 +59,12 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   const showContent = () => {
     const main = document.getElementById('main')
     main?.classList.remove('hidden')
-    if (router != '/resume') {
-      setTimeout(() => {
-        doms.forEach((el) => {
-          document.querySelector(el)?.classList.replace('!hidden', 'block')
-        })
-      }, 500)
-    }
+
+    setTimeout(() => {
+      doms.forEach((el) => {
+        document.querySelector(el)?.classList.replace('!hidden', 'block')
+      })
+    }, 500)
   }
 
   useEffect(() => {
@@ -119,7 +116,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   }, [index])
 
   return (
-    <>
+    <div className="relative w-full min-h-screen bg-onyx">
       <div
         className={cn(
           'flex h-screen w-full items-center justify-center opacity-100 transition-opacity duration-500 ease-in-out flex-col space-y-5 relative',
@@ -151,6 +148,6 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
         {!isLoading && content}
         <Cursor isSplash={isLoading} />
       </ReactLenis>
-    </>
+    </div>
   )
 }
