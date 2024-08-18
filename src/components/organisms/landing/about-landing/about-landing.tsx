@@ -29,22 +29,12 @@ export const AboutLanding = () => (
               />
             </div>
             <div className="relative items-center justify-center hidden float-right mt-2 group ml-7 md:flex" data-fade="9">
-              <div className="relative h-[258px] w-[175px] md:h-[358px] md:w-[265px] rotate-2">
+              <div className="relative h-[258px] w-[175px] md:h-[398px] md:w-[265px]">
                 <NextImage src="/static/images/me.jpg" alt="me" layout="fill" useSkeleton />
-                {[...Array(6)].map((_, i) => (
-                  <NextImage
-                    src="/static/images/me.jpg"
-                    alt="me"
-                    layout="fill"
-                    key={i}
-                    style={{ rotate: `${i * 2}deg`, opacity: 0.1 + i * 0.1 }}
-                    className="absolute top-0 left-0 w-full h-full -z-10"
-                  />
-                ))}
+                <span className="!font-montglades absolute -rotate-6 transform text-2xl font-medium bottom-10 w-full text-center">
+                  Wanfah Diva
+                </span>
               </div>
-              <span className="!font-montglades absolute translate-y-24 -rotate-6 transform text-2xl font-medium md:translate-y-32">
-                Wanfah Diva
-              </span>
             </div>
             <div data-fade="6">
               <p className="mt-5 text-sm text-justify indent-7 md:text-base">

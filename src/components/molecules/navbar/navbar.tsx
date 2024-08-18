@@ -109,7 +109,7 @@ export const Navbar = () => {
             ))}
           </div>
 
-          <div className="inline-flex md:hidden">
+          <div className="flex md:hidden">
             <input type="checkbox" id="burger-toggle" onChange={(e) => setIsOpen(e.target.checked)} checked={isOpen} />
             <label htmlFor="burger-toggle" className="burger-menu">
               <div className="line"></div>
@@ -124,7 +124,7 @@ export const Navbar = () => {
                   height: `calc(100vh - ${headerHeight}px)`
                 }}
               >
-                <div className="flex flex-col items-center justify-center w-full -mt-24">
+                <div className="relative flex flex-col items-center justify-center w-full -mt-24">
                   {links.map((link, index) => (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -147,12 +147,10 @@ export const Navbar = () => {
                       </ScrollLink>
                     </motion.div>
                   ))}
-                  <div
-                    className={cn(
-                      'fixed bottom-0 flex w-full items-center justify-between p-6 right-0',
-                      isOpen ? 'opacity-100' : 'opacity-0'
-                    )}
-                  >
+                </div>
+
+                <div className="absolute bottom-0 left-0 w-full">
+                  <div className="flex items-center justify-between w-full p-6">
                     <div className="flex space-x-3 md:hidden">
                       {Social.map((item, index) => {
                         const IconComponent = Icon[item.icon] as React.ElementType
