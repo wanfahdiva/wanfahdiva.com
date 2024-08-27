@@ -77,7 +77,7 @@ export const LandingProjectCard = ({
               <p className="text-[16px] first-letter:text-[28px] first-letter:font-['Title']">{description}</p>
             </div>
 
-            <div className="relative h-48 overflow-hidden rounded-lg shadow-md md:h-44 md:w-2/5">
+            <div className="relative h-40 overflow-hidden rounded-lg shadow-md md:h-44 md:w-2/5">
               <motion.div className="w-full h-full" style={{ scale: imageScale }}>
                 <NextImage layout="fill" src={src} alt={title} className="object-cover" useSkeleton />
               </motion.div>

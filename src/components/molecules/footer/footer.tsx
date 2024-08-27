@@ -40,7 +40,7 @@ export const Footer = () => (
           )
         })}
       </div>
-      <p className="text-xs font-medium transition-colors duration-300 ease-in-out">
+      <p className="w-4/5 text-xs font-medium text-center transition-colors duration-300 ease-in-out sm:w-full">
         Made with ❤️ by Wanfah Diva. Copyright © 2021. All rights reserved.
       </p>
     </div>
