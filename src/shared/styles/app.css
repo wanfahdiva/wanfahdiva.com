@@ -96,6 +96,7 @@
   /* custom selection */
   ::selection {
     background-color: white;
+    cursor: pointer;
     color: gray;
   }
 

@@ -28,7 +28,7 @@ export const Social: SocialItem[] = [
 
 export const Footer = () => (
   <footer className="mx-auto mt-7 w-[85%] max-w-4xl border-t-2 border-cement border-opacity-40 py-6 md:mt-0 md:w-full footer">
-    <div className="flex flex-col items-center justify-center w-full mx-auto space-y-3">
+    <div className="flex flex-col items-center justify-center w-full mx-auto space-y-6">
       <div className="flex space-x-3">
         {Social.map((item, index) => {
           const IconComponent = Icon[item.icon] as React.ElementType
@@ -40,14 +40,9 @@ export const Footer = () => (
           )
         })}
       </div>
-      <div className="flex flex-col items-center justify-center space-y-1">
-        {/* <p className="text-xs font-medium transition-colors duration-300 ease-in-out text-carbon-gray hover:text-white">
-            Built with Next.js and Tailwind CSS, hosted on Vercel
-          </p> */}
-        <p className="text-xs font-medium transition-colors duration-300 ease-in-out">
-          Copyright © Wanfah Diva {new Date().getFullYear()} All rights Reserved
-        </p>
-      </div>
+      <p className="text-xs font-medium transition-colors duration-300 ease-in-out">
+        Made with ❤️ by Wanfah Diva. Copyright © 2021. All rights reserved.
+      </p>
     </div>
   </footer>
 )

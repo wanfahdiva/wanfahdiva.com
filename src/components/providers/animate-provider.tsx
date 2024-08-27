@@ -9,7 +9,7 @@ import { Cursor } from '@/components/atoms/cursor'
 
 import { cn } from '@/lib/utils'
 
-const words = [
+const WORDS = [
   'Hai',
   'Hello',
   'Hola',
@@ -32,7 +32,9 @@ const words = [
   'Salam',
   '👋'
 ]
-const doms = ['.primary-cursor', '.secondary-cursor', '.navbar', '.footer']
+const DOMS = ['.primary-cursor', '.secondary-cursor', '.navbar', '.footer']
+
+const IS_DEVELOPMENT = process.env.NODE_ENV === 'development'
 
 interface AnimateProviderProps {
   content: React.ReactNode
@@ -43,8 +45,8 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   const counterRef = useRef<HTMLDivElement>(null)
 
   const [index, setIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isFinished, setIsFinished] = useState(false)
+  const [isLoading, setIsLoading] = useState(IS_DEVELOPMENT ? false : true)
+  const [isFinished, setIsFinished] = useState(IS_DEVELOPMENT ? true : false)
 
   const options = {
     initial: {
@@ -61,7 +63,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
     main?.classList.remove('hidden')
 
     setTimeout(() => {
-      doms.forEach((el) => {
+      DOMS.forEach((el) => {
         document.querySelector(el)?.classList.replace('!hidden', 'block')
       })
     }, 500)
@@ -90,20 +92,24 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
   }, [])
 
   useEffect(() => {
-    document.body.classList.add('cursor-wait')
-    setTimeout(() => {
-      setIsLoading(false)
+    if (IS_DEVELOPMENT) {
       showContent()
-    }, 3000)
-    setTimeout(() => {
-      setIsFinished(true)
-      document.body.classList.remove('cursor-wait')
-    }, 3500)
+    } else {
+      document.body.classList.add('cursor-wait')
+      setTimeout(() => {
+        setIsLoading(false)
+        showContent()
+      }, 3000)
+      setTimeout(() => {
+        setIsFinished(true)
+        document.body.classList.remove('cursor-wait')
+      }, 3500)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    if (index == words.length - 1) {
+    if (index == WORDS.length - 1) {
       return
     }
 
@@ -138,7 +144,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
               animate="enter"
               className="flex items-center justify-center h-16 text-3xl font-bold text-center text-white"
             >
-              {words[index]}
+              {WORDS[index]}
             </motion.p>
           </div>
         </div>
