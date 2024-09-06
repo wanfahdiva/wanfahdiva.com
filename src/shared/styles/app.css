@@ -90,7 +90,6 @@
   a {
     @apply cursor-none;
   }
-
   /* end hide browser cursor */
 
   /* custom selection */
@@ -99,7 +98,6 @@
     cursor: pointer;
     color: gray;
   }
-
   /* end custom selection */
 
   /* custom scrollbar */
@@ -116,6 +114,15 @@
     background-color: white;
     border-radius: 10px;
   }
-
   /* end custom scrollbar */
+
+  /* svg logo animated */
+  .logo-wrapper {
+    border: none;
+    margin: 0 auto;
+    height: min-content;
+    padding: 4%;
+    @apply stroke-cement;
+  }
+  /* end svg logo animated */
 }
