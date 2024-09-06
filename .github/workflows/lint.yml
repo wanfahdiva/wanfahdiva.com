@@ -1,6 +1,13 @@
 name: Code Check
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
 
 concurrency:
   group: ${{ github.job }}-${{ github.ref }}
