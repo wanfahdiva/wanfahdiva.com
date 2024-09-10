@@ -47,7 +47,3 @@
    ```sh
     bun start
    ```
-
-## - License
-
-This Website is under [MIT License](https://github.com/wanfahdiva/wanfahdiva.com/blob/main/LICENSE)
