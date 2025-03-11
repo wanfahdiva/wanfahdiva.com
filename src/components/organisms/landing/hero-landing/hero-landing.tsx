@@ -35,7 +35,7 @@ export const HeroLanding = () => (
             <div className="flex flex-col items-start justify-start space-y-7" data-fade="8">
               <div className="w-full md:w-3/4">
                 <p className="text-sm font-medium md:text-base">
-                  I am a Software Engineer specializing in Frontend Web Development with a keen focus on building accessible
+                  I am a Software Developer specializing in Frontend Web Development with a keen focus on building accessible
                   and high-performance web applications. My expertise lies in creating user-friendly interfaces and ensuring
                   optimal performance across various devices and platforms.
                 </p>
