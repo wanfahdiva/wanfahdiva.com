@@ -38,10 +38,10 @@ export const AboutLanding = () => (
             </div>
             <div data-fade="6">
               <p className="mt-5 text-sm text-justify indent-7 md:text-base">
-                I am a Software Developer with 3+ years of experience in the software industry. I have skills in HTML, CSS,
-                and JavaScript, and experience using frameworks like React and Vue.js. I am also familiar with working in
-                teams and following modern software development methodologies. My passion lies in delivering engaging and
-                functional user experiences through web application interfaces.
+                I am a Software Developer with over 3 years of experience in the software industry. Skilled in HTML, CSS, and
+                JavaScript, I have hands-on experience with frameworks like React and Vue.js. I thrive in collaborative
+                environments and follow modern software development methodologies. My passion is creating intuitive and
+                engaging web applications that enhance user experiences.
                 <br />
                 <br />
                 Fast-forward to today, I have had the privilege of working at &nbsp;
