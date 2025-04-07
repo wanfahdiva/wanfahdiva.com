@@ -3,6 +3,7 @@
 import projects from '@/shared/jsons/project.json'
 import { useScroll } from 'framer-motion'
 import Lenis from 'lenis'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { InView } from 'react-intersection-observer'
 import { Element } from 'react-scroll'
@@ -54,6 +55,12 @@ export const ProjectLanding = () => {
               })}
             </div>
           </Element>
+
+          <div className="hidden mx-auto max-sm w-fit">
+            <Link href="/projects" className="text-white">
+              <span className="px-4 py-2 text-sm font-semibold">See all projects</span>
+            </Link>
+          </div>
         </section>
       )}
     </InView>
