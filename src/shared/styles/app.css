@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import './typography.css';
 @import './animation.css';
 @import './cursor.css';
 @import './burger.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -90,6 +90,7 @@
   a {
     @apply cursor-none;
   }
+
   /* end hide browser cursor */
 
   /* custom selection */
@@ -98,6 +99,7 @@
     cursor: pointer;
     color: gray;
   }
+
   /* end custom selection */
 
   /* custom scrollbar */
@@ -114,6 +116,7 @@
     background-color: white;
     border-radius: 10px;
   }
+
   /* end custom scrollbar */
 
   /* svg logo animated */
@@ -124,5 +127,6 @@
     padding: 4%;
     @apply stroke-white;
   }
+
   /* end svg logo animated */
 }

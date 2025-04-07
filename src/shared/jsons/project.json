@@ -1,26 +1,26 @@
 [
   {
     "title": "Studio Anmut",
-    "description": "Anmut is an architectural studio based in Padang, established in 2024. The studio specializes in architecture, design, and teaching, striving for a timeless and sensitive approach that accommodates various activities while balancing economic and design considerations.",
+    "description": "A company profile website for an architectural studio, showcasing the studio’s portfolio, design philosophy, and services. Designed to reflect the studio’s aesthetic and communicate its values to potential clients and collaborators.",
     "src": "/static/images/project/studio-anmut.png",
-    "link": "https://anmut.id/"
+    "link": "https://anmut.id"
   },
   {
-    "title": "Asian Society Gynecologic Oncology (ASGO) 2024",
-    "description": "The 2024 Asian Society of Gynecologic Oncology (ASGO) Annual Meeting, themed “Innovative Strategies in Gynecologic Oncology: From Bench to Bedside,” will be held from April 5th to 7th at the Bali International Convention Center (BICC) in Bali, Indonesia.",
+    "title": "Iluminar",
+    "description": "A company profile website for creative agency and production house specializing in storytelling through audio-visual media.",
+    "src": "/static/images/project/illuminar.png",
+    "link": "https://illuminar.vercel.app/"
+  },
+  {
+    "title": "STIFIn Learning Management System",
+    "description": "Flexible training platform for STIFIn education, supporting activists and the wider community with effective, efficient, and accessible learning.",
+    "src": "/static/images/project/kelas-stifin.png",
+    "link": "https://kelas.stifin.com"
+  },
+  {
+    "title": "Asian Society Gynecologic Oncology 2024",
+    "description": "Site to facilitate over 100 thousand doctors for registration and reservation of international medical events.",
     "src": "/static/images/project/asgo.png",
-    "link": "https://asgo2024bali.org/"
-  },
-  {
-    "title": "Irama Nusantara",
-    "description": "Irama Nusantara is committed to archiving and preserving Indonesian popular music, making it accessible to the public. By focusing on historical songs, the initiative ensures that these important cultural artifacts remain a vital part of the nation’s identity and heritage.",
-    "src": "/static/images/project/irama-nusantara.png",
-    "link": "https://www.iramanusantara.org/"
-  },
-  {
-    "title": "Rumah Imperium",
-    "description": "Rumah Imperium is a non-profit organization dedicated to providing education and support for children with special needs. We believe that every child deserves a quality education, regardless of their abilities",
-    "src": "/static/images/project/rumah-imperium.png",
-    "link": "https://rumahimperium.org/"
+    "link": "https://asgo2024.com"
   }
 ]

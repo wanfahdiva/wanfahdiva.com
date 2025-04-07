@@ -42,8 +42,9 @@ export const HeroLanding = () => (
               </div>
               <div className="inline-flex items-center space-x-2 md:space-x-5" data-fade="10">
                 <Link
-                  href="/"
+                  href="https://drive.google.com/file/d/1kfcXSQVZMR-8IK_AIwPXdVOX6nk1DCxv/view?usp=drive_link"
                   passHref
+                  target="_blank"
                   className="inline-flex items-center justify-center px-4 py-2 space-x-2 font-medium transition-colors duration-300 ease-in-out border-2 border-white rounded hover:bg-white hover:text-mirage"
                 >
                   <FileTextIcon className="w-4 h-4" />
