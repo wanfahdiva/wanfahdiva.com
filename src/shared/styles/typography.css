@@ -1,5 +1,4 @@
 /* #region  /**=========== Satoshi Font =========== */
-
 @font-face {
   font-family: 'Satoshi';
   src: url('../fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf');
@@ -34,11 +33,9 @@
   font-weight: 800;
   font-display: swap;
 }
-
 /* #endregion  /**======== Satoshi Font =========== */
 
 /* #region  /**=========== Clash Grotesk Font =========== */
-
 @font-face {
   font-family: 'Clash Grotesk';
   src: url('../fonts/ClashGrotesk_Complete/Fonts/OTF/ClashGrotesk-Light.otf');
@@ -73,11 +70,9 @@
   font-weight: 700;
   font-display: swap;
 }
-
 /* #endregion  /**======== Clash Grotesk Font =========== */
 
 /* #region  /**=========== Space Grotesk Font =========== */
-
 @font-face {
   font-family: 'Space Grotesk';
   src:
@@ -86,11 +81,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
 /* #endregion  /**======== Space Grotesk Font =========== */
 
 /* #region  /**=========== Poltawski Nowy Font =========== */
-
 @font-face {
   font-family: 'Poltawski Nowy';
   src:
@@ -99,11 +92,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
 /* #endregion  /**======== Poltawski Nowy Font =========== */
 
 /* #region  /**=========== Mont Glades Font =========== */
-
 @font-face {
   font-family: 'Mont Glades';
   src:
@@ -112,7 +103,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 /* #endregion  /**======== Mont Glades Font =========== */
 
 h1,

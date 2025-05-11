@@ -38,11 +38,11 @@
     "@types/react-dom": "18.2.4",
     "@types/react-scroll": "^1.8.10",
     "bufferutil": "^4.0.8",
-    "framer-motion": "^11.2.10",
+    "framer-motion": "^11.3.19",
     "gsap": "^3.12.5",
     "lenis": "^1.1.9",
     "lucide-react": "^0.292.0",
-    "next": "14.2.21",
+    "next": "14.2.25",
     "next-seo": "^6.5.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -50,7 +50,7 @@
     "react-intersection-observer": "^9.13.0",
     "react-scroll": "^1.9.0",
     "react-use": "^17.4.0",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.57.0",
