@@ -74,7 +74,6 @@
 @layer base {
   * {
     @apply border-border;
-    @apply scroll-smooth;
   }
 
   html {

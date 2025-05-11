@@ -1,5 +1,4 @@
 /* #region  /**=========== fade in out =========== */
-
 [data-fade] {
   @apply transition-all duration-500 ease-out translate-y-10 opacity-0;
 }
@@ -87,11 +86,9 @@
 .fade-in-start [data-fade='20'] {
   transition-delay: 2000ms;
 }
-
 /* #endregion  /**======== fade in out =========== */
 
 /* #region  /**=========== svg animation =========== */
-
 .path {
   stroke-dasharray: 500px 100px;
   animation: animate 100s linear infinite alternate-reverse;
@@ -106,11 +103,9 @@
     stroke-dashoffset: 12433.8193359375;
   }
 }
-
 /* #region  /**=========== svg animation =========== */
 
 /* #region  /**=========== rolltext link =========== */
-
 .rollText {
   display: block;
   outline: none;
@@ -186,11 +181,9 @@
 .rollText:hover span {
   --m: calc(16.5px * -1);
 }
-
 /* #endregion  /**======== rolltext link =========== */
 
 /* #region  /**=========== scroll line =========== */
-
 .c-scrolldown {
   width: 2px;
   height: 30px;
@@ -222,5 +215,4 @@
     background-position: 0 30px;
   }
 }
-
 /* #endregion  /**======== scroll line =========== */

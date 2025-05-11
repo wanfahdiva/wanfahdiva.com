@@ -63,21 +63,21 @@ export const LandingProjectCard = ({
       >
         <motion.div
           style={{ backgroundColor: getColor(index), scale, top: `calc(1vh + ${index * 25}px)` }}
-          className="flex flex-col relative md:h-[400px] w-11/12 mx-auto md:w-[850px] rounded-[25px] p-[50px] origin-top"
+          className="flex flex-col relative md:h-[400px] w-11/12 mx-auto md:w-[850px] rounded-[25px] p-6 md:p-[50px] origin-top"
         >
           <h2
-            className="text-center m-0 text-2xl md:text-[28px] font-semibold text-onyx"
+            className="md:text-center m-0 text-2xl md:text-[28px] font-semibold text-onyx"
             style={{ textShadow: '3px 2px 1px #ffffe3' }}
           >
             {title}
           </h2>
 
-          <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row h-full mt-[50px] gap-[50px] text-[#1F2E48]">
+          <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row h-full mt-6 md:mt-[50px] gap-2 md:gap-[50px] text-[#1F2E48]">
             <div className="md:w-3/5 relative top-[10%]">
               <p className="text-[16px] first-letter:text-[28px] first-letter:font-['Title']">{description}</p>
             </div>
 
-            <div className="relative h-40 overflow-hidden rounded-lg shadow-md md:h-44 md:w-2/5">
+            <div className="relative h-40 overflow-hidden rounded-lg shadow-md md:h-40 md:w-2/5">
               <motion.div className="w-full h-full" style={{ scale: imageScale }}>
                 <NextImage layout="fill" src={src} alt={title} className="object-cover" useSkeleton />
               </motion.div>
