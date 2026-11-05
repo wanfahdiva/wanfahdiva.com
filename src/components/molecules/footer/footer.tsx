@@ -1,48 +1,36 @@
 'use client'
 
-import * as Icon from 'lucide-react'
+import { SOCIAL_LINKS } from '@/constants/social'
+import { ArrowUp, ArrowUpRight } from 'lucide-react'
 
-interface SocialItem {
-  link: string
-  icon: keyof typeof Icon
-}
+import { SectionLink } from '@/components/atoms/section-link'
 
-export const Social: SocialItem[] = [
-  {
-    link: 'https://github.com/wanfahdiva',
-    icon: 'Github'
-  },
-  {
-    link: 'mailto:wanfahdivaa@gmail.com',
-    icon: 'Mail'
-  },
-  {
-    link: 'https://www.linkedin.com/in/wanfahdiva',
-    icon: 'Linkedin'
-  },
-  {
-    link: 'https://www.instagram.com/wanfahdiva',
-    icon: 'Instagram'
-  }
-]
+import styles from './footer.module.css'
 
 export const Footer = () => (
-  <footer className="mx-auto mt-7 w-[85%] max-w-4xl border-t-2 border-cement border-opacity-40 py-6 md:mt-0 md:w-full footer">
-    <div className="flex flex-col items-center justify-center w-full mx-auto space-y-6">
-      <div className="flex space-x-3">
-        {Social.map((item, index) => {
-          const IconComponent = Icon[item.icon] as React.ElementType
-
-          return (
-            <a href={item.link} key={index} target="_blank" className="flex items-center ">
-              <IconComponent className="w-5 h-5" />
+  <footer className={`footer ${styles.footer}`} data-footer-light>
+    <div className={styles.inner}>
+      <div className={styles.top}>
+        <SectionLink to="hero" className={styles.name}>
+          Wanfah Diva<span>SOFTWARE DEVELOPER</span>
+        </SectionLink>
+        <nav className={styles.socials} aria-label="Social links">
+          {SOCIAL_LINKS.map((item) => (
+            <a key={item.label} href={item.link} target="_blank" rel="noreferrer">
+              {item.label}
+              <ArrowUpRight size={11} strokeWidth={1.3} aria-hidden="true" />
             </a>
-          )
-        })}
+          ))}
+        </nav>
       </div>
-      <p className="w-4/5 text-xs font-medium text-center transition-colors duration-300 ease-in-out sm:w-full">
-        Made with ❤️ by Wanfah Diva. Copyright © {new Date().getFullYear()}. All rights reserved.
-      </p>
+      <div className={styles.bottom}>
+        <p>© {new Date().getFullYear()} Wanfah Diva</p>
+        <span>MADE WITH CARE, DOWN TO THE DETAILS.</span>
+        <SectionLink to="hero" className={styles.back}>
+          BACK TO TOP
+          <ArrowUp size={12} strokeWidth={1.4} aria-hidden="true" />
+        </SectionLink>
+      </div>
     </div>
   </footer>
 )

@@ -1,0 +1,97 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #f2f2ef;
+  color: #26262a;
+  opacity: 1;
+  transition: opacity var(--intro-fade) cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: progress;
+}
+.splash[data-phase='leaving'] {
+  opacity: 0;
+}
+.drafting {
+  width: min(280px, 66vw);
+  text-align: center;
+}
+.drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.guides {
+  fill: none;
+  stroke: #e5e5e2;
+  stroke-width: 0.65;
+}
+.centerlines {
+  fill: none;
+  stroke: #dcdcd9;
+  stroke-width: 0.55;
+  stroke-dasharray: 2 5;
+}
+.registration {
+  fill: none;
+  stroke: #8a8a8f;
+  stroke-width: 0.7;
+}
+.outline {
+  fill: none;
+  stroke: #d4d4d6;
+  stroke-width: 0.7;
+}
+.ink {
+  fill: none;
+  stroke: #26262a;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw var(--intro-draw) linear var(--intro-draw-delay) both;
+}
+.fill {
+  fill: #26262a;
+  opacity: 0;
+  animation: ink var(--intro-fill) ease-out var(--intro-fill-delay) both;
+}
+.caption {
+  margin-top: 13px;
+  font:
+    8px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.18em;
+  color: #8a8a8f;
+}
+.caption span {
+  color: #57575a;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ink {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    transition: none;
+  }
+  .ink {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .fill {
+    animation: none;
+    opacity: 1;
+  }
+}

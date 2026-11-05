@@ -1,0 +1,209 @@
+.contact {
+  background: #f2f2ef;
+  color: #26262a;
+}
+.inner {
+  width: calc(100% - clamp(56px, 14vw, 224px));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 65px 0 0;
+  scroll-margin-top: 80px;
+}
+.chapter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #26262a26;
+  padding-top: 20px;
+  color: #777773;
+  font:
+    9px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.13em;
+}
+.chapter p {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.rule {
+  width: 25px;
+  height: 1px;
+  background: #a2a29c;
+}
+.chapter > span {
+  font-size: 8px;
+  color: #8c8c90;
+}
+.content {
+  padding: 88px 0 80px;
+}
+.overline {
+  font:
+    8px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.12em;
+  color: #8a8a8f;
+}
+.invitation h2 {
+  margin-top: 24px;
+  color: #26262a;
+  font-size: clamp(42px, 5.4vw, 78px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+.invitation h2 span {
+  font-family: 'Poltawski Nowy', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.intro {
+  margin-top: 28px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #777773;
+}
+.details {
+  max-width: 540px;
+  margin: 52px 0 0 auto;
+}
+.emailRow {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #26262a44;
+  gap: 16px;
+  margin-top: 13px;
+}
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 54px;
+  font-size: clamp(17px, 2vw, 26px);
+  letter-spacing: -0.02em;
+  color: #26262a;
+  cursor: pointer;
+  min-width: 0;
+}
+.email svg {
+  flex: none;
+  transition: transform 150ms ease-out;
+}
+.copy {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #8a8a8f;
+  transition:
+    color 150ms ease-out,
+    background-color 150ms ease-out;
+}
+.copyFeedback {
+  min-height: 20px;
+  margin-top: 9px;
+  font:
+    9px/1.8 ui-monospace,
+    monospace;
+  color: #8c8c90;
+}
+.signoff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 42px;
+  color: #8c8c90;
+  font:
+    8px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
+.inner a:focus-visible,
+.copy:focus-visible {
+  outline: 2px solid #26262a;
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .copy:hover {
+    background: #26262a;
+    color: #fbfbfa;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .email:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
+@media (max-width: 760px) {
+  .inner {
+    width: calc(100% - 52px);
+    padding-top: 45px;
+  }
+  .content {
+    padding: 55px 0;
+  }
+  .invitation h2 {
+    font-size: clamp(34px, 7.5vw, 52px);
+    margin-top: 20px;
+  }
+  .intro {
+    font-size: 12px;
+    margin-top: 24px;
+  }
+  .details {
+    margin-top: 42px;
+    max-width: none;
+  }
+  .email {
+    font-size: clamp(14px, 4.5vw, 24px);
+    gap: 10px;
+    min-height: 54px;
+  }
+  .emailRow {
+    gap: 7px;
+  }
+  .copyFeedback {
+    font-size: 8px;
+  }
+  .signoff {
+    padding-bottom: 30px;
+    gap: 20px;
+  }
+  .signoff > span:first-child {
+    font-size: 7px;
+  }
+  .chapter > span {
+    font-size: 7px;
+  }
+}
+@media (max-width: 360px) {
+  .invitation h2 {
+    font-size: 32px;
+  }
+  .signoff {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .email svg {
+    width: 14px;
+  }
+  .copy {
+    width: 36px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .email svg,
+  .copy {
+    transition: none;
+  }
+}

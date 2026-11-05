@@ -1,177 +1,236 @@
 'use client'
 
-import { useHeaderHeight } from '@/hooks/use-header-height'
-import { useScroll } from '@/hooks/use-scroll'
-import { motion } from 'framer-motion'
-import * as Icon from 'lucide-react'
-import Link from 'next/link'
-import { redirect, usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { Link as ScrollLink, scroller } from 'react-scroll'
+import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants/social'
+import { useLenis } from '@studio-freight/react-lenis'
+import { useReducedMotion } from 'framer-motion'
+import { ArrowUpRight, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { scroller } from 'react-scroll'
 
-import { RollTextLink } from '@/components/atoms/roll-text-link'
+import { SectionLink } from '@/components/atoms/section-link'
 
 import { cn } from '@/lib/utils'
 
-import { Social } from '../footer'
+import styles from './navbar.module.css'
+
+// Seven alternating sweeps down the screen, overlapping so the page underneath disappears completely.
+const WASH = [6, 20, 34, 48, 62, 76, 92].map((y, index) =>
+  index % 2 ? `M112 ${y - 2}C70 ${y + 3} 30 ${y - 3} -12 ${y + 1}` : `M-12 ${y + 1}C30 ${y - 3} 70 ${y + 3} 112 ${y - 2}`
+)
+
+// Content leaves first, then the sweeps lift off bottom to top.
+const CLOSE_TIME = 640
+
+const SECTIONS = [
+  { to: 'about', label: 'About' },
+  { to: 'project', label: 'Project' },
+  { to: 'contact', label: 'Contact' }
+]
 
 export const Navbar = () => {
-  const links = ['About', 'Project', 'Contact']
-  const router = usePathname()
-  const headerHeight = useHeaderHeight()
+  const pathname = usePathname()
+  const reduced = useReducedMotion()
+  const lenis = useLenis()
   const [isOpen, setIsOpen] = useState(false)
-  const [isLanding, setIsLanding] = useState(false)
-  const [show, setShow] = useState(false)
-  const [classes, setClasses] = useState('h-[100px]')
-
-  useScroll((e: number) => {
-    if (e > 5) {
-      setClasses('backdrop-blur h-[80px]')
-    } else {
-      setClasses('h-[100px]')
-    }
-  })
-
+  const [scrolled, setScrolled] = useState(false)
+  const [light, setLight] = useState(pathname === '/')
+  const [mounted, setMounted] = useState(false)
+  const dialog = useRef<HTMLDialogElement>(null)
+  const toggle = useRef<HTMLButtonElement>(null)
+  const exit = useRef<ReturnType<typeof setTimeout>>()
+  const pointerOpen = useRef(false)
+  const [closing, setClosing] = useState(false)
   useEffect(() => {
-    if (router == '/') {
-      setIsLanding(true)
-    } else {
-      setIsLanding(false)
+    setMounted(true)
+  }, [])
+  useEffect(() => {
+    const update = () => {
+      setScrolled(scrollY > 20)
+      const surfaces = Array.from(
+        document.querySelectorAll(
+          '[data-hero-light],[data-about-light],[data-project-light],[data-contact-light],[data-footer-light]'
+        )
+      )
+      setLight(
+        surfaces.some((surface) => {
+          const b = surface.getBoundingClientRect()
+
+          return b.top <= 80 && b.bottom > 80
+        })
+      )
     }
-  }, [router])
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    const target = new URL(location.href).searchParams.get('section')
+    const timer =
+      target && ['hero', ...SECTIONS.map((s) => s.to)].includes(target)
+        ? setTimeout(() => {
+            scroller.scrollTo(target, { smooth: !reduced, duration: 750, offset: target === 'hero' ? 0 : -80 })
+            history.replaceState(history.state, '', location.pathname)
+          }, 150)
+        : undefined
 
-  const variants = {
-    hiddenHeader: { y: -20, opacity: 0, transition: { duration: 0.5 } },
-    enterHeader: { y: 0, opacity: 1 },
-    exitHeader: { y: 0, opacity: 0 }
-  }
-
-  const scrollToPage = (target: string) => {
-    const isBase = router === '/'
-    if (!isBase) {
-      redirect('/')
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+      clearTimeout(timer)
     }
-    scroller.scrollTo(target, {
-      smooth: true,
-      duration: 500,
-      offset: target.toLowerCase().includes('contact') ? 0.5 : -headerHeight + 30
-    })
+  }, [pathname, reduced])
+  useEffect(() => {
+    if (!isOpen) return
+    const modal = dialog.current
+    if (!modal) return
+    const opener = toggle.current
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    lenis?.stop()
+    modal.showModal()
+    // Opened by tap or click: keep focus inside the dialog without drawing a keyboard ring on the close button.
+    if (pointerOpen.current) modal.focus({ preventScroll: true })
+    const desktop = window.matchMedia('(min-width:768px)')
+    const resize = () => {
+      if (desktop.matches) setIsOpen(false)
+    }
+    desktop.addEventListener('change', resize)
+
+    return () => {
+      clearTimeout(exit.current)
+      setClosing(false)
+      modal.close()
+      document.body.style.overflow = overflow
+      lenis?.start()
+      desktop.removeEventListener('change', resize)
+      opener?.focus({ preventScroll: true })
+    }
+  }, [isOpen, lenis])
+  const close = () => {
+    if (closing) return
+    if (reduced || !dialog.current) {
+      setIsOpen(false)
+
+      return
+    }
+    // The paper is scratched away again, in reverse, before the dialog closes.
+    setClosing(true)
+    exit.current = setTimeout(() => setIsOpen(false), CLOSE_TIME)
   }
-
-  setTimeout(() => {
-    setShow(true)
-  }, 50)
-
-  if (!show) return null
 
   return (
     <div className="navbar">
-      <motion.header
-        className={cn('flex items-center fixed top-0 z-30 w-full', isOpen && 'bg-onyx')}
-        initial="hiddenHeader"
-        animate="enterHeader"
-        exit="exitHeader"
-        variants={variants}
-        style={{ marginBottom: -headerHeight }}
-        transition={{ duration: 1.25, type: 'easeInOut', delay: 0.5 }}
-      >
-        <nav
-          className={cn(
-            'flex items-center justify-between w-full px-6 md:px-20 transition-all duration-500 ease-in-out',
-            classes
-          )}
-        >
-          <div className="relative">
-            {isLanding ? (
-              <ScrollLink to="hero" smooth={true} duration={500}>
-                <h2 className="text-3xl font-semibold text-white">WD</h2>
-              </ScrollLink>
-            ) : (
-              <Link href="/" passHref>
-                <h2 className="text-3xl font-semibold text-white">WD</h2>
-              </Link>
-            )}
-          </div>
-          <div className="items-center hidden space-x-5 md:flex">
-            {links.map((link, index) => (
-              <div key={index} className="flex space-x-1">
-                <span className="text-xs md:font-semibold">0{index + 1}.</span>
-                <ScrollLink
-                  to={link.toLowerCase()}
-                  smooth={true}
-                  duration={500}
-                  offset={['contact'].includes(link.toLowerCase()) ? 0.5 : -headerHeight + 35}
-                  onClick={() => router !== '/' && scrollToPage(link.toLowerCase())}
-                >
-                  <RollTextLink>{link}</RollTextLink>
-                </ScrollLink>
-              </div>
+      <header className={cn(styles.header, scrolled && styles.scrolled, light && styles.light)}>
+        <nav className={styles.nav} aria-label="Main navigation">
+          <SectionLink to="hero" label="Wanfah Diva, back to top" className={styles.logo}>
+            WD
+          </SectionLink>
+          <div className={styles.desktop}>
+            {SECTIONS.map((item, index) => (
+              <SectionLink key={item.to} to={item.to} className={styles.desktopLink}>
+                <span>0{index + 1}.</span>
+                {item.label}
+              </SectionLink>
             ))}
           </div>
-
-          <div className="flex md:hidden">
-            <input type="checkbox" id="burger-toggle" onChange={(e) => setIsOpen(e.target.checked)} checked={isOpen} />
-            <label htmlFor="burger-toggle" className="burger-menu">
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div>
-            </label>
-            {isOpen && (
-              <div
-                className="flex items-center justify-center menu"
-                style={{
-                  marginTop: headerHeight,
-                  height: `calc(100vh - ${headerHeight}px)`
-                }}
-              >
-                <div className="relative flex flex-col items-center justify-center w-full -mt-24">
-                  {links.map((link, index) => (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: index * 0.25,
-                        type: 'easeInOut'
-                      }}
-                      key={index}
-                      className="flex py-3 space-x-1 text-4xl font-bold text-white uppercase font-space"
-                    >
-                      <ScrollLink
-                        to={link.toLowerCase()}
-                        onClick={() => {
-                          scrollToPage(link.toLowerCase()), setIsOpen(false)
-                        }}
-                      >
-                        <span>{link}</span>
-                      </ScrollLink>
-                    </motion.div>
+          <button
+            type="button"
+            ref={toggle}
+            className={styles.toggle}
+            aria-label="Open navigation menu"
+            aria-haspopup="dialog"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            onClick={(event) => {
+              pointerOpen.current = event.detail > 0
+              setIsOpen(true)
+            }}
+          >
+            <span />
+            <span />
+          </button>
+        </nav>
+      </header>
+      {mounted &&
+        createPortal(
+          <dialog
+            ref={dialog}
+            id="mobile-navigation"
+            className={styles.dialog}
+            data-compact={scrolled}
+            data-closing={closing || undefined}
+            tabIndex={-1}
+            aria-labelledby="menu-title"
+            onKeyDown={(event) => {
+              if (event.key !== 'Tab') return
+              const items = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('a[href], button, [tabindex="0"]'))
+              if (!items.length) return
+              // Safari can skip regular links with its default keyboard settings.
+              event.preventDefault()
+              const current = items.indexOf(document.activeElement as HTMLElement)
+              const next = (current + (event.shiftKey ? -1 : 1) + items.length) % items.length
+              items[next].focus()
+            }}
+            onCancel={(event) => {
+              event.preventDefault()
+              close()
+            }}
+          >
+            {/* The page is painted over with a few broad brush sweeps as the menu opens. */}
+            <svg className={styles.wash} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="menu-brush" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.04 0.5" numOctaves="2" seed="4" />
+                  <feDisplacementMap in="SourceGraphic" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <g filter="url(#menu-brush)" fill="none" strokeLinecap="round" strokeWidth="17">
+                {WASH.map((d, index) => (
+                  <path key={d} d={d} pathLength={1} style={{ animationDelay: `${index * 55}ms` }} />
+                ))}
+              </g>
+              <rect className={styles.washFill} width="100" height="100" />
+            </svg>
+            <div className={styles.menuPage}>
+              <div className={styles.menuTop}>
+                <span className={styles.menuLogo}>WD</span>
+                <button type="button" className={styles.close} aria-label="Close navigation menu" onClick={close} autoFocus>
+                  <X size={20} strokeWidth={1.4} />
+                </button>
+              </div>
+              <div className={styles.menuBody}>
+                <p id="menu-title" className={styles.menuCaption}>
+                  TABLE OF CONTENTS
+                </p>
+                <nav aria-label="Mobile navigation" className={styles.menuLinks}>
+                  {SECTIONS.map((item, index) => (
+                    <SectionLink key={item.to} to={item.to} className={styles.menuLink} onClick={() => setIsOpen(false)}>
+                      <span className={styles.menuNumber}>0{index + 1}</span>
+                      <span>{item.label}</span>
+                      <ArrowUpRight size={23} strokeWidth={1.2} aria-hidden="true" />
+                    </SectionLink>
+                  ))}
+                </nav>
+              </div>
+              <div className={styles.menuBottom}>
+                <p className={styles.menuCaption}>LET’S START A CONVERSATION</p>
+                <a href={`mailto:${CONTACT_EMAIL}`} className={styles.menuEmail}>
+                  {CONTACT_EMAIL}
+                  <ArrowUpRight size={13} strokeWidth={1.3} aria-hidden="true" />
+                </a>
+                <div className={styles.menuSocials}>
+                  {SOCIAL_LINKS.map((item) => (
+                    <a key={item.label} href={item.link} target="_blank" rel="noreferrer">
+                      {item.label}
+                    </a>
                   ))}
                 </div>
-
-                <div className="absolute bottom-0 left-0 w-full">
-                  <div className="flex items-center justify-between w-full p-6">
-                    <div className="flex space-x-3 md:hidden">
-                      {Social.map((item, index) => {
-                        const IconComponent = Icon[item.icon] as React.ElementType
-
-                        return (
-                          <a href={item.link} key={index} target="_blank">
-                            <div className="inline-flex items-center p-2 bg-gray-100 rounded-lg bg-opacity-20">
-                              <IconComponent className="w-5 h-5" />
-                            </div>
-                          </a>
-                        )
-                      })}
-                    </div>
-                    <span className="font-medium">© Wanfah Diva</span>
-                  </div>
-                </div>
+                <p className={styles.menuColophon}>WANFAH DIVA / SOFTWARE DEVELOPER</p>
               </div>
-            )}
-          </div>
-        </nav>
-      </motion.header>
+            </div>
+          </dialog>,
+          document.body
+        )}
     </div>
   )
 }
