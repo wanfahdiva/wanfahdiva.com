@@ -1,0 +1,144 @@
+.projects {
+  background: #f2f2ef;
+  color: #26262a;
+}
+.section {
+  scroll-margin-top: 80px;
+}
+.header,
+.end {
+  width: calc(100% - clamp(56px, 14vw, 224px));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  padding-top: 60px;
+}
+.chapter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #26262a26;
+  padding-top: 20px;
+  color: #777773;
+  font:
+    9px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.13em;
+}
+.chapter p {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.chapter > span {
+  font-size: 8px;
+  color: #8c8c90;
+  letter-spacing: 0.1em;
+}
+.rule {
+  width: 25px;
+  height: 1px;
+  background: #a2a29c;
+}
+.intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 55px 0 0;
+}
+.intro h2 {
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+  color: #26262a;
+}
+.intro h2 span {
+  font-family: 'Poltawski Nowy', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.introNote {
+  padding-bottom: 4px;
+}
+.introNote p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #777773;
+}
+.introNote > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  font:
+    8px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+  color: #8c8c90;
+}
+.stack {
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.end {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #26262a26;
+  padding: 20px 0 40px;
+  font:
+    8px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+  color: #8c8c90;
+}
+.end a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  color: #676762;
+  cursor: pointer;
+}
+.end a:focus-visible {
+  outline: 2px solid #26262a;
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .header,
+  .end {
+    width: calc(100% - 52px);
+  }
+  .header {
+    padding-top: 40px;
+  }
+  .chapter > span {
+    display: none;
+  }
+  .intro {
+    display: block;
+    margin-top: 36px;
+  }
+  .intro h2 {
+    font-size: 46px;
+  }
+  .introNote {
+    margin-top: 24px;
+  }
+  .introNote > span {
+    margin-top: 18px;
+  }
+  .end > span {
+    display: none;
+  }
+  .end a {
+    margin-left: auto;
+    font-size: 7px;
+  }
+}

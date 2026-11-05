@@ -1,0 +1,109 @@
+.footer {
+  background: #f2f2ef;
+  color: #57575a;
+}
+.inner {
+  width: calc(100% - clamp(56px, 14vw, 224px));
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid #26262a26;
+  padding: 32px 0 24px;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.name {
+  font:
+    italic 24px/1.4 'Poltawski Nowy',
+    Georgia,
+    serif;
+  color: #26262a;
+  cursor: pointer;
+}
+.name span {
+  display: block;
+  font:
+    7px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.12em;
+  color: #8c8c90;
+  margin-top: 7px;
+}
+.socials {
+  display: flex;
+  gap: 28px;
+}
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 10px;
+  color: #777773;
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 35px;
+  color: #8c8c90;
+  font:
+    8px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.04em;
+}
+.bottom > span {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+}
+.back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  color: #676762;
+}
+.inner a:focus-visible {
+  outline: 2px solid #26262a;
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .socials a:hover,
+  .back:hover {
+    color: #26262a;
+  }
+}
+@media (max-width: 760px) {
+  .inner {
+    width: calc(100% - 52px);
+    padding-top: 27px;
+  }
+  .top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .socials {
+    gap: 24px;
+  }
+  .bottom {
+    margin-top: 20px;
+    font-size: 7px;
+  }
+  .bottom > span {
+    display: none;
+  }
+  .name {
+    font-size: 23px;
+  }
+}

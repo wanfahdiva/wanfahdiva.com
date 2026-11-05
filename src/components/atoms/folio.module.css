@@ -1,0 +1,62 @@
+.folio {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: clamp(8px, 2.4vw, 40px);
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  color: #8c8c90;
+  font:
+    8px/1 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+.folio[data-visible='true'] {
+  opacity: 1;
+}
+.entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.number {
+  color: #26262a;
+}
+.rule {
+  width: 1px;
+  height: 18px;
+  background: #b4b4b8;
+}
+.total {
+  color: #b4b4b8;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .entry {
+    animation: folio-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+@keyframes folio-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@media (max-width: 760px) {
+  .folio {
+    left: 6px;
+    font-size: 7px;
+  }
+  .rule {
+    height: 12px;
+  }
+  .total {
+    display: none;
+  }
+}

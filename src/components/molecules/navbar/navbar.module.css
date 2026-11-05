@@ -1,0 +1,396 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  color: #e5e5e2;
+  animation: nav-enter 700ms ease-out 500ms both;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  height: 100px;
+  padding: 0 clamp(24px, 5.6vw, 90px);
+  transition:
+    height 200ms ease-out,
+    background-color 200ms ease-out;
+}
+.scrolled .nav {
+  height: 80px;
+  background: #111827e8;
+}
+.light {
+  color: #57575a;
+}
+.light.scrolled .nav {
+  background: #f2f2eff2;
+}
+.logo {
+  font-size: 29px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  cursor: pointer;
+  color: inherit;
+}
+.desktop {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.desktopLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  font:
+    10px/1.5 ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+.desktopLink > span {
+  opacity: 0.65;
+}
+.toggle {
+  display: none;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.toggle span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: currentColor;
+}
+.nav a:focus-visible,
+.nav button:focus-visible,
+.dialog a:focus-visible,
+.dialog button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100dvh;
+  background: #f2f2ef;
+  color: #26262a;
+  cursor: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.dialog:focus {
+  outline: none;
+}
+.dialog::backdrop {
+  background: #f2f2ef;
+}
+.menuPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  /* Same gutter as the header, so the logo and the close button sit exactly where the logo and menu button were. */
+  padding: 0 clamp(24px, 5.6vw, 90px) max(22px, env(safe-area-inset-bottom));
+}
+.menuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  height: 100px;
+  color: #57575a;
+}
+.dialog[data-compact='true'] .menuTop {
+  height: 80px;
+}
+.menuLogo {
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.wash {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+.wash path {
+  stroke: #f2f2ef;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+}
+.washFill {
+  fill: #f2f2ef;
+  opacity: 0;
+}
+.close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #57575a;
+}
+.menuBody {
+  margin: auto 0;
+  padding: 25px 0 38px;
+}
+.menuCaption {
+  font:
+    8px/1.5 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.13em;
+  color: #8a8a8f;
+}
+.menuLinks {
+  margin-top: 22px;
+  border-top: 1px solid #26262a26;
+}
+.menuLink {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 95px;
+  border-bottom: 1px solid #26262a26;
+  cursor: pointer;
+}
+.menuLink > span:nth-child(2) {
+  font:
+    400 46px/1.2 'Poltawski Nowy',
+    Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.menuNumber {
+  align-self: center;
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  color: #8a8a8f;
+}
+.menuLink > svg {
+  margin-left: auto;
+  color: #8a8a8f;
+}
+.menuBottom {
+  padding-top: 15px;
+  flex: none;
+}
+.menuEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 6px;
+  font-size: 15px;
+  color: #57575a;
+  cursor: pointer;
+}
+.menuSocials {
+  display: flex;
+  gap: 26px;
+  margin-top: 8px;
+}
+.menuSocials a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 10px;
+  color: #777773;
+}
+.menuColophon {
+  border-top: 1px solid #26262a1a;
+  padding-top: 18px;
+  margin-top: 12px;
+  font:
+    7px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+  color: #8c8c90;
+}
+@keyframes nav-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (hover: hover) {
+  .close:hover,
+  .toggle:hover {
+    background: #26262a0a;
+  }
+  .menuSocials a:hover,
+  .desktopLink:hover {
+    color: #26262a;
+  }
+  .header:not(.light) .desktopLink:hover {
+    color: #fff;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* The dialog itself is clear: the brush sweeps paint its paper over the page, then the contents arrive. */
+  .dialog,
+  .dialog::backdrop {
+    background: transparent;
+  }
+  .dialog[open] .wash {
+    display: block;
+  }
+  .dialog[open] .wash path {
+    animation: menu-paint 300ms cubic-bezier(0.55, 0, 0.3, 1) both;
+  }
+  .dialog[open] .washFill {
+    animation: menu-enter 120ms linear 620ms both;
+  }
+  /* The close button replaces the menu button in place once the sweep has covered it. */
+  .dialog[open] .close {
+    animation: menu-enter 160ms ease-out 140ms both;
+  }
+  .dialog[open] .menuBody,
+  .dialog[open] .menuBottom {
+    animation: menu-enter 320ms cubic-bezier(0.2, 0, 0, 1) 280ms both;
+  }
+  .dialog[open] .menuLink {
+    animation: menu-item 450ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
+  }
+  .menuLink:nth-child(2) {
+    animation-delay: 370ms !important;
+  }
+  .menuLink:nth-child(3) {
+    animation-delay: 440ms !important;
+  }
+  /* Closing runs the same sweeps in reverse: contents leave, then the paper is scratched off bottom to top. */
+  .dialog[data-closing] .menuBody,
+  .dialog[data-closing] .menuBottom,
+  .dialog[data-closing] .close {
+    animation: menu-leave 140ms ease-in both;
+  }
+  .dialog[data-closing] .washFill {
+    animation: menu-leave 80ms linear 100ms both;
+  }
+  .dialog[data-closing] .wash path {
+    animation: menu-erase 300ms cubic-bezier(0.55, 0, 0.3, 1) both;
+  }
+  .dialog[data-closing] .wash path:nth-child(7) {
+    animation-delay: 120ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(6) {
+    animation-delay: 155ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(5) {
+    animation-delay: 190ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(4) {
+    animation-delay: 225ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(3) {
+    animation-delay: 260ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(2) {
+    animation-delay: 295ms !important;
+  }
+  .dialog[data-closing] .wash path:nth-child(1) {
+    animation-delay: 330ms !important;
+  }
+}
+@keyframes menu-erase {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+@keyframes menu-leave {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes menu-paint {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .desktop {
+    display: none;
+  }
+  .toggle {
+    display: flex;
+  }
+}
+@media (max-height: 650px) {
+  .menuBody {
+    padding: 15px 0 22px;
+  }
+  .menuLink {
+    min-height: 74px;
+  }
+  .menuLink > span:nth-child(2) {
+    font-size: 39px;
+  }
+  .menuLinks {
+    margin-top: 15px;
+  }
+  .menuBottom {
+    padding-top: 0;
+  }
+  .menuColophon {
+    margin-top: 5px;
+    padding-top: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    animation: none;
+  }
+  .nav {
+    transition: none;
+  }
+}

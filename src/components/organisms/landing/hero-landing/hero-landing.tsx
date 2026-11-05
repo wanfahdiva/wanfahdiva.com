@@ -1,74 +1,66 @@
 'use client'
 
-import { FileTextIcon } from 'lucide-react'
+import { useHeroExit } from '@/hooks/use-hero-exit'
+import { ArrowDown, ArrowUpRight, FileTextIcon } from 'lucide-react'
 import Link from 'next/link'
-import { InView } from 'react-intersection-observer'
+import { useRef } from 'react'
 
-import { TechLogo } from '@/components/atoms/icons'
+import { SectionLink } from '@/components/atoms/section-link'
 import { Container } from '@/components/templates/container'
 
-import { cn } from '@/lib/utils'
+import styles from './hero-landing.module.css'
+import { InterfaceWorkbench } from './interface-workbench/interface-workbench'
 
-export const HeroLanding = () => (
-  <Container name="hero" className="relative overflow-hidden">
-    <InView triggerOnce rootMargin="-40% 0px">
-      {({ inView, ref }) => (
-        <section
-          className={cn(
-            'relative mx-7 flex h-[95vh] items-center justify-start md:mx-auto md:h-screen md:max-w-5xl md:py-10 overflow-hidden',
-            inView && 'fade-in-start'
-          )}
-          ref={ref}
-        >
-          <div className="flex flex-col items-center justify-start mt-3 space-y-5 md:max-w-5xl">
-            <div className="flex flex-col items-start justify-start w-full">
-              <p className="inline font-medium" data-fade="3">
-                Hi, my name is
-              </p>
-              <h1 className="text-4xl font-bold md:text-6xl" data-fade="5">
-                Wanfah Diva,
-              </h1>
-              <h3 className="text-3xl font-bold text-primary-400 md:text-6xl" data-fade="7">
-                I build things for the web.
-              </h3>
-            </div>
-            <div className="flex flex-col items-start justify-start space-y-7" data-fade="8">
-              <div className="w-full md:w-3/4">
-                <p className="text-sm font-medium md:text-base">
-                  I am a Software Developer specializing in Frontend Web Development, passionate about building accessible,
-                  high-performance web applications. I focus on crafting user-friendly interfaces and ensuring seamless
-                  performance across devices and platforms.
-                </p>
-              </div>
-              <div className="inline-flex items-center space-x-2 md:space-x-5" data-fade="10">
-                <Link
-                  href="https://drive.google.com/file/d/1kfcXSQVZMR-8IK_AIwPXdVOX6nk1DCxv/view?usp=drive_link"
-                  passHref
-                  target="_blank"
-                  className="inline-flex items-center justify-center px-4 py-2 space-x-2 font-medium transition-colors duration-300 ease-in-out border-2 border-white rounded hover:bg-white hover:text-mirage"
-                >
-                  <FileTextIcon className="w-4 h-4" />
-                  <span className="text-xs font-semibold md:text-sm">Resume</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+export const HeroLanding = () => {
+  const section = useRef<HTMLElement>(null)
+  useHeroExit(section)
 
-          <div className="absolute rounded c-scrolldown bottom-3 left-1/2 opacity-40 md:hidden">
-            <div className="c-line" />
+  return (
+    <Container name="hero" className={styles.hero}>
+      <section ref={section} className={styles.inner} data-hero-light aria-labelledby="hero-title">
+        <div className={styles.sceneLayer}>
+          <div className={styles.drift} data-hero-exit="scene">
+            <InterfaceWorkbench />
           </div>
-        </section>
-      )}
-    </InView>
-    <InView triggerOnce>
-      {({ inView, ref }) => (
-        <div
-          className={cn('transition-opacity duration-300 ease-in delay-150 z-[-1]', inView ? 'opacity-100' : 'opacity-0')}
-          ref={ref}
-        >
-          <TechLogo className="z-[-1]" data-fade="3" />
         </div>
-      )}
-    </InView>
-  </Container>
-)
+        <div className={styles.copy} data-hero-exit="copy">
+          <p className={styles.eyebrow}>
+            <span className={styles.rule} />
+            WANFAH DIVA<span className={styles.role}>SOFTWARE DEVELOPER</span>
+          </p>
+          <h1 id="hero-title" className={styles.title}>
+            I build things
+            <br />
+            for the <span>web.</span>
+          </h1>
+          <p className={styles.description}>
+            Thoughtful interfaces. Accessible experiences.
+            <br className={styles.desktopBreak} /> I turn ideas into things people love to use.
+          </p>
+          <div className={styles.links}>
+            <SectionLink to="project" className={styles.primaryLink}>
+              Explore my work
+              <ArrowUpRight size={17} strokeWidth={1.5} />
+            </SectionLink>
+            <Link
+              href="https://drive.google.com/file/d/1kfcXSQVZMR-8IK_AIwPXdVOX6nk1DCxv/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.resume}
+            >
+              <FileTextIcon size={14} strokeWidth={1.4} />
+              Resume
+            </Link>
+          </div>
+        </div>
+        <div className={styles.footnote} data-hero-exit="footnote">
+          <SectionLink to="project">
+            <ArrowDown size={13} strokeWidth={1.5} />
+            SCROLL TO EXPLORE
+          </SectionLink>
+          <span>FROM AN IDEA TO AN INTERFACE.</span>
+        </div>
+      </section>
+    </Container>
+  )
+}

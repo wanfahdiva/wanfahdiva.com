@@ -19,10 +19,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, filter: 'blur(5px)' }}
+      initial={pathname === '/' ? false : { opacity: 0, filter: 'blur(5px)' }}
       animate={{ opacity: 1, filter: 'blur(0px)' }}
       exit={{ opacity: 0, filter: 'blur(5px)' }}
-      transition={{ ease: 'easeInOut', duration: 1.5 }}
+      transition={{ ease: 'easeInOut', duration: pathname === '/' ? 0 : 1.5 }}
     >
       {children}
     </motion.div>

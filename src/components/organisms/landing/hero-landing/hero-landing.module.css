@@ -1,0 +1,360 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  background: #f2f2ef;
+  color: #26262a;
+}
+.inner {
+  position: relative;
+  max-width: 1600px;
+  height: 100dvh;
+  margin: 0 auto;
+}
+.copy {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  padding: clamp(130px, 18dvh, 180px) 0 0 clamp(28px, 7vw, 112px);
+  width: fit-content;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    10px/1.4 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.13em;
+  color: #57575a;
+}
+.rule {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: #8a8a8f;
+}
+.role {
+  margin-left: 10px;
+  color: #8c8c90;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.title {
+  margin-top: 30px;
+  font-size: clamp(70px, 6.7vw, 100px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  color: #26262a;
+}
+.title span {
+  font-family: 'Poltawski Nowy', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.065em;
+}
+.description {
+  margin-top: 30px;
+  max-width: 370px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #72726f;
+}
+.links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 30px;
+  pointer-events: auto;
+  width: fit-content;
+}
+.primaryLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  border-bottom: 1px solid #26262a66;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  color: #26262a;
+}
+.primaryLink svg {
+  flex: none;
+  transform: translateY(1px);
+  transition: transform 0.3s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .primaryLink:hover svg {
+    transform: translate(2px, -1px);
+  }
+}
+.resume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #26262a3d;
+  border-radius: 3px;
+  background: #fbfbfa;
+  color: #26262a;
+  font-size: 11px;
+  cursor: pointer;
+}
+.links a:focus-visible,
+.footnote a:focus-visible {
+  outline: 2px solid #26262a;
+  outline-offset: 5px;
+}
+/* One hero canvas: the machine sits behind the copy, with no content-column wrapper. */
+.sceneLayer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+.drift {
+  position: absolute;
+  inset: 0;
+}
+.footnote {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: clamp(28px, 7vw, 112px);
+  right: clamp(28px, 7vw, 112px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #26262a1a;
+  padding-top: 18px;
+  color: #8c8c90;
+  font:
+    8px/1.4 ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+}
+.footnote a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  min-height: 24px;
+}
+@media (max-width: 1200px) {
+  .copy {
+    padding-top: 130px;
+  }
+  .title {
+    font-size: 80px;
+  }
+  .description {
+    max-width: 330px;
+  }
+}
+@media (max-width: 900px) {
+  .copy {
+    padding-top: 130px;
+  }
+  .title {
+    font-size: 72px;
+  }
+  .role {
+    font-size: 8px;
+  }
+  .description {
+    max-width: 440px;
+  }
+}
+@media (max-width: 600px) {
+  .copy {
+    padding: clamp(108px, 14dvh, 138px) 26px 0;
+    width: 100%;
+  }
+  .eyebrow {
+    font-size: 9px;
+    gap: 9px;
+  }
+  .rule {
+    width: 18px;
+  }
+  .role {
+    font-size: 7px;
+    letter-spacing: 0.04em;
+    margin-left: auto;
+  }
+  .title {
+    font-size: clamp(49px, 12.5vw, 62px);
+    margin-top: 27px;
+    line-height: 1.04;
+  }
+  .description {
+    font-size: 12px;
+    margin-top: 25px;
+    line-height: 1.9;
+  }
+  .links {
+    margin-top: 21px;
+    gap: 25px;
+  }
+  .primaryLink {
+    font-size: 11px;
+    gap: 10px;
+  }
+  .resume {
+    font-size: 10px;
+  }
+  .footnote {
+    left: 26px;
+    right: 26px;
+    bottom: 24px;
+    font-size: 7px;
+  }
+  .footnote > span {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .role {
+    display: none;
+  }
+  .copy {
+    padding-inline: 22px;
+  }
+  .title {
+    font-size: 49px;
+  }
+  .desktopBreak {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primaryLink svg {
+    transition: none;
+  }
+}
+
+/* The hero is one viewport, including short mobile windows. */
+.inner {
+  height: 100dvh;
+  min-height: 0;
+  max-height: none;
+}
+@media (max-width: 600px) {
+  .title {
+    margin-top: 22px;
+  }
+  .description {
+    margin-top: 18px;
+  }
+  .links {
+    margin-top: 15px;
+  }
+  .footnote {
+    bottom: 14px;
+    padding-top: 10px;
+  }
+}
+@media (max-width: 600px) and (max-height: 680px) {
+  .copy {
+    padding-top: 100px;
+  }
+  .title {
+    font-size: 42px;
+    margin-top: 17px;
+  }
+  .description {
+    display: none;
+  }
+  .links {
+    margin-top: 13px;
+  }
+  .primaryLink,
+  .resume {
+    min-height: 36px;
+  }
+}
+@media (min-width: 601px) and (max-height: 780px) {
+  .copy {
+    padding-top: 120px;
+  }
+  .title {
+    font-size: clamp(64px, 6.3vw, 82px);
+    margin-top: 24px;
+  }
+  .description {
+    margin-top: 23px;
+  }
+  .links {
+    margin-top: 20px;
+  }
+}
+
+/* UI Skills: semantic groups, 100ms stagger. Slower editorial timing requested by the owner. */
+@media (prefers-reduced-motion: no-preference) {
+  .copy > * {
+    animation: hero-copy-in 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .eyebrow {
+    animation-delay: 150ms;
+  }
+  .copy > .title {
+    animation-delay: 250ms;
+  }
+  .copy > .description {
+    animation-delay: 350ms;
+  }
+  .copy > .links {
+    animation-delay: 450ms;
+  }
+  .sceneLayer {
+    animation: hero-scene-in 1300ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both;
+  }
+  .footnote {
+    animation: hero-copy-in 800ms ease-out 550ms both;
+  }
+}
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-scene-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (hover: hover) {
+  .resume {
+    transition:
+      color 180ms ease-out,
+      background-color 180ms ease-out,
+      border-color 180ms ease-out;
+  }
+  .resume:hover {
+    color: #fbfbfa;
+    background: #26262a;
+    border-color: #26262a;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume {
+    transition: none;
+  }
+}

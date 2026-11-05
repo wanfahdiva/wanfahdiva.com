@@ -1,10 +1,13 @@
 'use client'
 
-import { MotionValue, motion, useScroll, useTransform } from 'framer-motion'
-import Link from 'next/link'
-import { useRef } from 'react'
+import { MotionValue, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { CSSProperties, useRef } from 'react'
 
-import { NextImage } from '@/components/atoms/next-image'
+import { PaintReveal } from '@/components/atoms/paint-reveal'
+
+import styles from './landing-project-card.module.css'
 
 interface LandingProjectCardProps {
   title: string
@@ -12,6 +15,8 @@ interface LandingProjectCardProps {
   src: string
   url: string
   index: number
+  total: number
+  category: string
   progress: MotionValue<number>
   range: number[]
   targetScale: number
@@ -23,68 +28,87 @@ export const LandingProjectCard = ({
   src,
   url,
   index,
+  total,
+  category,
   progress,
   range,
   targetScale
 }: LandingProjectCardProps) => {
-  const container = useRef(null)
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  })
-
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
+  const container = useRef<HTMLDivElement>(null)
+  const reduced = useReducedMotion()
+  const { scrollYProgress } = useScroll({ target: container, offset: ['start end', 'start start'] })
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.055, 1])
   const scale = useTransform(progress, range, [1, targetScale])
-
-  const getColor = (i: number) => {
-    switch (i) {
-      case 0:
-        return '#A6ABBA'
-      case 1:
-        return '#C6CBDB'
-      case 2:
-        return '#CBD0DE'
-      case 3:
-        return '#D6DBEB'
-
-      default:
-        break
-    }
-  }
+  const number = String(index + 1).padStart(2, '0')
+  const domain = new URL(url).hostname
 
   return (
-    <div className="sticky top-0 flex items-center justify-center h-screen">
-      <Link
-        href={url}
-        target="_blank"
-        passHref
-        className="md:h-[400px] w-11/12 mx-auto md:w-[850px] rounded-[25px] origin-top"
+    <div ref={container} className={styles.stage} role="listitem" style={{ '--card-index': index } as CSSProperties}>
+      <motion.article
+        className={styles.card}
+        style={{ scale: reduced ? 1 : scale }}
+        aria-labelledby={`project-${index}-title`}
       >
-        <motion.div
-          style={{ backgroundColor: getColor(index), scale, top: `calc(1vh + ${index * 25}px)` }}
-          className="flex flex-col relative md:h-[400px] w-11/12 mx-auto md:w-[850px] rounded-[25px] p-6 md:p-[50px] origin-top"
-        >
-          <h2
-            className="md:text-center m-0 text-2xl md:text-[28px] font-semibold text-onyx"
-            style={{ textShadow: '3px 2px 1px #ffffe3' }}
-          >
-            {title}
-          </h2>
-
-          <div className="flex flex-col space-y-3 md:space-y-0 md:flex-row h-full mt-6 md:mt-[50px] gap-2 md:gap-[50px] text-[#1F2E48]">
-            <div className="md:w-3/5 relative top-[10%]">
-              <p className="text-[16px] first-letter:text-[28px] first-letter:font-['Title']">{description}</p>
-            </div>
-
-            <div className="relative h-40 overflow-hidden rounded-lg shadow-md md:h-40 md:w-2/5">
-              <motion.div className="w-full h-full" style={{ scale: imageScale }}>
-                <NextImage layout="fill" src={src} alt={title} className="object-cover" useSkeleton />
-              </motion.div>
-            </div>
+        <div className={styles.cardTop}>
+          <span className={styles.catalogue}>PROJECT / {number}</span>
+          <span className={styles.category}>{category}</span>
+          <span className={styles.pagination}>
+            {number} — {String(total).padStart(2, '0')}
+          </span>
+        </div>
+        <div className={styles.content}>
+          <div className={styles.details}>
+            <span className={styles.number} aria-hidden="true">
+              {number}.
+            </span>
+            <h3 id={`project-${index}-title`}>{title}</h3>
+            <p>{description}</p>
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.link}
+              aria-label={`Visit ${title} website (opens in a new tab)`}
+            >
+              <span>Visit website</span>
+              <ArrowUpRight size={16} strokeWidth={1.4} aria-hidden="true" />
+            </a>
           </div>
-        </motion.div>
-      </Link>
+          <figure className={styles.preview}>
+            <div className={styles.browserBar} aria-hidden="true">
+              <span className={styles.browserDots}>
+                <i />
+                <i />
+                <i />
+              </span>
+              <span>{domain}</span>
+              <ArrowUpRight size={10} strokeWidth={1.2} />
+            </div>
+            <div className={styles.imageWindow}>
+              <motion.div className={styles.imageMotion} style={{ scale: reduced ? 1 : imageScale }}>
+                <Image
+                  src={src}
+                  alt={`${title} website preview`}
+                  fill
+                  sizes="(max-width: 760px) 85vw, (max-width: 1200px) 48vw, 650px"
+                  quality={85}
+                  className={styles.image}
+                />
+              </motion.div>
+              <PaintReveal seed={index + 3} />
+            </div>
+            <figcaption>
+              <span>WEB / {number}</span>
+              <span>{domain}</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div className={styles.cardFoot} aria-hidden="true">
+          <span>WANFAH DIVA / SELECTED WORK</span>
+          <span className={styles.footRule} />
+          <span>{number}</span>
+        </div>
+      </motion.article>
     </div>
   )
 }
