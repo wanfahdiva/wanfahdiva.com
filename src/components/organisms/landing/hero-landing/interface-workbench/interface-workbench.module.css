@@ -308,7 +308,8 @@
   .workbench {
     width: calc(100% + 20px);
     right: -10px;
-    bottom: 160px;
+    /* The drawing has its own clear margin under the shadow; sit it just above the footnote rule. */
+    bottom: 64px;
   }
   .caption {
     top: 0;
@@ -321,9 +322,7 @@
 }
 @media (max-width: 600px) and (max-height: 680px) {
   .workbench {
-    width: 290px;
-    right: -10px;
-    bottom: 120px;
+    bottom: 56px;
   }
 }
 @media (min-width: 601px) and (max-height: 780px) {
