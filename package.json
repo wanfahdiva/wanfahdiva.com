@@ -5,75 +5,70 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "next dev --turbo -p 3008",
+    "dev": "next dev -p 3008",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "eslint src --fix",
-    "lint:strict": "eslint --max-warnings=0 src",
-    "typecheck": "tsc --noEmit --incremental false",
-    "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:strict": "eslint . --max-warnings=0",
+    "typecheck": "next typegen && tsc --noEmit --incremental false",
+    "prettier:check": "prettier --check .",
     "prettier:format": "prettier --write .",
     "generate": "bun plop --plopfile ./.plop/plopfile.js",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*": [
-      "bun run lint:fix",
-      "bun run prettier:format"
-    ]
-  },
-  "lint-staged-config": {
-    "timeout": 30000
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md,yml,yaml}": "prettier --write"
   },
   "browser": {
     "buffer": false
   },
   "dependencies": {
-    "@studio-freight/react-lenis": "^0.0.47",
-    "@types/glob": "^8.1.0",
-    "@types/gsap": "^3.0.0",
-    "@types/node": "20.2.1",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "@types/react-scroll": "^1.8.10",
-    "bufferutil": "^4.0.8",
-    "framer-motion": "^11.3.19",
-    "gsap": "^3.12.5",
-    "lenis": "^1.1.9",
-    "lucide-react": "^0.292.0",
-    "next": "14.2.25",
-    "next-seo": "^6.5.0",
-    "next-themes": "^0.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-intersection-observer": "^9.13.0",
-    "react-scroll": "^1.9.0",
-    "react-use": "^17.4.0",
-    "sharp": "^0.33.4"
+    "bufferutil": "^4.2.0",
+    "framer-motion": "^11.18.2",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27",
+    "lucide-react": "^1.73.0",
+    "next": "16.4.6",
+    "next-seo": "^6.8.0",
+    "next-themes": "^0.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-intersection-observer": "^9.16.0",
+    "react-scroll": "^1.9.3",
+    "react-use": "^17.6.1",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "5.57.0",
-    "@vercel/analytics": "^1.3.1",
+    "@types/glob": "^8.1.0",
+    "@types/gsap": "^3.0.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/react-scroll": "^1.8.10",
+    "@vercel/analytics": "^1.6.1",
     "autoprefixer": "10.4.14",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^1.2.1",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-import-helpers": "^1.3.1",
-    "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-plugin-prettier": "^5.0.0-alpha.1",
-    "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "plop": "^4.0.1",
-    "postcss": "^8.4.31",
+    "eslint": "10.15.0",
+    "eslint-config-next": "16.4.6",
+    "eslint-config-prettier": "10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "plop": "^4.0.5",
+    "postcss": "^8.5.33",
+    "prettier": "3.10.1",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.4.19",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "5.0.4"
-  }
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
+  },
+  "packageManager": "bun@1.3.1"
 }

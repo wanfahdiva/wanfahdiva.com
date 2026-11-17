@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
-import { useWindowSize } from 'react-use'
 
 export const useHeaderHeight = (): number => {
   const [height, setHeight] = useState(80)
-  const { width } = useWindowSize()
 
   useEffect(() => {
     const header = document.querySelector('.header')
-    if (header) {
-      setHeight(header.getBoundingClientRect().height)
-    }
-  }, [width])
+    if (!header) return
+    const observer = new ResizeObserver(() => setHeight(header.getBoundingClientRect().height))
+    observer.observe(header)
+
+    return () => observer.disconnect()
+  }, [])
 
   return height || 0
 }

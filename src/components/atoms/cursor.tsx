@@ -25,7 +25,8 @@ export const Cursor = ({ isSplash }: CursorProps) => {
     const hoverTarget = (target: EventTarget | null) =>
       target instanceof Element ? target.closest('button,a,[role="button"],label[for]') : null
     const scale = () => {
-      const large = interactive && !interactive.classList.contains('rounded')
+      const large =
+        interactive && !interactive.classList.contains('rounded') && !interactive.querySelector('[data-cursor="compact"]')
       gsap.to(primary, {
         scale: pressed ? 0.5 : large ? 3.85 : 1.05,
         duration: reduced.matches ? 0 : 0.22,

@@ -1,7 +1,7 @@
 'use client'
 
 import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants/social'
-import { useLenis } from '@studio-freight/react-lenis'
+import { useLenis } from 'lenis/react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
@@ -9,6 +9,9 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { scroller } from 'react-scroll'
 
+import { useHydration } from '@/hooks/use-hydration'
+
+import { BrandMark } from '@/components/atoms/brand-mark'
 import { SectionLink } from '@/components/atoms/section-link'
 
 import { cn } from '@/lib/utils'
@@ -36,15 +39,12 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [light, setLight] = useState(pathname === '/')
-  const [mounted, setMounted] = useState(false)
+  const mounted = useHydration()
   const dialog = useRef<HTMLDialogElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)
-  const exit = useRef<ReturnType<typeof setTimeout>>()
+  const exit = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const pointerOpen = useRef(false)
   const [closing, setClosing] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
   useEffect(() => {
     const update = () => {
       setScrolled(scrollY > 20)
@@ -123,7 +123,7 @@ export const Navbar = () => {
       <header className={cn(styles.header, scrolled && styles.scrolled, light && styles.light)}>
         <nav className={styles.nav} aria-label="Main navigation">
           <SectionLink to="hero" label="Wanfah Diva, back to top" className={styles.logo}>
-            WD
+            <BrandMark animated />
           </SectionLink>
           <div className={styles.desktop}>
             {SECTIONS.map((item, index) => (
@@ -193,7 +193,7 @@ export const Navbar = () => {
             </svg>
             <div className={styles.menuPage}>
               <div className={styles.menuTop}>
-                <span className={styles.menuLogo}>WD</span>
+                <BrandMark className={styles.menuLogo} />
                 <button type="button" className={styles.close} aria-label="Close navigation menu" onClick={close} autoFocus>
                   <X size={20} strokeWidth={1.4} />
                 </button>

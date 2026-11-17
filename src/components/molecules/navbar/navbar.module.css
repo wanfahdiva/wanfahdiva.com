@@ -27,12 +27,18 @@
   background: #f2f2eff2;
 }
 .logo {
-  font-size: 29px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   cursor: pointer;
   color: inherit;
+}
+.logo svg,
+.menuLogo {
+  display: block;
+  flex: none;
+  width: 54px;
+  height: 32px;
 }
 .desktop {
   display: flex;
@@ -119,12 +125,6 @@
 }
 .dialog[data-compact='true'] .menuTop {
   height: 80px;
-}
-.menuLogo {
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1;
 }
 .wash {
   position: fixed;

@@ -6,7 +6,7 @@ import { RefObject, useEffect } from 'react'
  * The hero leaves like a book cover being turned: the copy fades and rises a little faster than the page,
  * while the machine drifts behind it more slowly (a single, transform-and-opacity-only parallax).
  */
-export function useHeroExit(root: RefObject<HTMLElement>) {
+export function useHeroExit(root: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const element = root.current
     if (!element) return

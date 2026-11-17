@@ -64,7 +64,7 @@ A light, book-like redesign: warm paper (`#f2f2ef`), charcoal ink, monospaced me
 
 ## - Installation & Set Up
 
-1. Install Bun.sh and ensure you have Node.js version 16 or higher.
+1. Install Bun 1.3.1 and Node.js 22.13+ (22.x), or Node.js 24+ (Node.js 22 is used in CI).
 
    ```sh
    powershell -c "irm bun.sh/install.ps1|iex"
@@ -93,3 +93,17 @@ A light, book-like redesign: warm paper (`#f2f2ef`), charcoal ink, monospaced me
    ```sh
     bun start
    ```
+
+6. Check code quality
+
+   ```sh
+   bun run lint:strict
+   bun run typecheck
+   bun run prettier:check
+   ```
+
+   Run `bun run lint:fix` and `bun run prettier:format` to apply automatic fixes.
+   ESLint uses the Next.js Core Web Vitals and TypeScript flat configs; Prettier
+   runs separately, with `eslint-config-prettier` preventing conflicting rules.
+   TypeScript 6.0.3 is the newest release supported by the TypeScript ESLint parser
+   used by Next.js (its supported range is currently below 6.1).

@@ -11,7 +11,7 @@ import styles from './contact-landing.module.css'
 
 export const ContactLanding = () => {
   const section = useRef<HTMLElement>(null)
-  const timer = useRef<ReturnType<typeof setTimeout>>()
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle')
   useEditorialReveal(section)
   useEffect(() => () => clearTimeout(timer.current), [])

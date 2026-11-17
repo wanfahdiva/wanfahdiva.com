@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { useHydration } from '@/hooks/use-hydration'
+
 import styles from './folio.module.css'
 
 // Running folio in the page gutter, like a book: which chapter is at the reading line.
@@ -14,10 +16,9 @@ const CHAPTERS = [
 
 export const Folio = () => {
   const [active, setActive] = useState<number | null>(null)
-  const [mounted, setMounted] = useState(false)
+  const mounted = useHydration()
 
   useEffect(() => {
-    setMounted(true)
     const sections = CHAPTERS.map(({ id }) => document.getElementById(id))
     const visible = new Set<number>()
     // A one-pixel reading line across the middle of the viewport: no scroll listener, no layout reads.
