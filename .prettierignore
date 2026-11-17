@@ -7,6 +7,11 @@ coverage
 *.hbs
 pnpm-lock.yaml
 bun.lockb
+bun.lock
+next-env.d.ts
+out
+build
+src/shared/fonts
 # Vendored kit and generated geometry
 scripts/anatomy/iso-kit.mjs
 src/components/organisms/landing/hero-landing/interface-workbench/geometry.json

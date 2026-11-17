@@ -1,0 +1,182 @@
+.mark {
+  overflow: visible;
+}
+.solid,
+.registration,
+.keyline,
+.firstImpression,
+.secondImpression,
+.press {
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+.proof,
+.press {
+  pointer-events: none;
+}
+.registration,
+.keyline,
+.firstImpression,
+.secondImpression,
+.press {
+  opacity: 0;
+}
+.keyline,
+.firstImpression,
+.press {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.65;
+  stroke-linecap: square;
+  stroke-linejoin: round;
+}
+.firstImpression,
+.secondImpression {
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(a:focus-visible) > .interactive .solid {
+    animation-name: proof-fill;
+  }
+  :global(a:focus-visible) > .interactive .registration {
+    animation-name: proof-registration;
+  }
+  :global(a:focus-visible) > .interactive .keyline {
+    animation-name: proof-keyline;
+  }
+  :global(a:focus-visible) > .interactive .firstImpression {
+    animation-name: proof-first-impression;
+  }
+  :global(a:focus-visible) > .interactive .secondImpression {
+    animation-name: proof-second-impression;
+  }
+  :global(a:focus-visible) > .interactive .press {
+    animation-name: proof-press;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :global(a:hover) > .interactive .solid {
+    animation-name: proof-fill;
+  }
+  :global(a:hover) > .interactive .registration {
+    animation-name: proof-registration;
+  }
+  :global(a:hover) > .interactive .keyline {
+    animation-name: proof-keyline;
+  }
+  :global(a:hover) > .interactive .firstImpression {
+    animation-name: proof-first-impression;
+  }
+  :global(a:hover) > .interactive .secondImpression {
+    animation-name: proof-second-impression;
+  }
+  :global(a:hover) > .interactive .press {
+    animation-name: proof-press;
+  }
+}
+/* Ink lifts off the page, then the press reveals a fresh impression from left to right. */
+@keyframes proof-fill {
+  0%,
+  100% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+  10% {
+    opacity: 0;
+    clip-path: inset(0);
+  }
+  11%,
+  31% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  32% {
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+  }
+  78% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+@keyframes proof-registration {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  15%,
+  72% {
+    opacity: 0.5;
+  }
+}
+@keyframes proof-keyline {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  12%,
+  65% {
+    opacity: 0.15;
+  }
+}
+/* Two proof passes move out of register, then settle onto the same shared logo geometry. */
+@keyframes proof-first-impression {
+  0%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+  22% {
+    opacity: 0.5;
+    transform: translate(-16px, 7px);
+  }
+  42% {
+    opacity: 0.4;
+    transform: translate(-10px, 3px);
+  }
+  78% {
+    opacity: 0;
+    transform: none;
+  }
+}
+@keyframes proof-second-impression {
+  0%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+  22% {
+    opacity: 0.23;
+    transform: translate(16px, -7px);
+  }
+  42% {
+    opacity: 0.18;
+    transform: translate(10px, -3px);
+  }
+  78% {
+    opacity: 0;
+    transform: none;
+  }
+}
+@keyframes proof-press {
+  0%,
+  31% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  32% {
+    opacity: 0.45;
+    transform: translateX(0);
+  }
+  78% {
+    opacity: 0.45;
+    transform: translateX(252px);
+  }
+  86%,
+  100% {
+    opacity: 0;
+    transform: translateX(252px);
+  }
+}

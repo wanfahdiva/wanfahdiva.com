@@ -8,12 +8,11 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
       "@/components/*": ["./src/components/*"],
       "@/constants/*": ["./src/constants/*"],
@@ -24,16 +23,17 @@
       "@/stores/*": ["./src/stores/*"],
       "@/styles/*": ["./src/shared/styles/*"],
       "@/shared/*": ["./src/shared/*"],
-      "@/restapi/*": ["./src/restapi/*"]
+      "@/restapi/*": ["./src/restapi/*"],
+      "scripts/*": ["./scripts/*"]
     },
     "types": ["node"],
-    "target": "es5",
+    "target": "ES2017",
     "plugins": [
       {
         "name": "next"
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

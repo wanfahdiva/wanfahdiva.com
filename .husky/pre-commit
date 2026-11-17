@@ -1,5 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-bun run lint:fix
-bun run prettier:format
+bunx --no-install lint-staged

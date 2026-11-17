@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
+
+const subscribe = () => () => {}
+const getSnapshot = () => true
+const getServerSnapshot = () => false
 
 export const useHydration = () => {
-  const [isHydrated, setIsHydrated] = useState(false)
-
-  useEffect(() => {
-    setIsHydrated(true)
-  }, [])
-
-  return isHydrated
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }

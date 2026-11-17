@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { RefObject, useEffect } from 'react'
 
 // Editorial sections reveal at a reading position, rather than at the viewport edge.
-export function useEditorialReveal(root: RefObject<HTMLElement>) {
+export function useEditorialReveal(root: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const element = root.current
     if (!element) return

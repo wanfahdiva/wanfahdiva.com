@@ -28,13 +28,11 @@ const TOUCH_HOLD_DELAY = 120
 export function InterfaceWorkbench() {
   const id = useId()
   const stage = useRef<HTMLElement>(null)
-  const layers = {
-    base: useRef<SVGGElement>(null),
-    frontRail: useRef<SVGGElement>(null),
-    bridge: useRef<SVGGElement>(null),
-    head: useRef<SVGGElement>(null),
-    tool: useRef<SVGGElement>(null)
-  }
+  const baseLayer = useRef<SVGGElement>(null)
+  const frontRailLayer = useRef<SVGGElement>(null)
+  const bridgeLayer = useRef<SVGGElement>(null)
+  const headLayer = useRef<SVGGElement>(null)
+  const toolLayer = useRef<SVGGElement>(null)
   const bridge = useRef<SVGGElement>(null)
   const head = useRef<SVGGElement>(null)
   const tool = useRef<SVGGElement>(null)
@@ -54,6 +52,7 @@ export function InterfaceWorkbench() {
   const [announcement, setAnnouncement] = useState('')
 
   useEffect(() => {
+    const layers = { base: baseLayer, frontRail: frontRailLayer, bridge: bridgeLayer, head: headLayer, tool: toolLayer }
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)')
     let animation = 0,
@@ -373,6 +372,8 @@ export function InterfaceWorkbench() {
       run()
     }
     paint()
+    // Synchronize the controls with the imperative scene's initial reduced-motion state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (media.matches) setMode('complete')
     const observer = new IntersectionObserver(
       (entries) => {
@@ -424,11 +425,9 @@ export function InterfaceWorkbench() {
       hold.current = () => undefined
       hover.current = () => undefined
     }
-    // Layer refs are stable objects created once per mount.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const touchTimer = useRef<ReturnType<typeof setTimeout>>()
+  const touchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const release = () => {
     clearTimeout(touchTimer.current)
     hold.current(false)
@@ -445,7 +444,7 @@ export function InterfaceWorkbench() {
           back. On hover the machine turns to face you.
         </desc>
         <path ref={focusRing} className={styles.focusRing} d="" />
-        <g ref={layers.base} dangerouslySetInnerHTML={{ __html: geometry.base }} />
+        <g ref={baseLayer} dangerouslySetInnerHTML={{ __html: geometry.base }} />
         <path ref={slots} className={styles.slots} d="" />
         <path ref={leaders} className={styles.guide} d="" />
         <g ref={pieceLayer}>
@@ -474,9 +473,9 @@ export function InterfaceWorkbench() {
             )
           })}
         </g>
-        <g ref={layers.frontRail} dangerouslySetInnerHTML={{ __html: geometry.frontRail }} />
+        <g ref={frontRailLayer} dangerouslySetInnerHTML={{ __html: geometry.frontRail }} />
         <g ref={bridge}>
-          <g ref={layers.bridge} dangerouslySetInnerHTML={{ __html: geometry.bridge }} />
+          <g ref={bridgeLayer} dangerouslySetInnerHTML={{ __html: geometry.bridge }} />
         </g>
         <g ref={head}>
           <g
@@ -484,14 +483,12 @@ export function InterfaceWorkbench() {
             data-tool
             transform={`translate(${geometry.axes.z[0] * INITIAL.toolZ} ${geometry.axes.z[1] * INITIAL.toolZ})`}
           >
-            <g ref={layers.tool} dangerouslySetInnerHTML={{ __html: geometry.tool }} />
+            <g ref={toolLayer} dangerouslySetInnerHTML={{ __html: geometry.tool }} />
           </g>
-          <g ref={layers.head} dangerouslySetInnerHTML={{ __html: geometry.head }} />
+          <g ref={headLayer} dangerouslySetInnerHTML={{ __html: geometry.head }} />
         </g>
       </>
     ),
-    // Refs are stable; the id is fixed for the component's lifetime.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [id]
   )
 

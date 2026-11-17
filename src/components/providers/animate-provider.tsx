@@ -1,6 +1,6 @@
 'use client'
 
-import ReactLenis from '@studio-freight/react-lenis'
+import { ReactLenis } from 'lenis/react'
 import React, { useEffect, useState } from 'react'
 
 import { Cursor } from '@/components/atoms/cursor'
@@ -77,7 +77,7 @@ export const AnimateProvider = ({ content }: AnimateProviderProps) => {
           <DraftingSplash />
         </div>
       )}
-      <ReactLenis root options={{ lerp: 0.1, duration: 1.5 }}>
+      <ReactLenis root options={{ autoRaf: true, lerp: 0.1, duration: 1.5 }}>
         {phase !== 'drawing' && content}
         {phase !== 'drawing' && <Cursor />}
       </ReactLenis>
